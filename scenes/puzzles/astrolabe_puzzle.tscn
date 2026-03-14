@@ -1,0 +1,108 @@
+[gd_scene load_steps=2 format=3 uid="uid://castrolabe001"]
+
+[ext_resource type="Script" path="res://scenes/puzzles/astrolabe_puzzle.gd" id="1_astrolabe"]
+
+[node name="AstrolabePuzzle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_astrolabe")
+
+[node name="SkyBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.02, 0.1, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 2.0
+offset_right = 260.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 6
+text = "As Estrelas e o Rumo"
+horizontal_alignment = 1
+
+[node name="SkyArea" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 14.0
+offset_bottom = -30.0
+
+[node name="Crosshair" type="Sprite2D" parent="SkyArea"]
+position = Vector2(160, 68)
+modulate = Color(1, 0.5, 0.3, 0.8)
+
+[node name="HLine" type="ColorRect" parent="SkyArea/Crosshair"]
+offset_left = -8.0
+offset_top = -0.5
+offset_right = 8.0
+offset_bottom = 0.5
+color = Color(1, 0.5, 0.3, 0.8)
+
+[node name="VLine" type="ColorRect" parent="SkyArea/Crosshair"]
+offset_left = -0.5
+offset_top = -8.0
+offset_right = 0.5
+offset_bottom = 8.0
+color = Color(1, 0.5, 0.3, 0.8)
+
+[node name="AstrolabeOverlay" type="ColorRect" parent="SkyArea"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -10.0
+color = Color(0.3, 0.25, 0.15, 0.4)
+
+[node name="HorizonLabel" type="Label" parent="SkyArea/AstrolabeOverlay"]
+layout_mode = 1
+offset_left = 120.0
+offset_top = 0.0
+offset_right = 200.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 4
+text = "--- Horizonte ---"
+horizontal_alignment = 1
+modulate = Color(0.7, 0.6, 0.4, 0.7)
+
+[node name="StarCounter" type="Label" parent="."]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 166.0
+offset_right = 80.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 5
+text = "Estrelas: 0/3"
+
+[node name="HintLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 154.0
+offset_right = 290.0
+offset_bottom = 164.0
+theme_override_font_sizes/font_size = 4
+horizontal_alignment = 1
+
+[node name="ResultLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 80.0
+offset_top = 166.0
+offset_right = 240.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 5
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 274.0
+offset_top = 164.0
+offset_right = 316.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 5
+text = "Voltar"

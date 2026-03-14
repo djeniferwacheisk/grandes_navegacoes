@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://ctitle001"]
+
+[ext_resource type="Script" uid="uid://wco0tyfrubdq" path="res://scenes/menus/title_screen.gd" id="1_title"]
+
+[node name="TitleScreen" type="Control" unique_id=85930910]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_title")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1431905133]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.1, 0.2, 1)
+
+[node name="SeaRect" type="ColorRect" parent="." unique_id=2046380124]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.05, 0.15, 0.35, 1)
+
+[node name="Title" type="Label" parent="." unique_id=1628277336]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 20.0
+offset_right = 280.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 14
+text = "Grandes
+Navegacoes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="." unique_id=663789050]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 69.0
+offset_right = 260.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 5
+text = "Uma aventura pelos mares portugueses"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1248091319]
+layout_mode = 1
+offset_left = 110.0
+offset_top = 90.0
+offset_right = 210.0
+offset_bottom = 160.0
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=262997704]
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "Jogar"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=923982144]
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "Configuracoes"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1863839172]
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "Sair"
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=1195018564]
+layout_mode = 2

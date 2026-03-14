@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnpc001"]
+
+[ext_resource type="Script" path="res://scenes/npcs/npc.gd" id="1_npc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npc"]
+size = Vector2(10, 16)
+
+[node name="NPC" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_npc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_npc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = -14.0
+theme_override_font_sizes/font_size = 4
+horizontal_alignment = 1

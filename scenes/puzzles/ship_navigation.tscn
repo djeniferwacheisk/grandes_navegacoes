@@ -1,0 +1,270 @@
+[gd_scene load_steps=5 format=3 uid="uid://cship001"]
+
+[ext_resource type="Script" path="res://scenes/puzzles/ship_navigation.gd" id="1_ship"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ship"]
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rock"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_area"]
+size = Vector2(16, 16)
+
+[node name="ShipNavigation" type="Node2D"]
+script = ExtResource("1_ship")
+
+[node name="Water" type="ColorRect" parent="."]
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 600.0
+offset_bottom = 400.0
+color = Color(0.05, 0.15, 0.4, 1)
+
+[node name="Ship" type="CharacterBody2D" parent="."]
+position = Vector2(20, 90)
+collision_layer = 2
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship"]
+shape = SubResource("RectangleShape2D_ship")
+
+[node name="ShipSprite" type="ColorRect" parent="Ship"]
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 6.0
+offset_bottom = 4.0
+color = Color(0.55, 0.35, 0.15, 1)
+
+[node name="Camera2D" type="Camera2D" parent="Ship"]
+zoom = Vector2(1, 1)
+limit_left = -50
+limit_top = -50
+limit_right = 500
+limit_bottom = 250
+position_smoothing_enabled = true
+
+[node name="Rocks" type="Node2D" parent="."]
+
+[node name="Rock1" type="StaticBody2D" parent="Rocks" groups=["rock"]]
+position = Vector2(100, 60)
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/Rock1"]
+shape = SubResource("RectangleShape2D_rock")
+
+[node name="Sprite" type="ColorRect" parent="Rocks/Rock1"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="Rock2" type="StaticBody2D" parent="Rocks" groups=["rock"]]
+position = Vector2(180, 120)
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/Rock2"]
+shape = SubResource("RectangleShape2D_rock")
+
+[node name="Sprite" type="ColorRect" parent="Rocks/Rock2"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="Rock3" type="StaticBody2D" parent="Rocks" groups=["rock"]]
+position = Vector2(300, 70)
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/Rock3"]
+shape = SubResource("RectangleShape2D_rock")
+
+[node name="Sprite" type="ColorRect" parent="Rocks/Rock3"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="Rock4" type="StaticBody2D" parent="Rocks" groups=["rock"]]
+position = Vector2(250, 140)
+collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/Rock4"]
+shape = SubResource("RectangleShape2D_rock")
+
+[node name="Sprite" type="ColorRect" parent="Rocks/Rock4"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="Maps" type="Node2D" parent="."]
+
+[node name="Map1" type="Area2D" parent="Maps" groups=["map_collectible"]]
+position = Vector2(80, 100)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Maps/Map1"]
+shape = SubResource("RectangleShape2D_area")
+
+[node name="Sprite" type="ColorRect" parent="Maps/Map1"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0.9, 0.8, 0.5, 1)
+
+[node name="Label" type="Label" parent="Maps/Map1"]
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 8.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 4
+text = "Mapa"
+horizontal_alignment = 1
+
+[node name="Map2" type="Area2D" parent="Maps" groups=["map_collectible"]]
+position = Vector2(220, 50)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Maps/Map2"]
+shape = SubResource("RectangleShape2D_area")
+
+[node name="Sprite" type="ColorRect" parent="Maps/Map2"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0.9, 0.8, 0.5, 1)
+
+[node name="Label" type="Label" parent="Maps/Map2"]
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 8.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 4
+text = "Mapa"
+horizontal_alignment = 1
+
+[node name="Map3" type="Area2D" parent="Maps" groups=["map_collectible"]]
+position = Vector2(370, 100)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Maps/Map3"]
+shape = SubResource("RectangleShape2D_area")
+
+[node name="Sprite" type="ColorRect" parent="Maps/Map3"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0.9, 0.8, 0.5, 1)
+
+[node name="Label" type="Label" parent="Maps/Map3"]
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 8.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 4
+text = "Mapa"
+horizontal_alignment = 1
+
+[node name="WindZone" type="Area2D" parent="." groups=["wind_zone"]]
+position = Vector2(150, 90)
+collision_layer = 0
+collision_mask = 2
+metadata/wind_direction = Vector2(1, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindZone"]
+shape = SubResource("RectangleShape2D_rock")
+
+[node name="Label" type="Label" parent="WindZone"]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = -4.0
+theme_override_font_sizes/font_size = 3
+text = "~VENTO~"
+horizontal_alignment = 1
+modulate = Color(0.7, 0.85, 1, 0.6)
+
+[node name="FinishZone" type="Area2D" parent="." groups=["finish_zone"]]
+position = Vector2(440, 90)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishZone"]
+shape = SubResource("RectangleShape2D_area")
+
+[node name="Sprite" type="ColorRect" parent="FinishZone"]
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = 20.0
+color = Color(0.2, 0.8, 0.2, 0.5)
+
+[node name="Label" type="Label" parent="FinishZone"]
+offset_left = -12.0
+offset_top = -26.0
+offset_right = 12.0
+offset_bottom = -18.0
+theme_override_font_sizes/font_size = 4
+text = "SAIDA"
+horizontal_alignment = 1
+
+[node name="Buoys" type="Node2D" parent="."]
+
+[node name="Buoy1" type="ColorRect" parent="Buoys"]
+offset_left = 56.0
+offset_top = 44.0
+offset_right = 60.0
+offset_bottom = 48.0
+color = Color(1, 0.3, 0.3, 1)
+
+[node name="Buoy2" type="ColorRect" parent="Buoys"]
+offset_left = 136.0
+offset_top = 134.0
+offset_right = 140.0
+offset_bottom = 138.0
+color = Color(1, 0.3, 0.3, 1)
+
+[node name="Buoy3" type="ColorRect" parent="Buoys"]
+offset_left = 336.0
+offset_top = 44.0
+offset_right = 340.0
+offset_bottom = 48.0
+color = Color(1, 0.3, 0.3, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="MapsLabel" type="Label" parent="CanvasLayer"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 80.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 5
+text = "Mapas: 0/3"
+
+[node name="HintLabel" type="Label" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 164.0
+offset_right = 280.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 5
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="CanvasLayer"]
+offset_left = 274.0
+offset_top = 4.0
+offset_right = 316.0
+offset_bottom = 18.0
+theme_override_font_sizes/font_size = 5
+text = "Voltar"

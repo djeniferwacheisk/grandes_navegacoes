@@ -1,0 +1,133 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccompass001"]
+
+[ext_resource type="Script" path="res://scenes/puzzles/compass_puzzle.gd" id="1_compass"]
+
+[sub_resource type="GDScript" id="GDScript_needle"]
+script/source = "extends Sprite2D
+
+func _ready() -> void:
+	# Create a simple needle using a polygon
+	pass
+"
+
+[node name="CompassPuzzle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_compass")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.15, 0.1, 0.08, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 4.0
+offset_right = 260.0
+offset_bottom = 16.0
+theme_override_font_sizes/font_size = 7
+text = "A Bussola e os Ventos"
+horizontal_alignment = 1
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 300.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 4
+text = "Clique na bussola para girar. Associe os ventos as direcoes corretas."
+horizontal_alignment = 1
+
+[node name="CompassArea" type="Control" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 100.0
+offset_bottom = 114.0
+
+[node name="CompassBG" type="ColorRect" parent="CompassArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.3, 0.25, 0.2, 1)
+
+[node name="NLabel" type="Label" parent="CompassArea"]
+layout_mode = 1
+offset_left = 36.0
+offset_top = 2.0
+offset_right = 44.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 6
+text = "N"
+horizontal_alignment = 1
+
+[node name="SLabel" type="Label" parent="CompassArea"]
+layout_mode = 1
+offset_left = 36.0
+offset_top = 68.0
+offset_right = 44.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 6
+text = "S"
+horizontal_alignment = 1
+
+[node name="ELabel" type="Label" parent="CompassArea"]
+layout_mode = 1
+offset_left = 68.0
+offset_top = 36.0
+offset_right = 78.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 6
+text = "E"
+
+[node name="WLabel" type="Label" parent="CompassArea"]
+layout_mode = 1
+offset_left = 2.0
+offset_top = 36.0
+offset_right = 12.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 6
+text = "W"
+
+[node name="CompassNeedle" type="Sprite2D" parent="CompassArea"]
+position = Vector2(40, 40)
+rotation = 0.785398
+
+[node name="WindSlots" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 120.0
+offset_top = 40.0
+offset_right = 280.0
+offset_bottom = 100.0
+
+[node name="WindOptions" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 120.0
+offset_top = 110.0
+offset_right = 280.0
+offset_bottom = 130.0
+
+[node name="ResultLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 140.0
+offset_right = 260.0
+offset_bottom = 165.0
+theme_override_font_sizes/font_size = 5
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 270.0
+offset_top = 160.0
+offset_right = 310.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 5
+text = "Voltar"

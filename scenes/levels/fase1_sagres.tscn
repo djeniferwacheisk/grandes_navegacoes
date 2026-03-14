@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://deft76a7ghjjj"]
+
+[ext_resource type="Script" uid="uid://bda2k4kfutwcf" path="res://scenes/levels/fase1_sagres.gd" id="1_fase1"]
+[ext_resource type="Texture2D" uid="uid://dp4mkjwi7pgd0" path="res://assets/fundo_chão.png" id="2_6w6ne"]
+[ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
+[ext_resource type="PackedScene" uid="uid://chud001" path="res://scenes/hud/hud.tscn" id="4_hud"]
+[ext_resource type="PackedScene" uid="uid://cnpc001" path="res://scenes/npcs/npc.tscn" id="5_npc"]
+[ext_resource type="Script" uid="uid://bh7plrrclwmrq" path="res://scenes/levels/puzzle_trigger.gd" id="6_trigger"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
+size = Vector2(1302, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_v"]
+size = Vector2(12, 778)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(24, 24)
+
+[node name="Fase1Sagres" type="Node2D" unique_id=101626217]
+script = ExtResource("1_fase1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=740977907]
+position = Vector2(-130, -127)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6w6ne")
+centered = false
+
+[node name="PortoLabel" type="Label" parent="." unique_id=1758870894]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 80.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 6
+text = "Porto"
+
+[node name="TreinoLabel" type="Label" parent="." unique_id=89030236]
+offset_left = 190.0
+offset_top = 10.0
+offset_right = 330.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 6
+text = "Treinamento"
+
+[node name="ObsLabel" type="Label" parent="." unique_id=141487869]
+offset_left = 253.0
+offset_top = -50.0
+offset_right = 343.0
+offset_bottom = -38.0
+theme_override_font_sizes/font_size = 6
+text = "Observatorio"
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=1862448441]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=140357732]
+position = Vector2(523, -123)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=1520906608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=71046574]
+position = Vector2(530, 637)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1106498499]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=480448396]
+position = Vector2(-128, 247)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=142397521]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1505060388]
+position = Vector2(1170, 272)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="Player" parent="." unique_id=1756894264 instance=ExtResource("2_player")]
+position = Vector2(553, 500)
+scale = Vector2(0.7, 0.7)
+
+[node name="MestreNavegador" parent="." unique_id=1464441908 instance=ExtResource("5_npc")]
+position = Vector2(452, 218)
+npc_name = "Mestre Navegador"
+dialog_id = "mestre_intro"
+
+[node name="Marinheiro1" parent="." unique_id=698373890 instance=ExtResource("5_npc")]
+position = Vector2(377, 201)
+npc_name = "Marinheiro"
+dialog_id = "marinheiro_1"
+
+[node name="Marinheiro2" parent="." unique_id=1370439378 instance=ExtResource("5_npc")]
+position = Vector2(430, 80)
+npc_name = "Marinheiro"
+dialog_id = "marinheiro_2"
+
+[node name="PuzzleTriggers" type="Node2D" parent="." unique_id=456736165]
+
+[node name="CompassTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=449266162]
+position = Vector2(252, 99)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("6_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/CompassTrigger" unique_id=403037451]
+position = Vector2(10, 339)
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="PuzzleTriggers/CompassTrigger" unique_id=198566253]
+offset_left = -3.0
+offset_top = 319.0
+offset_right = 29.0
+offset_bottom = 329.0
+theme_override_font_sizes/font_size = 5
+text = "Bussola"
+horizontal_alignment = 1
+
+[node name="ShipTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=150992057]
+position = Vector2(997, 67)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("6_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/ShipTrigger" unique_id=258880247]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="PuzzleTriggers/ShipTrigger" unique_id=610835473]
+offset_left = 10.0
+offset_top = -21.0
+offset_right = 42.0
+offset_bottom = -11.0
+theme_override_font_sizes/font_size = 5
+text = "Caravela"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AstrolabeTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=1891931629]
+position = Vector2(430, 40)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("6_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/AstrolabeTrigger" unique_id=1104523929]
+position = Vector2(-216, -87)
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="PuzzleTriggers/AstrolabeTrigger" unique_id=543178318]
+offset_left = -232.0
+offset_top = -105.0
+offset_right = -200.0
+offset_bottom = -95.0
+theme_override_font_sizes/font_size = 5
+text = "Astrolabio"
+horizontal_alignment = 1
+
+[node name="DialogBox" parent="." unique_id=102116853 instance=ExtResource("3_dialog")]
+
+[node name="HUD" parent="." unique_id=1371277843 instance=ExtResource("4_hud")]
+
+[connection signal="triggered" from="PuzzleTriggers/CompassTrigger" to="." method="_on_compass_interact"]
+[connection signal="triggered" from="PuzzleTriggers/ShipTrigger" to="." method="_on_ship_interact"]
+[connection signal="triggered" from="PuzzleTriggers/AstrolabeTrigger" to="." method="_on_astrolabe_interact"]
