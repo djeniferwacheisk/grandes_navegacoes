@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bj0ie1re8yn0w"]
 
 [ext_resource type="Script" uid="uid://dsemcscx5xe7k" path="res://scenes/player/player.gd" id="1_player"]
-[ext_resource type="Texture2D" uid="uid://dfk6cfugnfga8" path="res://assets/idle.png" id="2_p47bc"]
-[ext_resource type="Texture2D" uid="uid://dgs1fsbyykur4" path="res://assets/walker_down.png" id="3_75vfm"]
-[ext_resource type="Texture2D" uid="uid://cifusvvw8xpdl" path="res://assets/walker_side.png" id="4_0owmy"]
-[ext_resource type="Texture2D" uid="uid://bycp8mv0rc77e" path="res://assets/walker_up.png" id="5_qek5x"]
+[ext_resource type="Texture2D" uid="uid://dfk6cfugnfga8" path="res://assets/personagem/idle.png" id="2_p47bc"]
+[ext_resource type="Texture2D" uid="uid://dgs1fsbyykur4" path="res://assets/personagem/walker_down.png" id="3_75vfm"]
+[ext_resource type="Texture2D" uid="uid://cifusvvw8xpdl" path="res://assets/personagem/walker_side.png" id="4_0owmy"]
+[ext_resource type="Texture2D" uid="uid://bycp8mv0rc77e" path="res://assets/personagem/walker_up.png" id="5_qek5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(4, 6)
