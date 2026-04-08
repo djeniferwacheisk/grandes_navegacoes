@@ -1,80 +1,103 @@
-[gd_scene format=3 uid="uid://ctitle001"]
+[gd_scene format=3 uid="uid://bp1n3154v0vpm"]
 
-[ext_resource type="Script" uid="uid://wco0tyfrubdq" path="res://scenes/menus/title_screen.gd" id="1_title"]
+[ext_resource type="FontFile" uid="uid://bth7n5sc0w5t0" path="res://fonts/Blue Venom.ttf" id="1_eqhve"]
+[ext_resource type="Script" uid="uid://brcexu72gbbyg" path="res://scenes/menus/title_screen.gd" id="1_title"]
+[ext_resource type="Texture2D" uid="uid://bkm4ovf0634wi" path="res://assets/menu/fundo.png" id="2_vudbd"]
+[ext_resource type="PackedScene" uid="uid://c5krarga2yonr" path="res://scenes/menus/ui_animation_component.tscn" id="2_yx444"]
+[ext_resource type="Texture2D" uid="uid://dgxdwgw8nilpp" path="res://assets/menu/Gemini_Generated_Image_66b16966b16966b1__4_-removebg-preview.png" id="3_ptv5j"]
 
-[node name="TitleScreen" type="Control" unique_id=85930910]
+[sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
+font_size = 60
+font_color = Color(0, 0.8846418, 0.8863591, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_u5sy4"]
+base_font = ExtResource("1_eqhve")
+
+[node name="Control" type="Control" unique_id=383569866]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_title")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1431905133]
+[node name="Fundo" type="Sprite2D" parent="." unique_id=448443614]
+position = Vector2(164, 88.99999)
+scale = Vector2(0.14869887, 0.17110266)
+texture = ExtResource("2_vudbd")
+
+[node name="Escrita Grandes Navegacoes" type="Sprite2D" parent="Fundo" unique_id=1951348307]
+position = Vector2(-49.870544, -329.2928)
+scale = Vector2(1.5112295, 1.5245036)
+texture = ExtResource("3_ptv5j")
+
+[node name="Opcoes" type="Label" parent="." unique_id=1526250195]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -893.0
+offset_top = -226.0
+offset_right = -692.0
+offset_bottom = -143.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_lbhrr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Opcoes" unique_id=612241375]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.305
+anchor_top = -1.0020001
+anchor_right = -0.305
+anchor_bottom = -1.0020001
+offset_left = 752.305
+offset_top = 369.16602
+offset_right = 1405.305
+offset_bottom = 740.166
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.05, 0.1, 0.2, 1)
+theme_override_constants/separation = 20
 
-[node name="SeaRect" type="ColorRect" parent="." unique_id=2046380124]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -60.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.05, 0.15, 0.35, 1)
-
-[node name="Title" type="Label" parent="." unique_id=1628277336]
-layout_mode = 1
-offset_left = 40.0
-offset_top = 20.0
-offset_right = 280.0
-offset_bottom = 50.0
-theme_override_font_sizes/font_size = 14
-text = "Grandes
-Navegacoes"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Subtitle" type="Label" parent="." unique_id=663789050]
-layout_mode = 1
-offset_left = 60.0
-offset_top = 69.0
-offset_right = 260.0
-offset_bottom = 79.0
-theme_override_font_sizes/font_size = 5
-text = "Uma aventura pelos mares portugueses"
-horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1248091319]
-layout_mode = 1
-offset_left = 110.0
-offset_top = 90.0
-offset_right = 210.0
-offset_bottom = 160.0
-alignment = 1
-
-[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=262997704]
+[node name="Start" type="Button" parent="Opcoes/VBoxContainer" unique_id=804843480]
 layout_mode = 2
-theme_override_font_sizes/font_size = 7
-text = "Jogar"
+theme_override_fonts/font = SubResource("FontVariation_u5sy4")
+theme_override_font_sizes/font_size = 10
+text = "Iniciar expedição"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=923982144]
-layout_mode = 2
-theme_override_font_sizes/font_size = 7
-text = "Configuracoes"
+[node name="uiAnimationComponent" parent="Opcoes/VBoxContainer/Start" unique_id=541775839 instance=ExtResource("2_yx444")]
+script = null
 
-[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1863839172]
+[node name="NewGame" type="Button" parent="Opcoes/VBoxContainer" unique_id=1125638562]
 layout_mode = 2
-theme_override_font_sizes/font_size = 7
-text = "Sair"
+theme_override_fonts/font = ExtResource("1_eqhve")
+theme_override_font_sizes/font_size = 10
+text = "Continuar Expedição"
 
-[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=1195018564]
+[node name="uiAnimationComponent2" parent="Opcoes/VBoxContainer/NewGame" unique_id=694012254 instance=ExtResource("2_yx444")]
+script = null
+
+[node name="Ajustes" type="Button" parent="Opcoes/VBoxContainer" unique_id=1233713732]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eqhve")
+theme_override_font_sizes/font_size = 10
+text = "Ajustes do Astrolábio"
+
+[node name="uiAnimationComponent" parent="Opcoes/VBoxContainer/Ajustes" unique_id=530237288 instance=ExtResource("2_yx444")]
+script = null
+
+[node name="Exit" type="Button" parent="Opcoes/VBoxContainer" unique_id=2059685810]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eqhve")
+theme_override_font_sizes/font_size = 10
+text = "Abondonar Navio"
+
+[node name="uiAnimationComponent" parent="Opcoes/VBoxContainer/Exit" unique_id=1560153946 instance=ExtResource("2_yx444")]
+script = null
+
+[connection signal="pressed" from="Opcoes/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Opcoes/VBoxContainer/NewGame" to="." method="_on_diary_pressed"]
+[connection signal="pressed" from="Opcoes/VBoxContainer/Ajustes" to="." method="_on_ajustes_pressed"]
+[connection signal="pressed" from="Opcoes/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

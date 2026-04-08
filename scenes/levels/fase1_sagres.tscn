@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://bbgv3axins44v" path="res://assets/mapa/deck.png" id="24_v55j4"]
 [ext_resource type="Texture2D" uid="uid://codoioi25dlef" path="res://assets/mapa/caravela.png" id="25_axm0j"]
 [ext_resource type="Texture2D" uid="uid://c0lk1b782nvqs" path="res://assets/mapa/floresta.png" id="26_7pgu0"]
-[ext_resource type="Texture2D" uid="uid://bujph5ppv0vnv" path="res://assets/mapa/pilar1.png" id="27_njbjr"]
 [ext_resource type="Texture2D" uid="uid://cgvyx06s2dwit" path="res://assets/mapa/escadaria1.png" id="27_xtd1c"]
 [ext_resource type="Texture2D" uid="uid://dvurbo0cq6dti" path="res://assets/mapa/templo1.png" id="28_87sai"]
 [ext_resource type="Texture2D" uid="uid://dch0af64oxjts" path="res://assets/mapa/templo2.png" id="29_22tw4"]
@@ -95,7 +94,7 @@ position = Vector2(1166, 266)
 shape = SubResource("RectangleShape2D_wall_v")
 
 [node name="Player" parent="." unique_id=1756894264 instance=ExtResource("2_player")]
-position = Vector2(559, 494.99997)
+position = Vector2(542.00006, 479)
 scale = Vector2(0.7, 0.7)
 
 [node name="MestreNavegador" parent="." unique_id=1464441908 instance=ExtResource("5_npc")]
@@ -225,12 +224,6 @@ centered = false
 position = Vector2(103, -105)
 scale = Vector2(0.46786633, 0.46979868)
 texture = ExtResource("18_8dh4v")
-centered = false
-
-[node name="pilar1" type="Sprite2D" parent="Objetos" unique_id=1049540337]
-position = Vector2(694, 244)
-scale = Vector2(0.38, 0.38)
-texture = ExtResource("27_njbjr")
 centered = false
 
 [node name="barril" type="Sprite2D" parent="Objetos" unique_id=2130648990]

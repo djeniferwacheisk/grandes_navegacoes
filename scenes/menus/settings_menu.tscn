@@ -1,18 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://csettings001"]
+[gd_scene format=3 uid="uid://csettings001"]
 
-[ext_resource type="Script" path="res://scenes/menus/settings_menu.gd" id="1_settings"]
+[ext_resource type="Script" uid="uid://dtcgcwbenr60l" path="res://scenes/menus/settings_menu.gd" id="1_settings"]
 
-[node name="SettingsMenu" type="CanvasLayer"]
+[node name="SettingsMenu" type="CanvasLayer" unique_id=1609556941]
 layer = 25
 script = ExtResource("1_settings")
 
-[node name="Overlay" type="ColorRect" parent="."]
+[node name="Overlay" type="ColorRect" parent="." unique_id=594560535]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.4)
 
-[node name="Panel" type="ColorRect" parent="."]
+[node name="Panel" type="ColorRect" parent="." unique_id=923468493]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -24,7 +24,7 @@ offset_right = 60.0
 offset_bottom = 40.0
 color = Color(0.15, 0.1, 0.08, 0.9)
 
-[node name="Title" type="Label" parent="Panel"]
+[node name="Title" type="Label" parent="Panel" unique_id=1646644958]
 layout_mode = 1
 offset_left = 10.0
 offset_top = 4.0
@@ -34,7 +34,7 @@ theme_override_font_sizes/font_size = 7
 text = "CONFIGURACOES"
 horizontal_alignment = 1
 
-[node name="MusicLabel" type="Label" parent="Panel"]
+[node name="MusicLabel" type="Label" parent="Panel" unique_id=874880056]
 layout_mode = 1
 offset_left = 8.0
 offset_top = 22.0
@@ -43,18 +43,17 @@ offset_bottom = 30.0
 theme_override_font_sizes/font_size = 5
 text = "Musica"
 
-[node name="MusicSlider" type="HSlider" parent="Panel"]
+[node name="MusicSlider" type="HSlider" parent="Panel" unique_id=233525688]
 layout_mode = 1
 offset_left = 52.0
 offset_top = 22.0
 offset_right = 112.0
 offset_bottom = 30.0
-min_value = 0.0
 max_value = 1.0
 step = 0.05
 value = 0.8
 
-[node name="SFXLabel" type="Label" parent="Panel"]
+[node name="SFXLabel" type="Label" parent="Panel" unique_id=2007987075]
 layout_mode = 1
 offset_left = 8.0
 offset_top = 38.0
@@ -63,18 +62,17 @@ offset_bottom = 46.0
 theme_override_font_sizes/font_size = 5
 text = "Efeitos"
 
-[node name="SFXSlider" type="HSlider" parent="Panel"]
+[node name="SFXSlider" type="HSlider" parent="Panel" unique_id=33401143]
 layout_mode = 1
 offset_left = 52.0
 offset_top = 38.0
 offset_right = 112.0
 offset_bottom = 46.0
-min_value = 0.0
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="BackButton" type="Button" parent="Panel"]
+[node name="BackButton" type="Button" parent="Panel" unique_id=994194283]
 layout_mode = 1
 offset_left = 30.0
 offset_top = 56.0
