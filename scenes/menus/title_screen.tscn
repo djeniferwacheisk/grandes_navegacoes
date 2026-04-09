@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://bp1n3154v0vpm"]
+[gd_scene format=3 uid="uid://bcc3bfgj1cgsr"]
 
 [ext_resource type="FontFile" uid="uid://bth7n5sc0w5t0" path="res://fonts/Blue Venom.ttf" id="1_eqhve"]
 [ext_resource type="Script" uid="uid://brcexu72gbbyg" path="res://scenes/menus/title_screen.gd" id="1_title"]
 [ext_resource type="Texture2D" uid="uid://bkm4ovf0634wi" path="res://assets/menu/fundo.png" id="2_vudbd"]
-[ext_resource type="PackedScene" uid="uid://c5krarga2yonr" path="res://scenes/menus/ui_animation_component.tscn" id="2_yx444"]
+[ext_resource type="PackedScene" path="res://scenes/menus/ui_animation_component.tscn" id="2_yx444"]
 [ext_resource type="Texture2D" uid="uid://dgxdwgw8nilpp" path="res://assets/menu/Gemini_Generated_Image_66b16966b16966b1__4_-removebg-preview.png" id="3_ptv5j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]

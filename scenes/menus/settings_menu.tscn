@@ -18,65 +18,65 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -40.0
-offset_right = 60.0
-offset_bottom = 40.0
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = 80.0
 color = Color(0.15, 0.1, 0.08, 0.9)
 
 [node name="Title" type="Label" parent="Panel" unique_id=1646644958]
 layout_mode = 1
-offset_left = 10.0
-offset_top = 4.0
-offset_right = 110.0
-offset_bottom = 14.0
-theme_override_font_sizes/font_size = 7
+offset_left = 20.0
+offset_top = 8.0
+offset_right = 220.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 14
 text = "CONFIGURACOES"
 horizontal_alignment = 1
 
 [node name="MusicLabel" type="Label" parent="Panel" unique_id=874880056]
 layout_mode = 1
-offset_left = 8.0
-offset_top = 22.0
-offset_right = 50.0
-offset_bottom = 30.0
-theme_override_font_sizes/font_size = 5
+offset_left = 16.0
+offset_top = 44.0
+offset_right = 100.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 10
 text = "Musica"
 
 [node name="MusicSlider" type="HSlider" parent="Panel" unique_id=233525688]
 layout_mode = 1
-offset_left = 52.0
-offset_top = 22.0
-offset_right = 112.0
-offset_bottom = 30.0
+offset_left = 104.0
+offset_top = 44.0
+offset_right = 224.0
+offset_bottom = 60.0
 max_value = 1.0
 step = 0.05
 value = 0.8
 
 [node name="SFXLabel" type="Label" parent="Panel" unique_id=2007987075]
 layout_mode = 1
-offset_left = 8.0
-offset_top = 38.0
-offset_right = 50.0
-offset_bottom = 46.0
-theme_override_font_sizes/font_size = 5
+offset_left = 16.0
+offset_top = 76.0
+offset_right = 100.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 10
 text = "Efeitos"
 
 [node name="SFXSlider" type="HSlider" parent="Panel" unique_id=33401143]
 layout_mode = 1
-offset_left = 52.0
-offset_top = 38.0
-offset_right = 112.0
-offset_bottom = 46.0
+offset_left = 104.0
+offset_top = 76.0
+offset_right = 224.0
+offset_bottom = 92.0
 max_value = 1.0
 step = 0.05
 value = 1.0
 
 [node name="BackButton" type="Button" parent="Panel" unique_id=994194283]
 layout_mode = 1
-offset_left = 30.0
-offset_top = 56.0
-offset_right = 90.0
-offset_bottom = 70.0
-theme_override_font_sizes/font_size = 6
+offset_left = 60.0
+offset_top = 112.0
+offset_right = 180.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 12
 text = "Voltar"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://castrolabe001"]
+[gd_scene format=3 uid="uid://castrolabe001"]
 
 [ext_resource type="Script" path="res://scenes/puzzles/astrolabe_puzzle.gd" id="1_astrolabe"]
 
@@ -18,11 +18,11 @@ color = Color(0.02, 0.02, 0.1, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
-offset_left = 60.0
-offset_top = 2.0
-offset_right = 260.0
-offset_bottom = 12.0
-theme_override_font_sizes/font_size = 6
+offset_left = 120.0
+offset_top = 4.0
+offset_right = 520.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 12
 text = "As Estrelas e o Rumo"
 horizontal_alignment = 1
 
@@ -31,25 +31,25 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 14.0
-offset_bottom = -30.0
+offset_top = 28.0
+offset_bottom = -60.0
 
 [node name="Crosshair" type="Sprite2D" parent="SkyArea"]
 position = Vector2(160, 68)
 modulate = Color(1, 0.5, 0.3, 0.8)
 
 [node name="HLine" type="ColorRect" parent="SkyArea/Crosshair"]
-offset_left = -8.0
-offset_top = -0.5
-offset_right = 8.0
-offset_bottom = 0.5
+offset_left = -16.0
+offset_top = -1.0
+offset_right = 16.0
+offset_bottom = 1.0
 color = Color(1, 0.5, 0.3, 0.8)
 
 [node name="VLine" type="ColorRect" parent="SkyArea/Crosshair"]
-offset_left = -0.5
-offset_top = -8.0
-offset_right = 0.5
-offset_bottom = 8.0
+offset_left = -1.0
+offset_top = -16.0
+offset_right = 1.0
+offset_bottom = 16.0
 color = Color(1, 0.5, 0.3, 0.8)
 
 [node name="AstrolabeOverlay" type="ColorRect" parent="SkyArea"]
@@ -57,52 +57,52 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -10.0
+offset_top = -20.0
 color = Color(0.3, 0.25, 0.15, 0.4)
 
 [node name="HorizonLabel" type="Label" parent="SkyArea/AstrolabeOverlay"]
 layout_mode = 1
-offset_left = 120.0
+offset_left = 240.0
 offset_top = 0.0
-offset_right = 200.0
-offset_bottom = 10.0
-theme_override_font_sizes/font_size = 4
+offset_right = 400.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 8
 text = "--- Horizonte ---"
 horizontal_alignment = 1
 modulate = Color(0.7, 0.6, 0.4, 0.7)
 
 [node name="StarCounter" type="Label" parent="."]
 layout_mode = 1
-offset_left = 4.0
-offset_top = 166.0
-offset_right = 80.0
-offset_bottom = 176.0
-theme_override_font_sizes/font_size = 5
+offset_left = 8.0
+offset_top = 332.0
+offset_right = 160.0
+offset_bottom = 352.0
+theme_override_font_sizes/font_size = 10
 text = "Estrelas: 0/3"
 
 [node name="HintLabel" type="Label" parent="."]
 layout_mode = 1
-offset_left = 30.0
-offset_top = 154.0
-offset_right = 290.0
-offset_bottom = 164.0
-theme_override_font_sizes/font_size = 4
+offset_left = 60.0
+offset_top = 308.0
+offset_right = 580.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 
 [node name="ResultLabel" type="Label" parent="."]
 layout_mode = 1
-offset_left = 80.0
-offset_top = 166.0
-offset_right = 240.0
-offset_bottom = 176.0
-theme_override_font_sizes/font_size = 5
+offset_left = 160.0
+offset_top = 332.0
+offset_right = 480.0
+offset_bottom = 352.0
+theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
-offset_left = 274.0
-offset_top = 164.0
-offset_right = 316.0
-offset_bottom = 178.0
-theme_override_font_sizes/font_size = 5
+offset_left = 548.0
+offset_top = 328.0
+offset_right = 632.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 10
 text = "Voltar"

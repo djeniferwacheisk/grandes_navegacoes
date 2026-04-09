@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cphase001"]
+[gd_scene format=3 uid="uid://cphase001"]
 
 [ext_resource type="Script" path="res://scenes/main/phase_complete.gd" id="1_phase"]
 
@@ -18,20 +18,20 @@ color = Color(0.1, 0.08, 0.05, 1)
 
 [node name="TextLabel" type="Label" parent="."]
 layout_mode = 1
-offset_left = 30.0
-offset_top = 20.0
-offset_right = 290.0
-offset_bottom = 80.0
-theme_override_font_sizes/font_size = 5
+offset_left = 60.0
+offset_top = 40.0
+offset_right = 580.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="MapReveal" type="ColorRect" parent="."]
 layout_mode = 1
-offset_left = 100.0
-offset_top = 80.0
-offset_right = 220.0
-offset_bottom = 140.0
+offset_left = 200.0
+offset_top = 160.0
+offset_right = 440.0
+offset_bottom = 280.0
 color = Color(0.7, 0.6, 0.35, 1)
 
 [node name="MapLabel" type="Label" parent="MapReveal"]
@@ -39,7 +39,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 10
 text = "Mapa-Mundi
 Parte 1/5
 Costa de Portugal"
@@ -48,9 +48,9 @@ vertical_alignment = 1
 
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 1
-offset_left = 120.0
-offset_top = 150.0
-offset_right = 200.0
-offset_bottom = 170.0
-theme_override_font_sizes/font_size = 6
+offset_left = 240.0
+offset_top = 300.0
+offset_right = 400.0
+offset_bottom = 340.0
+theme_override_font_sizes/font_size = 12
 text = "Continuar"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdialog001"]
+[gd_scene format=3 uid="uid://cdialog001"]
 
 [ext_resource type="Script" path="res://scenes/ui/dialog_box.gd" id="1_dialog"]
 
@@ -11,28 +11,28 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -50.0
-offset_right = -10.0
-offset_bottom = -4.0
+offset_left = 20.0
+offset_top = -100.0
+offset_right = -20.0
+offset_bottom = -8.0
 mouse_filter = 2
 
 [node name="SpeakerLabel" type="Label" parent="Panel"]
 layout_mode = 1
-offset_left = 36.0
-offset_top = 2.0
-offset_right = 200.0
-offset_bottom = 12.0
-theme_override_font_sizes/font_size = 6
+offset_left = 72.0
+offset_top = 4.0
+offset_right = 400.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 12
 text = "Speaker"
 
 [node name="TextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
-offset_left = 36.0
-offset_top = 13.0
-offset_right = 296.0
-offset_bottom = 43.0
-theme_override_font_sizes/normal_font_size = 5
+offset_left = 72.0
+offset_top = 26.0
+offset_right = 592.0
+offset_bottom = 86.0
+theme_override_font_sizes/normal_font_size = 10
 text = ""
 fit_content = true
 scroll_active = false
@@ -44,18 +44,18 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -14.0
-offset_top = -10.0
-offset_right = -2.0
-offset_bottom = -2.0
-theme_override_font_sizes/font_size = 5
+offset_left = -28.0
+offset_top = -20.0
+offset_right = -4.0
+offset_bottom = -4.0
+theme_override_font_sizes/font_size = 10
 text = "▼"
 horizontal_alignment = 2
 
 [node name="PortraitRect" type="TextureRect" parent="Panel"]
 layout_mode = 1
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 34.0
-offset_bottom = 34.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
 stretch_mode = 5
