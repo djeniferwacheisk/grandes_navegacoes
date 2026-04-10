@@ -30,24 +30,16 @@ func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 	hint_label.text = ""
 
-
-func _physics_process(_delta: float) -> void:
-	if not _active:
-		return
-	var input := Vector2.ZERO
-	input.x = Input.get_axis("move_left", "move_right")
-	input.y = Input.get_axis("move_up", "move_down")
-	ship.velocity = input.normalized() * SHIP_SPEED + _wind_velocity
-	ship.move_and_slide()
-
+func _on_map_collecte(_body: Node2D, area: Area2D) -> void:
+	print("Colidiu com:", _body.name)
 
 func _on_wind_enter(_body: Node2D, wind: Area2D) -> void:
 	var dir: Vector2 = wind.get_meta("wind_direction", Vector2.RIGHT)
-	_wind_velocity = dir * WIND_FORCE
+	ship.external_wind = dir * WIND_FORCE
 
 
 func _on_wind_exit(_body: Node2D, _wind: Area2D) -> void:
-	_wind_velocity = Vector2.ZERO
+	ship.external_wind = Vector2.ZERO
 
 
 func _on_map_collected(_body: Node2D, area: Area2D) -> void:

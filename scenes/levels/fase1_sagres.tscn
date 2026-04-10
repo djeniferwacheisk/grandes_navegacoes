@@ -94,7 +94,7 @@ position = Vector2(1166, 266)
 shape = SubResource("RectangleShape2D_wall_v")
 
 [node name="Player" parent="." unique_id=1756894264 instance=ExtResource("2_player")]
-position = Vector2(542.00006, 479)
+position = Vector2(554, 459.99997)
 scale = Vector2(0.7, 0.7)
 
 [node name="MestreNavegador" parent="." unique_id=1464441908 instance=ExtResource("5_npc")]

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://btipqub0s6tdv"]
+
+[ext_resource type="Texture2D" uid="uid://cnixivrxxt81w" path="res://assets/HUD/wind.png" id="1_qpvh6"]
+[ext_resource type="Script" uid="uid://dnvoa51wj1p7d" path="res://scripts/wind_arrow.gd" id="2_fls4u"]
+
+[node name="HUD_barco" type="CanvasLayer" unique_id=220659269]
+
+[node name="WindArrow" type="TextureRect" parent="." unique_id=145527303]
+custom_minimum_size = Vector2(64, 64)
+offset_left = 73.0
+offset_top = 80.99999
+offset_right = 184.0
+offset_bottom = 271.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_qpvh6")
+script = ExtResource("2_fls4u")
+
+[node name="Control" type="Control" parent="." unique_id=1066658789]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="." unique_id=889038191]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=850758]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1004255848]
+offset_left = 18.0
+offset_top = 19.0
+offset_right = 415.0
+offset_bottom = 46.0
+value = 100.0
+show_percentage = false

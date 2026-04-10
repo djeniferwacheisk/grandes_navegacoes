@@ -13,6 +13,7 @@ var nearby_interactable: Node2D = null
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var interaction_label: Label = $InteractionLabel
+@onready var camera: Camera2D = $Camera2D
 
 
 func _ready() -> void:
@@ -21,6 +22,15 @@ func _ready() -> void:
 	interaction_area.body_exited.connect(_on_interaction_area_exited)
 	interaction_area.area_entered.connect(_on_interaction_area_area_entered)
 	interaction_area.area_exited.connect(_on_interaction_area_area_exited)
+	_setup_camera_limits()
+
+
+func _setup_camera_limits() -> void:
+	# fundo.png: position=(-130,-127), scale=(0.5,0.5), tamanho=2580x1536
+	camera.limit_left   = -130
+	camera.limit_top    = -127
+	camera.limit_right  = -130 + int(2580 * 0.5)  # 1160
+	camera.limit_bottom = -127 + int(1536 * 0.5)  # 641
 
 
 func _physics_process(_delta: float) -> void:

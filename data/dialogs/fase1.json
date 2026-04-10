@@ -1,90 +1,90 @@
 {
   "intro": [
-    {
-      "speaker": "Narrador",
-      "text": "Portugal, seculo XV. Antes de cruzar mares desconhecidos, e preciso dominar os instrumentos e compreender os ventos.",
-      "portrait": ""
-    },
-    {
-      "speaker": "Narrador",
-      "text": "Na Escola de Sagres, comecara sua jornada rumo as Grandes Navegacoes.",
-      "portrait": ""
-    }
+	{
+	  "speaker": "Narrador",
+	  "text": "Portugal, seculo XV. Antes de cruzar mares desconhecidos, e preciso dominar os instrumentos e compreender os ventos.",
+	  "portrait": ""
+	},
+	{
+	  "speaker": "Narrador",
+	  "text": "Na Escola de Sagres, comecara sua jornada rumo as Grandes Navegacoes.",
+	  "portrait": ""
+	}
   ],
   "mestre_intro": [
-    {
-      "speaker": "Mestre Navegador",
-      "text": "Bem-vindo a Escola de Sagres, jovem cartografo! Aqui voce aprendera a arte da navegacao.",
-      "portrait": "mestre"
-    },
-    {
-      "speaker": "Mestre Navegador",
-      "text": "Primeiro, deve dominar a bussola e compreender os ventos. Procure os totens de vento na area de treinamento.",
-      "portrait": "mestre"
-    }
+	{
+	  "speaker": "Mestre Navegador",
+	  "text": "Bem-vindo a Escola de Sagres, jovem cartografo! Aqui voce aprendera a arte da navegacao.",
+	  "portrait": "mestre"
+	},
+	{
+	  "speaker": "Mestre Navegador",
+	  "text": "Primeiro, deve dominar a bussola e compreender os ventos. Procure os totens de vento na area de treinamento.",
+	  "portrait": "mestre"
+	}
   ],
   "mestre_bussola_complete": [
-    {
-      "speaker": "Mestre Navegador",
-      "text": "Excelente! Voce dominou a bussola! Tome este astrolabio - sera essencial em alto mar.",
-      "portrait": "mestre"
-    },
-    {
-      "speaker": "Mestre Navegador",
-      "text": "Agora, va ao porto e teste suas habilidades na caravela. Colete os mapas de navegacao pelo caminho.",
-      "portrait": "mestre"
-    }
+	{
+	  "speaker": "Mestre Navegador",
+	  "text": "Excelente! Voce dominou a bussola! Tome este astrolabio - sera essencial em alto mar.",
+	  "portrait": "mestre"
+	},
+	{
+	  "speaker": "Mestre Navegador",
+	  "text": "Agora, va ao porto e teste suas habilidades na caravela. Colete os mapas de navegacao pelo caminho.",
+	  "portrait": "mestre"
+	}
   ],
   "mestre_caravela_hint": [
-    {
-      "speaker": "Mestre Navegador",
-      "text": "A caravela responde ao vento. Domine o leme, e dominara o oceano.",
-      "portrait": "mestre"
-    }
+	{
+	  "speaker": "Mestre Navegador",
+	  "text": "A caravela responde ao vento. Domine o leme, e dominara o oceano.",
+	  "portrait": "mestre"
+	}
   ],
   "mestre_caravela_complete": [
-    {
-      "speaker": "Mestre Navegador",
-      "text": "Muito bem! Voce navegou com destreza. Agora falta o ultimo desafio: as estrelas.",
-      "portrait": "mestre"
-    },
-    {
-      "speaker": "Mestre Navegador",
-      "text": "Va ao observatorio e use o astrolabio para determinar nossa latitude pelas estrelas.",
-      "portrait": "mestre"
-    }
+	{
+	  "speaker": "Mestre Navegador",
+	  "text": "Muito bem! Voce navegou com destreza. Agora falta o ultimo desafio: as estrelas.",
+	  "portrait": "mestre"
+	},
+	{
+	  "speaker": "Mestre Navegador",
+	  "text": "Va ao observatorio e use o astrolabio para determinar nossa latitude pelas estrelas.",
+	  "portrait": "mestre"
+	}
   ],
   "mestre_astrolabio_complete": [
-    {
-      "speaker": "Mestre Navegador",
-      "text": "Magnifico! Voce provou ser digno de navegar os mares desconhecidos!",
-      "portrait": "mestre"
-    }
+	{
+	  "speaker": "Mestre Navegador",
+	  "text": "Magnifico! Voce provou ser digno de navegar os mares desconhecidos!",
+	  "portrait": "mestre"
+	}
   ],
   "marinheiro_1": [
-    {
-      "speaker": "Marinheiro",
-      "text": "Os ventos alisios sopram do nordeste... Sem eles, nao chegariamos a lugar nenhum!",
-      "portrait": "marinheiro"
-    }
+	{
+	  "speaker": "Marinheiro",
+	  "text": "Os ventos alisios sopram do nordeste... Sem eles, nao chegariamos a lugar nenhum!",
+	  "portrait": "marinheiro"
+	}
   ],
   "marinheiro_2": [
-    {
-      "speaker": "Marinheiro",
-      "text": "Ja ouviu falar do Cabo das Tormentas? Dizem que poucos navios sobrevivem as suas ondas...",
-      "portrait": "marinheiro"
-    }
+	{
+	  "speaker": "Marinheiro",
+	  "text": "Ja ouviu falar do Cabo das Tormentas? Dizem que poucos navios sobrevivem as suas ondas...",
+	  "portrait": "marinheiro"
+	}
   ],
   "conclusao": [
-    {
-      "speaker": "Narrador",
-      "text": "Voce completou seu treinamento. A Escola de Sagres formou alguns dos maiores navegadores da historia.",
-      "portrait": ""
-    },
-    {
-      "speaker": "Narrador",
-      "text": "E agora voce esta preparado para seguir os ventos rumo ao desconhecido.",
-      "portrait": ""
-    }
+	{
+	  "speaker": "Narrador",
+	  "text": "Voce completou seu treinamento. A Escola de Sagres formou alguns dos maiores navegadores da historia.",
+	  "portrait": ""
+	},
+	{
+	  "speaker": "Narrador",
+	  "text": "E agora voce esta preparado para seguir os ventos rumo ao desconhecido.",
+	  "portrait": ""
+	}
   ]
 }

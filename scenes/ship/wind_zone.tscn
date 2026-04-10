@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://v824nm25pnec"]
+
+[ext_resource type="Script" uid="uid://c6npgivotey44" path="res://scripts/wind_zone.gd" id="1_xncwx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xncwx"]
+
+[node name="WindZone" type="Area2D" unique_id=1545621648]
+position = Vector2(334, 150)
+script = ExtResource("1_xncwx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1277884958]
+shape = SubResource("RectangleShape2D_xncwx")

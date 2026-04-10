@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://buexfynatfeed"]
+
+[ext_resource type="Script" uid="uid://citwkj77stdn" path="res://scripts/wave_zone.gd" id="1_kntr0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kntr0"]
+
+[node name="WaveZone" type="Area2D" unique_id=1801903471]
+script = ExtResource("1_kntr0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=857028573]
+shape = SubResource("RectangleShape2D_kntr0")

@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://bth7n5sc0w5t0" path="res://fonts/Blue Venom.ttf" id="1_eqhve"]
 [ext_resource type="Script" uid="uid://brcexu72gbbyg" path="res://scenes/menus/title_screen.gd" id="1_title"]
 [ext_resource type="Texture2D" uid="uid://bkm4ovf0634wi" path="res://assets/menu/fundo.png" id="2_vudbd"]
-[ext_resource type="PackedScene" path="res://scenes/menus/ui_animation_component.tscn" id="2_yx444"]
+[ext_resource type="PackedScene" uid="uid://c5krarga2yonr" path="res://scenes/menus/ui_animation_component.tscn" id="2_yx444"]
 [ext_resource type="Texture2D" uid="uid://dgxdwgw8nilpp" path="res://assets/menu/Gemini_Generated_Image_66b16966b16966b1__4_-removebg-preview.png" id="3_ptv5j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
@@ -25,8 +25,8 @@ grow_vertical = 2
 script = ExtResource("1_title")
 
 [node name="Fundo" type="Sprite2D" parent="." unique_id=448443614]
-position = Vector2(164, 88.99999)
-scale = Vector2(0.14869887, 0.17110266)
+position = Vector2(323.49997, 180.5)
+scale = Vector2(0.29786244, 0.3431559)
 texture = ExtResource("2_vudbd")
 
 [node name="Escrita Grandes Navegacoes" type="Sprite2D" parent="Fundo" unique_id=1951348307]
@@ -53,10 +53,10 @@ anchor_left = -0.305
 anchor_top = -1.0020001
 anchor_right = -0.305
 anchor_bottom = -1.0020001
-offset_left = 752.305
-offset_top = 369.16602
-offset_right = 1405.305
-offset_bottom = 740.166
+offset_left = 988.305
+offset_top = 478.16602
+offset_right = 1258.305
+offset_bottom = 667.166
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20

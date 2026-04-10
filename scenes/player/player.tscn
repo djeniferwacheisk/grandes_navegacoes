@@ -127,6 +127,7 @@ animations = [{
 size = Vector2(20, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=1600619080]
+position = Vector2(322, 183)
 collision_layer = 2
 script = ExtResource("1_player")
 
@@ -154,6 +155,7 @@ offset_right = 16.0
 offset_bottom = -24.0
 text = "[E]"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=295795397]
 limit_smoothed = true
