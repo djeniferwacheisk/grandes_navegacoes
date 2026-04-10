@@ -8,8 +8,7 @@ var maps_collected := 0
 var _active := true
 var _wind_velocity := Vector2.ZERO
 
-@onready var ship: CharacterBody2D = $Ship
-@onready var camera: Camera2D = $Ship/Camera2D
+@onready var ship: CharacterBody2D = $ship
 @onready var maps_label: Label = $CanvasLayer/MapsLabel
 @onready var hint_label: Label = $CanvasLayer/HintLabel
 @onready var back_button: Button = $CanvasLayer/BackButton
@@ -19,6 +18,15 @@ func _ready() -> void:
 	maps_label.text = "Mapas: 0/" + str(MAP_COUNT)
 	hint_label.text = "Use WASD para navegar. Colete os 3 mapas!"
 	back_button.pressed.connect(_on_back)
+
+	# Limites da câmera — busca a Camera2D dentro do barco instanciado
+	var cam := ship.get_node_or_null("Camera2D")
+	if cam:
+		cam.limit_left   = 0
+		cam.limit_top    = 0
+		cam.limit_right  = 1168
+		cam.limit_bottom = 656
+
 	for area in get_tree().get_nodes_in_group("map_collectible"):
 		area.body_entered.connect(_on_map_collected.bind(area))
 	for wind in get_tree().get_nodes_in_group("wind_zone"):
@@ -30,8 +38,10 @@ func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 	hint_label.text = ""
 
+
 func _on_map_collecte(_body: Node2D, area: Area2D) -> void:
 	print("Colidiu com:", _body.name)
+
 
 func _on_wind_enter(_body: Node2D, wind: Area2D) -> void:
 	var dir: Vector2 = wind.get_meta("wind_direction", Vector2.RIGHT)

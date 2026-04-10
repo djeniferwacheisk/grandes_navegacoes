@@ -1,30 +1,26 @@
 [gd_scene format=3 uid="uid://ccompass001"]
 
-[ext_resource type="Script" path="res://scenes/puzzles/compass_puzzle.gd" id="1_compass"]
+[ext_resource type="Script" uid="uid://bwyskmwtjvjtx" path="res://scenes/puzzles/compass_puzzle.gd" id="1_compass"]
 
-[sub_resource type="GDScript" id="GDScript_needle"]
-script/source = "extends Sprite2D
-
-func _ready() -> void:
-	# Create a simple needle using a polygon
-	pass
-"
-
-[node name="CompassPuzzle" type="Control"]
+[node name="CompassPuzzle" type="Control" unique_id=205299473]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_compass")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=524703736]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.15, 0.1, 0.08, 1)
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=1655116714]
 layout_mode = 1
 offset_left = 120.0
 offset_top = 8.0
@@ -34,7 +30,7 @@ theme_override_font_sizes/font_size = 14
 text = "A Bussola e os Ventos"
 horizontal_alignment = 1
 
-[node name="Instructions" type="Label" parent="."]
+[node name="Instructions" type="Label" parent="." unique_id=798381290]
 layout_mode = 1
 offset_left = 40.0
 offset_top = 36.0
@@ -44,21 +40,24 @@ theme_override_font_sizes/font_size = 8
 text = "Clique na bussola para girar. Associe os ventos as direcoes corretas."
 horizontal_alignment = 1
 
-[node name="CompassArea" type="Control" parent="."]
+[node name="CompassArea" type="Control" parent="." unique_id=1747538011]
 layout_mode = 1
+anchors_preset = 0
 offset_left = 40.0
 offset_top = 68.0
 offset_right = 200.0
 offset_bottom = 228.0
 
-[node name="CompassBG" type="ColorRect" parent="CompassArea"]
+[node name="CompassBG" type="ColorRect" parent="CompassArea" unique_id=2105717588]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.3, 0.25, 0.2, 1)
 
-[node name="NLabel" type="Label" parent="CompassArea"]
+[node name="NLabel" type="Label" parent="CompassArea" unique_id=974441311]
 layout_mode = 1
 offset_left = 72.0
 offset_top = 4.0
@@ -68,7 +67,7 @@ theme_override_font_sizes/font_size = 12
 text = "N"
 horizontal_alignment = 1
 
-[node name="SLabel" type="Label" parent="CompassArea"]
+[node name="SLabel" type="Label" parent="CompassArea" unique_id=318295917]
 layout_mode = 1
 offset_left = 72.0
 offset_top = 136.0
@@ -78,7 +77,7 @@ theme_override_font_sizes/font_size = 12
 text = "S"
 horizontal_alignment = 1
 
-[node name="ELabel" type="Label" parent="CompassArea"]
+[node name="ELabel" type="Label" parent="CompassArea" unique_id=1409117532]
 layout_mode = 1
 offset_left = 136.0
 offset_top = 72.0
@@ -87,7 +86,7 @@ offset_bottom = 92.0
 theme_override_font_sizes/font_size = 12
 text = "E"
 
-[node name="WLabel" type="Label" parent="CompassArea"]
+[node name="WLabel" type="Label" parent="CompassArea" unique_id=2082304860]
 layout_mode = 1
 offset_left = 4.0
 offset_top = 72.0
@@ -96,25 +95,21 @@ offset_bottom = 92.0
 theme_override_font_sizes/font_size = 12
 text = "W"
 
-[node name="CompassNeedle" type="Sprite2D" parent="CompassArea"]
-position = Vector2(40, 40)
-rotation = 0.785398
-
-[node name="WindSlots" type="VBoxContainer" parent="."]
+[node name="WindSlots" type="VBoxContainer" parent="." unique_id=2111650184]
 layout_mode = 1
 offset_left = 240.0
 offset_top = 80.0
 offset_right = 560.0
 offset_bottom = 200.0
 
-[node name="WindOptions" type="HBoxContainer" parent="."]
+[node name="WindOptions" type="HBoxContainer" parent="." unique_id=671229409]
 layout_mode = 1
 offset_left = 240.0
 offset_top = 220.0
 offset_right = 560.0
 offset_bottom = 260.0
 
-[node name="ResultLabel" type="Label" parent="."]
+[node name="ResultLabel" type="Label" parent="." unique_id=588249614]
 layout_mode = 1
 offset_left = 40.0
 offset_top = 280.0
@@ -123,7 +118,7 @@ offset_bottom = 330.0
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="." unique_id=948564336]
 layout_mode = 1
 offset_left = 540.0
 offset_top = 320.0
@@ -131,3 +126,7 @@ offset_right = 620.0
 offset_bottom = 352.0
 theme_override_font_sizes/font_size = 10
 text = "Voltar"
+
+[node name="CompassNeedle" type="Sprite2D" parent="." unique_id=1784108120]
+position = Vector2(80, 108)
+rotation = 0.785398
