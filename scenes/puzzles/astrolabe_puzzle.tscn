@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://castrolabe001"]
 
 [ext_resource type="Script" uid="uid://cgd2eqjqdg685" path="res://scenes/puzzles/astrolabe_puzzle.gd" id="1_astrolabe"]
+[ext_resource type="Texture2D" uid="uid://3pudjqkhlk3" path="res://assets/puzzles/Telescopio mao.png" id="2_dmh5i"]
 
 [node name="AstrolabePuzzle" type="Control" unique_id=1856556988]
 layout_mode = 3
@@ -59,7 +60,8 @@ offset_bottom = 16.0
 color = Color(1, 0.5, 0.3, 0.8)
 
 [node name="AstrolabeOverlay" type="ColorRect" parent="SkyArea" unique_id=1417105276]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -111,3 +113,8 @@ offset_right = 632.0
 offset_bottom = 356.0
 theme_override_font_sizes/font_size = 10
 text = "Voltar"
+
+[node name="TelescopioMao" type="Sprite2D" parent="." unique_id=578523125]
+position = Vector2(453, 296)
+scale = Vector2(0.40848213, 0.40615496)
+texture = ExtResource("2_dmh5i")
