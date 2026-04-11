@@ -45,30 +45,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_6w6ne")
 centered = false
 
-[node name="PortoLabel" type="Label" parent="." unique_id=1758870894]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 160.0
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 12
-text = "Porto"
-
-[node name="TreinoLabel" type="Label" parent="." unique_id=89030236]
-offset_left = 380.0
-offset_top = 20.0
-offset_right = 660.0
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 12
-text = "Treinamento"
-
-[node name="ObsLabel" type="Label" parent="." unique_id=141487869]
-offset_left = 506.0
-offset_top = -100.0
-offset_right = 686.0
-offset_bottom = -76.0
-theme_override_font_sizes/font_size = 12
-text = "Observatorio"
-
 [node name="WallTop" type="StaticBody2D" parent="." unique_id=1862448441]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=140357732]
@@ -141,16 +117,6 @@ script = ExtResource("6_trigger")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/ShipTrigger" unique_id=258880247]
 shape = SubResource("RectangleShape2D_trigger")
-
-[node name="Label" type="Label" parent="PuzzleTriggers/ShipTrigger" unique_id=610835473]
-offset_left = 20.0
-offset_top = -42.0
-offset_right = 84.0
-offset_bottom = -22.0
-theme_override_font_sizes/font_size = 10
-text = "Caravela"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="AstrolabeTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=1891931629]
 position = Vector2(430, 40)

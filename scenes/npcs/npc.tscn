@@ -1,22 +1,21 @@
 [gd_scene format=3 uid="uid://cnpc001"]
 
-[ext_resource type="Script" path="res://scenes/npcs/npc.gd" id="1_npc"]
+[ext_resource type="Script" uid="uid://d4id7rksk86ol" path="res://scenes/npcs/npc.gd" id="1_npc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npc"]
 size = Vector2(10, 16)
 
-[node name="NPC" type="CharacterBody2D"]
+[node name="NPC" type="CharacterBody2D" unique_id=1280516646]
 collision_layer = 4
-collision_mask = 1
 script = ExtResource("1_npc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1421495853]
 shape = SubResource("RectangleShape2D_npc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=813191164]
 position = Vector2(0, -2)
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="." unique_id=1326749841]
 offset_left = -40.0
 offset_top = -44.0
 offset_right = 40.0

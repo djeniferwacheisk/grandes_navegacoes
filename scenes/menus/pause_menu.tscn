@@ -1,58 +1,227 @@
 [gd_scene format=3 uid="uid://cpause001"]
 
-[ext_resource type="Script" path="res://scenes/menus/pause_menu.gd" id="1_pause"]
+[ext_resource type="Script" uid="uid://dnygcjb62bgpc" path="res://scenes/menus/pause_menu.gd" id="1_pause"]
+[ext_resource type="Texture2D" uid="uid://dbl1bbon7s3si" path="res://assets/ui/pause.png" id="2_pause_bg"]
+[ext_resource type="Texture2D" uid="uid://bo6a6jx5pijjr" path="res://assets/ui/tira_papel.png" id="3_tira"]
+[ext_resource type="Texture2D" uid="uid://b3qw2ygcelyf2" path="res://assets/ui/play.png" id="4_play"]
+[ext_resource type="Texture2D" uid="uid://beq4jfrucfkvh" path="res://assets/ui/disquet.png" id="5_disquet"]
+[ext_resource type="Texture2D" uid="uid://bbr87l3j3negk" path="res://assets/ui/volta_menu.png" id="6_volta"]
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" unique_id=1356162652]
+process_mode = 3
 layer = 20
 script = ExtResource("1_pause")
 
-[node name="Overlay" type="ColorRect" parent="."]
+[node name="Overlay" type="ColorRect" parent="." unique_id=1251841430]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.5)
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.4)
 
-[node name="Panel" type="ColorRect" parent="."]
+[node name="BookBG" type="TextureRect" parent="." unique_id=501834367]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -80.0
-offset_right = 100.0
-offset_bottom = 80.0
-color = Color(0.15, 0.1, 0.08, 0.9)
+offset_left = -331.0
+offset_top = -190.0
+offset_right = 321.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pause_bg")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Title" type="Label" parent="Panel"]
+[node name="PaginaDireita" type="Control" parent="BookBG" unique_id=793991390]
 layout_mode = 1
-offset_left = 20.0
-offset_top = 8.0
-offset_right = 180.0
-offset_bottom = 32.0
-theme_override_font_sizes/font_size = 14
-text = "PAUSA"
-horizontal_alignment = 1
+anchors_preset = 0
+offset_left = 328.0
+offset_top = 75.0
+offset_right = 541.0
+offset_bottom = 315.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="BtnContinuar" type="Control" parent="BookBG/PaginaDireita" unique_id=561309190]
 layout_mode = 1
-offset_left = 20.0
-offset_top = 44.0
-offset_right = 180.0
-offset_bottom = 152.0
-alignment = 1
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 203.0
+offset_bottom = 68.0
 
-[node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
+[node name="TiraPapel" type="TextureRect" parent="BookBG/PaginaDireita/BtnContinuar" unique_id=1446519594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 23.0
+offset_right = -9.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tira")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icone" type="TextureRect" parent="BookBG/PaginaDireita/BtnContinuar" unique_id=1274225394]
+layout_mode = 1
+offset_left = -7.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 79.0
+texture = ExtResource("4_play")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BookBG/PaginaDireita/BtnContinuar" unique_id=429600467]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 27.0
+offset_right = 180.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0.3, 0.18, 0.06, 1)
+theme_override_font_sizes/font_size = 10
 text = "Continuar"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Configuracoes"
+[node name="ResumeButton" type="Button" parent="BookBG/PaginaDireita/BtnContinuar" unique_id=1316088643]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = -14.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true
 
-[node name="MenuButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Menu Principal"
+[node name="BtnSalvar" type="Control" parent="BookBG/PaginaDireita" unique_id=1647163954]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 201.0
+offset_bottom = 144.0
+
+[node name="TiraPapel" type="TextureRect" parent="BookBG/PaginaDireita/BtnSalvar" unique_id=219423177]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tira")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icone" type="TextureRect" parent="BookBG/PaginaDireita/BtnSalvar" unique_id=1340603375]
+layout_mode = 1
+offset_left = -1.0
+offset_top = -6.0
+offset_right = 63.0
+offset_bottom = 62.0
+texture = ExtResource("5_disquet")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BookBG/PaginaDireita/BtnSalvar" unique_id=162164043]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 12.0
+offset_right = 193.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.3, 0.18, 0.06, 1)
+theme_override_font_sizes/font_size = 10
+text = "Salvar Jogo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveButton" type="Button" parent="BookBG/PaginaDireita/BtnSalvar" unique_id=1100494562]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 8.0
+offset_right = -15.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="BtnSair" type="Control" parent="BookBG/PaginaDireita" unique_id=304627169]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 147.0
+offset_right = 202.0
+offset_bottom = 203.0
+
+[node name="TiraPapel" type="TextureRect" parent="BookBG/PaginaDireita/BtnSair" unique_id=1648765219]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tira")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icone" type="TextureRect" parent="BookBG/PaginaDireita/BtnSair" unique_id=677756373]
+layout_mode = 1
+offset_left = -10.0
+offset_top = -18.0
+offset_right = 67.0
+offset_bottom = 72.0
+texture = ExtResource("6_volta")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BookBG/PaginaDireita/BtnSair" unique_id=500927082]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 12.0
+offset_right = 193.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.3, 0.18, 0.06, 1)
+theme_override_font_sizes/font_size = 10
+text = "Voltar ao Título"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="Button" parent="BookBG/PaginaDireita/BtnSair" unique_id=1590798030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -11.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true

@@ -7,7 +7,7 @@
 	},
 	{
 	  "speaker": "Narrador",
-	  "text": "Na Escola de Sagres, comecara sua jornada rumo as Grandes Navegacoes.",
+	  "text": "Na Escola de Sagres, sua jornada rumo as Grandes Navegacoes iniciará.",
 	  "portrait": ""
 	}
   ],
@@ -19,19 +19,19 @@
 	},
 	{
 	  "speaker": "Mestre Navegador",
-	  "text": "Primeiro, deve dominar a bussola e compreender os ventos. Procure os totens de vento na area de treinamento.",
+	  "text": "Primeiro, deve dominar a bussola e compreender os ventos.",
 	  "portrait": "mestre"
 	}
   ],
   "mestre_bussola_complete": [
 	{
 	  "speaker": "Mestre Navegador",
-	  "text": "Excelente! Voce dominou a bussola! Tome este astrolabio - sera essencial em alto mar.",
+	  "text": "Excelente! Voce dominou a bussola!",
 	  "portrait": "mestre"
 	},
 	{
 	  "speaker": "Mestre Navegador",
-	  "text": "Agora, va ao porto e teste suas habilidades na caravela. Colete os mapas de navegacao pelo caminho.",
+	  "text": "Agora, vá ao porto e teste suas habilidades na caravela. Colete os mapas de navegacao pelo caminho.",
 	  "portrait": "mestre"
 	}
   ],
@@ -50,7 +50,7 @@
 	},
 	{
 	  "speaker": "Mestre Navegador",
-	  "text": "Va ao observatorio e use o astrolabio para determinar nossa latitude pelas estrelas.",
+	  "text": "Vá ao observatório e use o astrolábio para determinar nossa latitude pelas estrelas.",
 	  "portrait": "mestre"
 	}
   ],

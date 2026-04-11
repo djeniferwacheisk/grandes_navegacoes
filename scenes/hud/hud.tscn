@@ -1,71 +1,14 @@
 [gd_scene format=3 uid="uid://chud001"]
 
 [ext_resource type="Script" uid="uid://d0obm46gd55kk" path="res://scenes/hud/hud.gd" id="1_hud"]
+[ext_resource type="PackedScene" uid="uid://4x2bgeyxkm3y" path="res://scenes/hud/objective_compass.tscn" id="2_compass"]
 
 [node name="HUD" type="CanvasLayer" unique_id=647162572]
 layer = 5
 script = ExtResource("1_hud")
 
-[node name="Compass" type="Control" parent="." unique_id=564370452]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 70.0
-offset_bottom = 70.0
-
-[node name="Background" type="ColorRect" parent="Compass" unique_id=1223106812]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.2, 0.15, 0.1, 0.7)
-
-[node name="NLabel" type="Label" parent="Compass" unique_id=1653815789]
-layout_mode = 1
-offset_left = 18.0
-offset_top = -2.0
-offset_right = 34.0
-offset_bottom = 14.0
-theme_override_font_sizes/font_size = 10
-text = "N"
-horizontal_alignment = 1
-
-[node name="SLabel" type="Label" parent="Compass" unique_id=1986577762]
-layout_mode = 1
-offset_left = 18.0
-offset_top = 42.0
-offset_right = 34.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 10
-text = "S"
-horizontal_alignment = 1
-
-[node name="ELabel" type="Label" parent="Compass" unique_id=665802328]
-layout_mode = 1
-offset_left = 42.0
-offset_top = 20.0
-offset_right = 58.0
-offset_bottom = 36.0
-theme_override_font_sizes/font_size = 10
-text = "E"
-horizontal_alignment = 1
-
-[node name="WLabel" type="Label" parent="Compass" unique_id=1786675755]
-layout_mode = 1
-offset_left = -6.0
-offset_top = 20.0
-offset_right = 10.0
-offset_bottom = 36.0
-theme_override_font_sizes/font_size = 10
-text = "W"
-horizontal_alignment = 1
+[node name="Compass" parent="." unique_id=956247750 instance=ExtResource("2_compass")]
+offset_bottom = 73.0
 
 [node name="Minimap" type="Control" parent="." unique_id=1306721233]
 layout_mode = 3

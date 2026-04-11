@@ -7,19 +7,24 @@ const MAP_COUNT := 3
 var maps_collected := 0
 var _active := true
 var _wind_velocity := Vector2.ZERO
+var _map_nodes: Array[Area2D] = []
 
 @onready var ship: CharacterBody2D = $ship
 @onready var maps_label: Label = $CanvasLayer/MapsLabel
 @onready var hint_label: Label = $CanvasLayer/HintLabel
 @onready var back_button: Button = $CanvasLayer/BackButton
+@onready var compass_pivot: Control = $CanvasLayer/ShipCompass/NeedlePivot
+@onready var compass_label: Label = $CanvasLayer/ShipCompass/TargetLabel
+
+# Posição da saída
+const FINISH_POS := Vector2(1071, 93)
 
 
 func _ready() -> void:
-	maps_label.text = "Mapas: 0/" + str(MAP_COUNT)
+	maps_label.text = "Mapas Coletados: 0/" + str(MAP_COUNT)
 	hint_label.text = "Use WASD para navegar. Colete os 3 mapas!"
 	back_button.pressed.connect(_on_back)
 
-	# Limites da câmera — busca a Camera2D dentro do barco instanciado
 	var cam := ship.get_node_or_null("Camera2D")
 	if cam:
 		cam.limit_left   = 0
@@ -27,20 +32,52 @@ func _ready() -> void:
 		cam.limit_right  = 1168
 		cam.limit_bottom = 656
 
+	# Guarda referência dos mapas
 	for area in get_tree().get_nodes_in_group("map_collectible"):
+		_map_nodes.append(area)
 		area.body_entered.connect(_on_map_collected.bind(area))
+
 	for wind in get_tree().get_nodes_in_group("wind_zone"):
 		wind.body_entered.connect(_on_wind_enter.bind(wind))
 		wind.body_exited.connect(_on_wind_exit.bind(wind))
+
 	var finish := get_tree().get_first_node_in_group("finish_zone")
 	if finish:
 		finish.body_entered.connect(_on_finish)
+
 	await get_tree().create_timer(1.0).timeout
 	hint_label.text = ""
 
 
-func _on_map_collecte(_body: Node2D, area: Area2D) -> void:
-	print("Colidiu com:", _body.name)
+func _process(_delta: float) -> void:
+	if not _active or not ship:
+		return
+	_update_compass()
+
+
+func _update_compass() -> void:
+	var target: Vector2
+	var label_text: String
+
+	if maps_collected >= MAP_COUNT:
+		
+		target = FINISH_POS
+		label_text = "Direção da Saída"
+	else:
+		
+		var closest_dist := INF
+		target = ship.global_position
+		for map_node in _map_nodes:
+			if is_instance_valid(map_node) and map_node.is_inside_tree():
+				var dist := ship.global_position.distance_to(map_node.global_position)
+				if dist < closest_dist:
+					closest_dist = dist
+					target = map_node.global_position
+		label_text = "Em busca do Mapa " + str(maps_collected + 1) + "/" + str(MAP_COUNT)
+
+	var direction := target - ship.global_position
+	compass_pivot.rotation = direction.angle() + PI / 2.0
+	compass_label.text = label_text
 
 
 func _on_wind_enter(_body: Node2D, wind: Area2D) -> void:
@@ -54,10 +91,12 @@ func _on_wind_exit(_body: Node2D, _wind: Area2D) -> void:
 
 func _on_map_collected(_body: Node2D, area: Area2D) -> void:
 	maps_collected += 1
-	maps_label.text = "Mapas: " + str(maps_collected) + "/" + str(MAP_COUNT)
+	maps_label.text = "Mapas Coletados: " + str(maps_collected) + "/" + str(MAP_COUNT)
+	# Remove da lista de alvos
+	_map_nodes.erase(area)
 	area.queue_free()
 	if maps_collected >= MAP_COUNT:
-		hint_label.text = "Todos os mapas coletados! Va para a saida!"
+		hint_label.text = "Todos os mapas coletados! Vá para a saída!"
 		GameManager.add_item("Mapas de Navegacao", "Mapas das rotas maritimas")
 
 
@@ -66,10 +105,10 @@ func _on_finish(_body: Node2D) -> void:
 		hint_label.text = "Colete todos os mapas primeiro!"
 		return
 	_active = false
-	hint_label.text = "Navegacao concluida!"
+	hint_label.text = "Navegação concluída!"
 	GameManager.complete_objective(1, "caravela")
 	GameManager.save_game()
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(3.5).timeout
 	SceneManager.change_scene("res://scenes/levels/fase1_sagres.tscn")
 
 
