@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ccankb7ynrcxc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sn0oo"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1c3mg"]
+
+[node name="Fase3Tormentas" type="Node2D" unique_id=853422982]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=621262374]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=906609837]
+
+[node name="Fundo" type="Sprite2D" parent="HurtBox" unique_id=701730509]
+position = Vector2(704, 189.99994)
+scale = Vector2(1, 0.97184986)
+texture = SubResource("CompressedTexture2D_sn0oo")
+
+[node name="CaravelaIdle" type="Sprite2D" parent="HurtBox" unique_id=336086725]
+position = Vector2(133, 177)
+scale = Vector2(0.6299852, 0.43766937)
+texture = SubResource("CompressedTexture2D_1c3mg")
