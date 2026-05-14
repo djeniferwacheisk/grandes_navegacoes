@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d1e8jagj0wsdt"]
+
+[ext_resource type="Texture2D" uid="uid://crgxjxuja5w3g" path="res://assets/Ship/Caravela_idle.png" id="1_6lvev"]
+
+[sub_resource type="GDScript" id="GDScript_6uptq"]
+script/source = "extends \"res://scenes/ship/Caravelas.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evgmh"]
+size = Vector2(378, 306)
+
+[node name="Carvelas" type="Node2D" unique_id=1702615336]
+script = SubResource("GDScript_6uptq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1268855111]
+texture = ExtResource("1_6lvev")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1050025619]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=55477178]
+position = Vector2(9, -15)
+shape = SubResource("RectangleShape2D_evgmh")
