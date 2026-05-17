@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b85dblajuy5qd"]
+
+[ext_resource type="Texture2D" uid="uid://b0ceo1ifm1jlt" path="res://assets/Terrain/Fundo_oceano.png" id="1_gy2x5"]
+[ext_resource type="PackedScene" uid="uid://d1e8jagj0wsdt" path="res://scenes/ship/caravela.tscn" id="2_gm80s"]
+
+[node name="Fase3Tormentas" type="Node2D" unique_id=1113147533]
+
+[node name="Fundo" type="Sprite2D" parent="." unique_id=1213151499]
+position = Vector2(343.5, 180.99998)
+scale = Vector2(0.48650578, 0.4635417)
+texture = ExtResource("1_gy2x5")
+
+[node name="Carvela" parent="." unique_id=1702615336 instance=ExtResource("2_gm80s")]
+position = Vector2(200, 178)
+lane_y_positions = Array[float]([50.0, 60.0, 190.0])

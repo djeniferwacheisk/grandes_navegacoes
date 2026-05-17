@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bphfkodo4lspt"]
-
-[node name="Carvelas" type="Node2D" unique_id=1702615336]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1268855111]
-
-[node name="HurtBox" type="Area2D" parent="." unique_id=1050025619]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=55477178]
