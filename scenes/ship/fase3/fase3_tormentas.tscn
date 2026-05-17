@@ -2,8 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://b0ceo1ifm1jlt" path="res://assets/Terrain/Fundo_oceano.png" id="1_gy2x5"]
 [ext_resource type="PackedScene" uid="uid://d1e8jagj0wsdt" path="res://scenes/ship/caravela.tscn" id="2_gm80s"]
+[ext_resource type="PackedScene" uid="uid://cq4mavwhyr8fb" path="res://scenes/ship/fase3/onda.tscn" id="3_rrb2c"]
+[ext_resource type="Texture2D" uid="uid://crgxjxuja5w3g" path="res://assets/Ship/Caravela_idle.png" id="3_vjosr"]
+[ext_resource type="Texture2D" uid="uid://ce4ye46xbhro7" path="res://assets/Ship/Caravela_Avariada_Nivel_01_estado_B.png" id="4_843s1"]
+[ext_resource type="Texture2D" uid="uid://cst678odkphah" path="res://assets/Ship/Caravela_Avariada_Nivel_02_estado_A.png" id="5_qdw4k"]
+[ext_resource type="Texture2D" uid="uid://7fw8j1krk568" path="res://assets/Ship/Caravela_Avariada_Critica.png" id="6_2unnx"]
+[ext_resource type="Texture2D" uid="uid://cy5o85rowxico" path="res://assets/Ship/Caravela_Afundando.png" id="7_mxg1h"]
+[ext_resource type="Script" uid="uid://q5pni4s8jlmx" path="res://scenes/ship/fase3/fase3_tormentas.gd" id="9_843s1"]
 
-[node name="Fase3Tormentas" type="Node2D" unique_id=1113147533]
+[node name="Fase3Tormentas" type="Node2D" unique_id=776043917]
+script = ExtResource("9_843s1")
 
 [node name="Fundo" type="Sprite2D" parent="." unique_id=1213151499]
 position = Vector2(343.5, 180.99998)
@@ -12,4 +20,22 @@ texture = ExtResource("1_gy2x5")
 
 [node name="Carvela" parent="." unique_id=1702615336 instance=ExtResource("2_gm80s")]
 position = Vector2(200, 178)
-lane_y_positions = Array[float]([50.0, 60.0, 190.0])
+lane_y_positions = Array[float]([-7.05, 60.0, 180.0])
+sprite_intact = ExtResource("3_vjosr")
+sprite_light = ExtResource("4_843s1")
+sprite_medium = ExtResource("5_qdw4k")
+sprite_critical = ExtResource("6_2unnx")
+sprite_sinking = ExtResource("7_mxg1h")
+
+[node name="Onda" parent="." unique_id=1889682037 instance=ExtResource("3_rrb2c")]
+position = Vector2(218, 221)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=347705212]
+
+[node name="BarraVida" type="TextureProgressBar" parent="HUD" unique_id=376619400]
+anchors_preset = -1
+anchor_right = 0.078
+anchor_bottom = 0.20300001
+offset_right = 0.07999802
+offset_bottom = -0.08000183
+value = 100.0
