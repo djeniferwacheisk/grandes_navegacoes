@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d1e8jagj0wsdt"]
 
-[ext_resource type="Texture2D" uid="uid://crgxjxuja5w3g" path="res://assets/Ship/Caravela_idle.png" id="1_6lvev"]
+[ext_resource type="Texture2D" path="res://assets/Ship/Caravela_idle.png" id="1_6lvev"]
 [ext_resource type="Script" uid="uid://bu2m6gu1hamo0" path="res://scenes/ship/caravela.gd" id="1_6uptq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evgmh"]
-size = Vector2(208.5, 176.5)
+size = Vector2(101, 18)
 
 [node name="Carvela" type="Node2D" unique_id=1702615336]
 position = Vector2(139, 183)
@@ -20,5 +20,5 @@ texture = ExtResource("1_6lvev")
 position = Vector2(112, 133)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=55477178]
-position = Vector2(-94, -42)
+position = Vector2(-97.5, 31)
 shape = SubResource("RectangleShape2D_evgmh")

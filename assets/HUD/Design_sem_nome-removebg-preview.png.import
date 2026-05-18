@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cst678odkphah"
-path="res://.godot/imported/Caravela_Avariada_Nivel_02_estado_A.png-6b346571d4698fb2e64ecf121ea0ed67.ctex"
+uid="uid://dul8cjslfsqoa"
+path="res://.godot/imported/Design_sem_nome-removebg-preview.png-e96e02c8b6c14eee4b4d38381771f440.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ship/Caravela_Avariada_Nivel_02_estado_A.png"
-dest_files=["res://.godot/imported/Caravela_Avariada_Nivel_02_estado_A.png-6b346571d4698fb2e64ecf121ea0ed67.ctex"]
+source_file="res://assets/HUD/Design_sem_nome-removebg-preview.png"
+dest_files=["res://.godot/imported/Design_sem_nome-removebg-preview.png-e96e02c8b6c14eee4b4d38381771f440.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bow1glpfx7w7e"
-path="res://.godot/imported/Progress_Amarelo__Barra_Vida.png-f3e46c282d8fa42b82397892af0fa1d3.ctex"
+uid="uid://comdk6fj6j0vn"
+path="res://.godot/imported/Design_sem_nome__2_-removebg-preview (1).png-20a42c59750dd2bcfd60238ac941f07f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/HUD/Progress_Amarelo__Barra_Vida.png"
-dest_files=["res://.godot/imported/Progress_Amarelo__Barra_Vida.png-f3e46c282d8fa42b82397892af0fa1d3.ctex"]
+source_file="res://assets/HUD/Design_sem_nome__2_-removebg-preview (1).png"
+dest_files=["res://.godot/imported/Design_sem_nome__2_-removebg-preview (1).png-20a42c59750dd2bcfd60238ac941f07f.ctex"]
 
 [params]
 

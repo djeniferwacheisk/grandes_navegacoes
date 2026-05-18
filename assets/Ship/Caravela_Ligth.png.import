@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ncekmkb83pch"
-path="res://.godot/imported/Progress_Laranja_Barra_Vida.png-ae23bf72bf93a41a09003bcc95ad97c5.ctex"
+uid="uid://bqti4pgeiq02n"
+path="res://.godot/imported/Caravela_Ligth.png-f536b816691dd212763b8de4b6254c3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/HUD/Progress_Laranja_Barra_Vida.png"
-dest_files=["res://.godot/imported/Progress_Laranja_Barra_Vida.png-ae23bf72bf93a41a09003bcc95ad97c5.ctex"]
+source_file="res://assets/Ship/Caravela_Ligth.png"
+dest_files=["res://.godot/imported/Caravela_Ligth.png-f536b816691dd212763b8de4b6254c3e.ctex"]
 
 [params]
 
