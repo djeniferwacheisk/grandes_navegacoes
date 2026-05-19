@@ -3,12 +3,13 @@ extends Node2D
 @onready var carvela = $Carvela
 @onready var barra_vida: TextureProgressBar = $HUD/BarraVida
 @onready var spawn_timer: Timer = $swapnTimer
-@onready var game_over = $GameOver
 @onready var barra_progresso: TextureProgressBar = $HUD/BarraProgresso
 @onready var mini_navio = $HUD/MiniNavio
+@onready var game_over = $GameOver
+@onready var vitoria = $Vitoria
 
 var tempo_fase: float = 0.0
-var duracao_fase: float = 240  # 2 minutos
+var duracao_fase: float = 60  # 2 minutos
 var fase_completa: bool = false
 var onda_cena = preload("res://scenes/ship/fase3/onda.tscn")
 var caixote_cena = preload("res://scenes/ship/fase3/caixote.tscn")
@@ -87,4 +88,5 @@ func _on_ship_destroyed() -> void:
 func _mostrar_vitoria() -> void:
 	print("Fase concluída!")
 	# Por enquanto só para o jogo — depois criamos a tela de vitória
-	get_tree().paused = true
+	spawn_timer.stop()
+	vitoria.mostrar()

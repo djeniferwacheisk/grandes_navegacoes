@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dul8cjslfsqoa" path="res://assets/HUD/Design_sem_nome-removebg-preview.png" id="12_62rcq"]
 [ext_resource type="PackedScene" uid="uid://8ohi17ytgl2s" path="res://scenes/ship/fase3/game_over.tscn" id="12_mxg1h"]
 [ext_resource type="Texture2D" uid="uid://cg1bvbb6n0d06" path="res://assets/HUD/Caravela_Barra_Progresso.png" id="12_wok1e"]
+[ext_resource type="PackedScene" uid="uid://cotbc8n8ffy46" path="res://scenes/ship/fase3/vitoria.tscn" id="14_62rcq"]
 
 [node name="Fase3Tormentas" type="Node2D" unique_id=776043917]
 script = ExtResource("9_843s1")
@@ -71,3 +72,5 @@ wait_time = 2.5
 autostart = true
 
 [node name="GameOver" parent="." unique_id=1565602492 instance=ExtResource("12_mxg1h")]
+
+[node name="Vitoria" parent="." unique_id=385634118 instance=ExtResource("14_62rcq")]
