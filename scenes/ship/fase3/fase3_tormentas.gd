@@ -6,6 +6,9 @@ extends Node2D
 
 var onda_cena = preload("res://scenes/ship/fase3/onda.tscn")
 var faixas: Array[float] = [60, 120.0, 180.0]
+var caixote_cena = preload("res://scenes/ship/fase3/caixote.tscn")
+var _timer_caixote: float = 0.0
+var intervalo_caixote: float = 8.0
 
 
 func _ready() -> void:
@@ -14,6 +17,17 @@ func _ready() -> void:
 	barra_vida.value = carvela.health
 	spawn_timer.timeout.connect(_spawnar_onda)
 
+func _process(delta: float) -> void:
+	_timer_caixote += delta
+	
+	if _timer_caixote >= intervalo_caixote:
+		_timer_caixote = 0.0
+		_spawnar_caixote()
+
+func _spawnar_caixote() -> void:
+	var caixote = caixote_cena.instantiate()
+	caixote.position = Vector2(800, faixas[randi() % faixas.size()])
+	add_child(caixote)
 
 func _spawnar_onda() -> void:
 	print("Spawnando onda!")

@@ -1,5 +1,9 @@
 extends Node2D
 
+@export var velocidade_balanco: float = 1.5
+@export var amplitude_balanco: float = 3.0  # graus de inclinação
+var _tempo_balanco: float = 0.0
+
 # ── Faixas de movimento ───────────────────────────────────────────────────────
 @export var lane_y_positions: Array[float] = [180.0, 320.0, 460.0]
 @export var lane_snap_speed: float = 8.0
@@ -38,6 +42,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	_tempo_balanco += delta
+	sprite.rotation_degrees = sin(_tempo_balanco * velocidade_balanco) * amplitude_balanco
 	# Movimento entre faixas
 	if Input.is_action_just_pressed("move_up"):
 		current_lane = max(0, current_lane - 1)
