@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://8ohi17ytgl2s"]
+
+[ext_resource type="Script" uid="uid://d0qg4whx0vuui" path="res://scenes/ship/fase3/game_over.gd" id="1_j85gp"]
+
+[node name="GameOver" type="CanvasLayer" unique_id=1565602492]
+script = ExtResource("1_j85gp")
+
+[node name="Control" type="Control" parent="." unique_id=731025753]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fundo" type="ColorRect" parent="Control" unique_id=633130918]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Titulo" type="Label" parent="Control" unique_id=1792324774]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 129.0
+offset_right = 350.0
+offset_bottom = 155.0
+text = "Naufrágio!"
+
+[node name="Mensagem" type="Label" parent="Control" unique_id=2136434837]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 176.0
+offset_right = 551.0
+offset_bottom = 199.0
+text = "A caravela afundou nas águas do Cabo das Tormentas..."
+
+[node name="BtnReiniciar" type="Button" parent="Control" unique_id=1620576328]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 241.0
+offset_right = 390.0
+offset_bottom = 282.0
+text = "Tentar Novamente"
