@@ -4,7 +4,12 @@ extends Node2D
 @onready var barra_vida: TextureProgressBar = $HUD/BarraVida
 @onready var spawn_timer: Timer = $swapnTimer
 @onready var game_over = $GameOver
+@onready var barra_progresso: TextureProgressBar = $HUD/BarraProgresso
+@onready var mini_navio = $HUD/MiniNavio
 
+var tempo_fase: float = 0.0
+var duracao_fase: float = 240  # 2 minutos
+var fase_completa: bool = false
 var onda_cena = preload("res://scenes/ship/fase3/onda.tscn")
 var caixote_cena = preload("res://scenes/ship/fase3/caixote.tscn")
 var faixas: Array[float] = [60, 120.0, 180.0]
@@ -21,10 +26,33 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	# Caixote (já existia)
 	_timer_caixote += delta
 	if _timer_caixote >= intervalo_caixote:
 		_timer_caixote = 0.0
 		_spawnar_caixote()
+	
+	# Progresso da fase (novo)
+	if not fase_completa:
+		tempo_fase += delta
+		barra_progresso.value = tempo_fase
+		
+		var progresso = tempo_fase / duracao_fase
+		var largura_barra = barra_progresso.size.x
+		mini_navio.position.x = barra_progresso.position.x + (progresso * largura_barra)
+		mini_navio.position.y = barra_progresso.position.y
+		
+		if progresso > 0.75:
+			spawn_timer.wait_time = 1.0
+		elif progresso > 0.5:
+			spawn_timer.wait_time = 1.5
+		elif progresso > 0.25:
+			spawn_timer.wait_time = 2.0
+		
+		if tempo_fase >= duracao_fase:
+			fase_completa = true
+			spawn_timer.stop()
+			_mostrar_vitoria()
 
 
 func _spawnar_onda() -> void:
@@ -55,3 +83,8 @@ func _on_health_changed(current: float, maximum: float) -> void:
 func _on_ship_destroyed() -> void:
 	spawn_timer.stop()
 	game_over.mostrar()
+
+func _mostrar_vitoria() -> void:
+	print("Fase concluída!")
+	# Por enquanto só para o jogo — depois criamos a tela de vitória
+	get_tree().paused = true

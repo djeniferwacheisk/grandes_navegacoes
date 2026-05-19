@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://comdk6fj6j0vn" path="res://assets/HUD/Design_sem_nome__2_-removebg-preview (1).png" id="11_wok1e"]
 [ext_resource type="Texture2D" uid="uid://dul8cjslfsqoa" path="res://assets/HUD/Design_sem_nome-removebg-preview.png" id="12_62rcq"]
 [ext_resource type="PackedScene" uid="uid://8ohi17ytgl2s" path="res://scenes/ship/fase3/game_over.tscn" id="12_mxg1h"]
+[ext_resource type="Texture2D" uid="uid://cg1bvbb6n0d06" path="res://assets/HUD/Caravela_Barra_Progresso.png" id="12_wok1e"]
 
 [node name="Fase3Tormentas" type="Node2D" unique_id=776043917]
 script = ExtResource("9_843s1")
@@ -49,6 +50,21 @@ fill_mode = 3
 texture_under = ExtResource("10_mxg1h")
 texture_over = ExtResource("11_wok1e")
 texture_progress = ExtResource("12_62rcq")
+
+[node name="BarraProgresso" type="TextureProgressBar" parent="HUD" unique_id=468994229]
+anchors_preset = -1
+anchor_right = 1.937
+anchor_bottom = 0.031000001
+offset_left = 12.0
+offset_top = 26.0
+offset_right = 12.319946
+offset_bottom = 60.84
+max_value = 120.0
+
+[node name="MiniNavio" type="Sprite2D" parent="HUD" unique_id=1076894400]
+position = Vector2(64, 44)
+scale = Vector2(0.7882883, 0.8168317)
+texture = ExtResource("12_wok1e")
 
 [node name="swapnTimer" type="Timer" parent="." unique_id=662669773]
 wait_time = 2.5
