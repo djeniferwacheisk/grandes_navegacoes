@@ -13,12 +13,16 @@ offset_bottom = 40.0
 
 [node name="Fundo" type="ColorRect" parent="Control" unique_id=1677473916]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 16.050001
+anchor_bottom = 9.200001
+offset_left = -8.0
+offset_top = -2.0
+offset_right = 6.999939
+offset_bottom = -1.0000305
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.205428, 0.3566122, 0.78431374)
+color = Color(0, 0.20392157, 0.35686275, 0.67058825)
 
 [node name="Titulo" type="Label" parent="Control" unique_id=1694546113]
 layout_mode = 0

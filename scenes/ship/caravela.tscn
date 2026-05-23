@@ -12,6 +12,7 @@ script = ExtResource("1_6uptq")
 lane_y_positions = Array[float]([-150.0, 0.0, 150.0])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1268855111]
+z_index = 1
 position = Vector2(17.999992, 99.99999)
 scale = Vector2(0.55668396, 0.54776424)
 texture = ExtResource("1_6lvev")

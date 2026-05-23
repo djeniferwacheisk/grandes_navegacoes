@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://b0f0ed16eqd87"]
+
+[ext_resource type="Script" uid="uid://c0ss6vc8x2xs1" path="res://scenes/ship/fase3/minigame_velas.gd" id="1_mo0dk"]
+
+[node name="MinigameVelas" type="CanvasLayer" unique_id=1690488870]
+layer = 10
+script = ExtResource("1_mo0dk")
+
+[node name="AreaJogo" type="Control" parent="." unique_id=552050773]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fundo" type="ColorRect" parent="AreaJogo" unique_id=75056697]
+layout_mode = 1
+offset_right = 644.0
+offset_bottom = 367.0
+color = Color(0, 0, 1, 0.78431374)
+
+[node name="TituloFase" type="Label" parent="AreaJogo" unique_id=1964780953]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 51.0
+offset_right = 365.0
+offset_bottom = 74.0
+text = "Velas ao Mar!"
+
+[node name="Contexto" type="Label" parent="AreaJogo" unique_id=1818564575]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 147.0
+offset_right = 613.0
+offset_bottom = 281.0
+text = "As velas estão soltas! A tripulação precisa tensionar as cordas para manter o mastro firme contra o vento."
+autowrap_mode = 2
+
+[node name="Instrucao" type="Label" parent="AreaJogo" unique_id=1316604329]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 248.0
+offset_right = 460.0
+offset_bottom = 271.0
+text = "Pressione ESPAÇO no momento certo!"
+
+[node name="BarraTempo" type="ProgressBar" parent="AreaJogo" unique_id=1515052811]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 3.9930003
+anchor_bottom = 1.1860001
+offset_left = 594.0
+offset_top = 9.0
+offset_right = 598.0
+offset_bottom = -11.440002
+
+[node name="BtnAvancar" type="Button" parent="AreaJogo" unique_id=1922370753]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.021000002
+anchor_bottom = 0.056
+offset_left = 222.0
+offset_top = 310.0
+offset_right = 408.0
+offset_bottom = 338.76
+text = "Entendido — Vamos lá!"
+
+[node name="Container" type="Control" parent="AreaJogo" unique_id=1198750617]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
