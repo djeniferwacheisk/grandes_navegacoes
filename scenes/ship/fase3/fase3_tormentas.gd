@@ -7,7 +7,6 @@ extends Node2D
 @onready var vitoria = $Vitoria
 @onready var barra_progresso: TextureProgressBar = $HUD/BarraProgresso
 @onready var mini_navio = $HUD/MiniNavio
-@onready var minigame_velas = $MinigameVelas
 
 var onda_cena = preload("res://scenes/ship/fase3/onda.tscn")
 var caixote_cena = preload("res://scenes/ship/fase3/caixote.tscn")
