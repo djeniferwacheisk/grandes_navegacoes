@@ -1,15 +1,22 @@
-extends CanvasLayer
+extends Node2D
 
 # ── Sinais ────────────────────────────────────────────────────────────────────
 signal minigame_completo(sucesso: bool)
+var tex_mastro_solto   = preload("res://assets/miniGame/Mastro_com_Vela_Solta.png")
+var tex_mastro_firme   = preload("res://assets/miniGame/Mastro_com_Vela_Firme.png")
+var tex_corda          = preload("res://assets/miniGame/Corda.png")
+var tex_leme           = preload("res://assets/miniGame/Leme_do_Navio.png")
+var tex_navio_inclinado = preload("res://assets/miniGame/Navio_Inclinado.png")
+var tex_vela_rasgada   = preload("res://assets/miniGame/Vela_Rasgada.png")
+var tex_vela_remendada = preload("res://assets/miniGame/Vela_Remendada.png")
 
 # ── Referências ───────────────────────────────────────────────────────────────
-@onready var titulo_fase: Label = $AreaJogo/TituloFase
-@onready var contexto: Label = $AreaJogo/Contexto
-@onready var instrucao: Label = $AreaJogo/Instrucao
-@onready var barra_tempo: ProgressBar = $AreaJogo/BarraTempo
-@onready var area_jogo: Control = $AreaJogo
-@onready var btn_avancar: Button = $AreaJogo/BtnAvancar
+@onready var titulo_fase: Label = $TituloFase
+@onready var contexto: Label = $Contexto
+@onready var instrucao: Label = $Instrucao
+@onready var barra_tempo: ProgressBar = $BarraTempo
+@onready var area_jogo: Control  = $Container
+@onready var btn_avancar: Button = $BtnAvancar
 
 # ── Dados das fases ───────────────────────────────────────────────────────────
 var fases = [
@@ -64,15 +71,19 @@ var barra_equilibrio: ProgressBar = null
 
 
 func _ready() -> void:
+	print("MINIGAME READY!")
 	btn_avancar.pressed.connect(_on_btn_avancar)
-	hide()
+	# Força tamanho da tela
+	$AreaJogo.size = get_viewport_rect().size
+	$Fundo.size = get_viewport_rect().size
+	mostrar()
 
 
 func mostrar() -> void:
+	print("Minigame mostrar chamado!")
 	show()
 	fase_atual = 0
 	_mostrar_contexto()
-
 
 func _mostrar_contexto() -> void:
 	em_contexto = true
