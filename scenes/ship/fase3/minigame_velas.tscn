@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0f0ed16eqd87"]
 
 [ext_resource type="Script" uid="uid://c0ss6vc8x2xs1" path="res://scenes/ship/fase3/minigame_velas.gd" id="1_mo0dk"]
+[ext_resource type="Texture2D" uid="uid://0mjmbhoarrgu" path="res://assets/miniGame/Corda.png" id="2_hxwj8"]
 
 [node name="MinigameVelas" type="Node2D" unique_id=1902887756]
 script = ExtResource("1_mo0dk")
@@ -19,6 +20,18 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 648.0
 offset_bottom = 366.0
+
+[node name="Corda1" type="Sprite2D" parent="Container" unique_id=1091870489]
+position = Vector2(47, 7)
+texture = ExtResource("2_hxwj8")
+
+[node name="Corda2" type="Sprite2D" parent="Container" unique_id=1050000679]
+position = Vector2(543, 27)
+texture = ExtResource("2_hxwj8")
+
+[node name="Corda3" type="Sprite2D" parent="Container" unique_id=1234783100]
+position = Vector2(224, 44)
+texture = ExtResource("2_hxwj8")
 
 [node name="BtnAvancar" type="Button" parent="." unique_id=1922370753]
 anchors_preset = -1

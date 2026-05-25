@@ -11,6 +11,9 @@ var tex_vela_rasgada   = preload("res://assets/miniGame/Vela_Rasgada.png")
 var tex_vela_remendada = preload("res://assets/miniGame/Vela_Remendada.png")
 
 # ── Referências ───────────────────────────────────────────────────────────────
+@onready var corda1: Sprite2D = $Container/Corda1
+@onready var corda2: Sprite2D = $Container/Corda2
+@onready var corda3: Sprite2D = $Container/Corda3
 @onready var titulo_fase: Label = $TituloFase
 @onready var contexto: Label = $Contexto
 @onready var instrucao: Label = $Instrucao
@@ -59,16 +62,20 @@ var labels_qte: Array = []
 # ── Cordas ────────────────────────────────────────────────────────────────────
 var posicao_barra: float = 0.0
 var direcao_barra: float = 1.0
-var velocidade_barra: float = 80.0
+var velocidade_barra: float = 40.0
 var zona_verde_min: float = 40.0
 var zona_verde_max: float = 60.0
 var barra_cordas: ProgressBar = null
-
+var sprite_principal: Sprite2D = null
+var sprite_secundario: Sprite2D = null
+var sprite_leme: Sprite2D = null
+var sprites_cordas: Array = []
+var cordas_acertadas: int = 0
 # ── Equilíbrio ────────────────────────────────────────────────────────────────
 var posicao_agulha: float = 50.0
 var deriva_agulha: float = 0.0
 var barra_equilibrio: ProgressBar = null
-
+var tempo_equilibrio: float = 0.0
 
 func _ready() -> void:
 	print("MINIGAME READY!")
@@ -96,7 +103,14 @@ func _mostrar_contexto() -> void:
 	btn_avancar.visible = true
 	barra_tempo.visible = false
 	_limpar_area_jogo()
-
+	var fase_tipo = fase["tipo"]
+	match fase_tipo:
+		"cordas":
+			_criar_sprite(tex_mastro_solto, Vector2(320, 150))
+		"qte":
+			_criar_sprite(tex_vela_rasgada, Vector2(320, 150))
+		"equilibrio":
+			_criar_sprite(tex_navio_inclinado, Vector2(320, 150))
 
 func _on_btn_avancar() -> void:
 	if em_contexto:
@@ -110,7 +124,7 @@ func _iniciar_jogo() -> void:
 	em_jogo = true
 	btn_avancar.visible = false
 	barra_tempo.visible = true
-	tempo_restante = 100.0
+	tempo_restante = 200.0
 	var fase = fases[fase_atual]
 	match fase["tipo"]:
 		"cordas":   _setup_cordas()
@@ -121,7 +135,7 @@ func _iniciar_jogo() -> void:
 func _process(delta: float) -> void:
 	if not em_jogo:
 		return
-	tempo_restante -= delta * 20.0
+	tempo_restante -= delta * 10.0
 	barra_tempo.value = tempo_restante
 	if tempo_restante <= 0:
 		_fase_falhou()
@@ -146,17 +160,30 @@ func _input(event: InputEvent) -> void:
 
 # ── CORDAS ────────────────────────────────────────────────────────────────────
 func _setup_cordas() -> void:
+	sprite_principal = _criar_sprite(tex_mastro_solto, Vector2(320, 120))
+	sprite_principal.scale = Vector2(0.5, 0.5)
+	
+	# Usa as cordas fixas da cena
+	sprites_cordas.clear()
+	sprites_cordas.append(corda1)
+	sprites_cordas.append(corda2)
+	sprites_cordas.append(corda3)
+	
+	# Reseta cor das cordas
+	for s in sprites_cordas:
+		s.modulate = Color(1, 1, 1)
+	
+	# Barra deslizante
 	barra_cordas = ProgressBar.new()
 	barra_cordas.min_value = 0
 	barra_cordas.max_value = 100
 	barra_cordas.value = 0
-	barra_cordas.size = Vector2(300, 40)
-	barra_cordas.position = Vector2(100, 100)
+	barra_cordas.size = Vector2(300, 30)
+	barra_cordas.position = Vector2(80, 300)
 	area_jogo.add_child(barra_cordas)
+	cordas_acertadas = 0
 	posicao_barra = 0.0
 	direcao_barra = 1.0
-	acertos = 0
-
 
 func _update_cordas(delta: float) -> void:
 	posicao_barra += direcao_barra * velocidade_barra * delta
@@ -240,7 +267,7 @@ func _setup_equilibrio() -> void:
 	barra_equilibrio.position = Vector2(100, 100)
 	area_jogo.add_child(barra_equilibrio)
 	posicao_agulha = 50.0
-	deriva_agulha = randf_range(-30, 30)
+	deriva_agulha = randf_range(-15, 15)
 	acertos = 0
 
 
@@ -250,16 +277,17 @@ func _update_equilibrio(delta: float) -> void:
 	if barra_equilibrio:
 		barra_equilibrio.value = posicao_agulha
 	# Muda deriva aleatoriamente
-	deriva_agulha += randf_range(-20, 20) * delta
-	deriva_agulha = clamp(deriva_agulha, -60, 60)
+	deriva_agulha += randf_range(-10, 10) * delta
+	deriva_agulha = clamp(deriva_agulha, -30, 30)
 	# Conta tempo no centro
-	if posicao_agulha >= 35 and posicao_agulha <= 65:
+	if posicao_agulha >= 30 and posicao_agulha <= 70:
 		acertos += delta
 		instrucao.text = "Ótimo! Mantenha o equilíbrio! (%.1fs/5s)" % acertos
 		instrucao.modulate = Color(0, 1, 0)
-		if acertos >= 5.0:
+		if tempo_equilibrio >= 3.0:
 			_fase_completa()
 	else:
+		tempo_equilibrio = 0.0
 		instrucao.text = "Use ← → para centralizar!"
 		instrucao.modulate = Color(1, 1, 1)
 
@@ -307,4 +335,17 @@ func _proxima_fase() -> void:
 
 func _limpar_area_jogo() -> void:
 	for child in area_jogo.get_children():
-		child.queue_free()
+		if child != corda1 and child != corda2 and child != corda3:
+			child.queue_free()
+	sprite_principal = null
+	sprite_secundario = null
+	sprite_leme = null
+	barra_cordas = null
+	barra_equilibrio = null
+		
+func _criar_sprite(textura: Texture2D, pos: Vector2) -> Sprite2D:
+	var s = Sprite2D.new()
+	s.texture = textura
+	s.position = pos
+	area_jogo.add_child(s)
+	return s

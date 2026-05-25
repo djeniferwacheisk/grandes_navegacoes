@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djnovqejm1g0f"
-path="res://.godot/imported/Mastro_com_Vela_Firme.png-b4c8f79b5265029185b12196aa29ad66.ctex"
+uid="uid://d0ghinwu8lpkq"
+path="res://.godot/imported/Remendo1.png-bc4995fd190d4124da112cb58da58b88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/miniGame/Mastro_com_Vela_Firme.png"
-dest_files=["res://.godot/imported/Mastro_com_Vela_Firme.png-b4c8f79b5265029185b12196aa29ad66.ctex"]
+source_file="res://assets/miniGame/Remendo1.png"
+dest_files=["res://.godot/imported/Remendo1.png-bc4995fd190d4124da112cb58da58b88.ctex"]
 
 [params]
 

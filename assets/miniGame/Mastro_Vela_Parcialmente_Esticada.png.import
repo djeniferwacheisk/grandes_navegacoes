@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cga1ec8mxr373"
-path="res://.godot/imported/Vela_Rasgada.png-143fd18fa41ea69b3de218765e50948b.ctex"
+uid="uid://dmoilb0gycmai"
+path="res://.godot/imported/Mastro_Vela_Parcialmente_Esticada.png-e403b028e7d132129777d7048f336f10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/miniGame/Vela_Rasgada.png"
-dest_files=["res://.godot/imported/Vela_Rasgada.png-143fd18fa41ea69b3de218765e50948b.ctex"]
+source_file="res://assets/miniGame/Mastro_Vela_Parcialmente_Esticada.png"
+dest_files=["res://.godot/imported/Mastro_Vela_Parcialmente_Esticada.png-e403b028e7d132129777d7048f336f10.ctex"]
 
 [params]
 
