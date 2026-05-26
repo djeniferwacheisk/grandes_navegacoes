@@ -17,8 +17,8 @@ offset_bottom = 367.0
 color = Color(0, 0, 1, 0.78431374)
 
 [node name="SpriteMastro" type="Sprite2D" parent="." unique_id=1464078841]
-position = Vector2(318, 180.5)
-scale = Vector2(0.76923084, 0.5049227)
+position = Vector2(314, 179.5)
+scale = Vector2(0.9686609, 0.5077356)
 texture = ExtResource("3_th6mp")
 
 [node name="Container" type="Control" parent="." unique_id=1198750617]
@@ -28,17 +28,17 @@ offset_right = 648.0
 offset_bottom = 366.0
 
 [node name="Corda1" type="Sprite2D" parent="Container" unique_id=1091870489]
-position = Vector2(19, 318)
+position = Vector2(18.999998, 313)
 scale = Vector2(0.15963854, 0.097208366)
 texture = ExtResource("2_hxwj8")
 
 [node name="Corda2" type="Sprite2D" parent="Container" unique_id=532600448]
-position = Vector2(83.00001, 319)
+position = Vector2(83.000015, 314)
 scale = Vector2(0.15963854, 0.097208366)
 texture = ExtResource("2_hxwj8")
 
 [node name="Corda3" type="Sprite2D" parent="Container" unique_id=441948746]
-position = Vector2(51.000004, 319)
+position = Vector2(51.000004, 313)
 scale = Vector2(0.15963854, 0.097208366)
 texture = ExtResource("2_hxwj8")
 

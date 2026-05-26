@@ -74,6 +74,7 @@ var sprite_secundario: Sprite2D = null
 var sprite_leme: Sprite2D = null
 var sprites_cordas: Array = []
 var cordas_acertadas: int = 0
+
 # ── Equilíbrio ────────────────────────────────────────────────────────────────
 var posicao_agulha: float = 50.0
 var deriva_agulha: float = 0.0
@@ -108,8 +109,7 @@ func _mostrar_contexto() -> void:
 	_limpar_area_jogo()
 	var fase_tipo = fase["tipo"]
 	match fase_tipo:
-		"qte":
-			_criar_sprite(tex_mastro_rasgada, Vector2(320, 150))
+	
 		"equilibrio":
 			_criar_sprite(tex_navio_inclinado, Vector2(320, 150))
 
