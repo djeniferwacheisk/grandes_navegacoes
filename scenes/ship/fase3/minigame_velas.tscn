@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://c0ss6vc8x2xs1" path="res://scenes/ship/fase3/minigame_velas.gd" id="1_mo0dk"]
 [ext_resource type="Texture2D" uid="uid://0mjmbhoarrgu" path="res://assets/miniGame/Corda.png" id="2_hxwj8"]
 [ext_resource type="Texture2D" uid="uid://di3m1symm7kq3" path="res://assets/miniGame/Mastro_com_Vela_Solta.png" id="3_th6mp"]
+[ext_resource type="Texture2D" uid="uid://d0ghinwu8lpkq" path="res://assets/miniGame/Remendo1.png" id="4_wjjpk"]
+[ext_resource type="Texture2D" uid="uid://ki382i0jok5j" path="res://assets/miniGame/Remendo2.png" id="5_utpm4"]
+[ext_resource type="Texture2D" uid="uid://sy4x6kaifwil" path="res://assets/miniGame/Remendo3.png" id="6_bxpci"]
 
 [node name="MinigameVelas" type="Node2D" unique_id=1902887756]
 script = ExtResource("1_mo0dk")
@@ -82,3 +85,18 @@ offset_top = 51.0
 offset_right = 365.0
 offset_bottom = 74.0
 text = "Velas ao Mar!"
+
+[node name="Remendo1" type="Sprite2D" parent="." unique_id=1010658143]
+position = Vector2(250.5, 154.5)
+scale = Vector2(0.4078947, 0.27065527)
+texture = ExtResource("4_wjjpk")
+
+[node name="Remendo2" type="Sprite2D" parent="." unique_id=1012363263]
+position = Vector2(312.7851, 154.14302)
+scale = Vector2(0.3141786, 0.22874303)
+texture = ExtResource("5_utpm4")
+
+[node name="Remendo3" type="Sprite2D" parent="." unique_id=193827419]
+position = Vector2(372.76788, 146.36928)
+scale = Vector2(0.24575633, 0.23883261)
+texture = ExtResource("6_bxpci")

@@ -23,6 +23,9 @@ var tex_remendo3 = preload("res://assets/miniGame/Remendo3.png")
 @onready var area_jogo: Control  = $Container
 @onready var btn_avancar: Button = $BtnAvancar
 @onready var sprite_mastro: Sprite2D = $SpriteMastro
+@onready var remendo1: Sprite2D = $Remendo1
+@onready var remendo2: Sprite2D = $Remendo2
+@onready var remendo3: Sprite2D = $Remendo3
 
 # ── Dados das fases ───────────────────────────────────────────────────────────
 var fases = [
@@ -83,6 +86,9 @@ var tempo_equilibrio: float = 0.0
 
 func _ready() -> void:
 	print("MINIGAME READY!")
+	remendo1.visible = false
+	remendo2.visible = false
+	remendo3.visible = false
 	btn_avancar.pressed.connect(_on_btn_avancar)
 	# Força tamanho da tela
 	$AreaJogo.size = get_viewport_rect().size
@@ -258,7 +264,15 @@ func _checar_qte(event: InputEvent) -> void:
 	if event.is_action(acao_esperada):
 		indice_qte += 1
 		_mostrar_qte()
+		# Remendos aparecem progressivamente
+		match indice_qte:
+			2:
+				remendo1.visible = true
+			4:
+				remendo2.visible = true
 		if indice_qte >= sequencia_qte.size():
+			remendo3.visible = true
+			await get_tree().create_timer(0.8).timeout
 			_fase_completa()
 	else:
 		erros += 1
@@ -266,7 +280,7 @@ func _checar_qte(event: InputEvent) -> void:
 		instrucao.modulate = Color(1, 0, 0)
 		await get_tree().create_timer(0.5).timeout
 		instrucao.modulate = Color(1, 1, 1)
-
+		instrucao.text = "Aperte as teclas na ordem correta!"
 
 # ── EQUILÍBRIO ────────────────────────────────────────────────────────────────
 func _setup_equilibrio() -> void:
