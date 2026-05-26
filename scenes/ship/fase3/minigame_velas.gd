@@ -345,8 +345,8 @@ func _proxima_fase() -> void:
 	contexto.modulate = Color(1, 1, 1)
 	instrucao.modulate = Color(1, 1, 1)
 	if fase_atual >= fases.size() - 1:
-		emit_signal("minigame_completo", true)
-		hide()
+		# Vai para o puzzle
+		get_tree().change_scene_to_file("res://scenes/ship/fase3/puzzle_fase3.tscn")
 	else:
 		fase_atual += 1
 		_mostrar_contexto()

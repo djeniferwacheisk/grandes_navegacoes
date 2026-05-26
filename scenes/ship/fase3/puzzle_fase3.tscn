@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bhlk4sbjj4n3n"]
+
+[ext_resource type="Script" uid="uid://dkschs68iqaj4" path="res://scenes/ship/fase3/puzzle_Fase3.gd" id="1_pk2jh"]
+
+[node name="PuzzleFase3" type="Node2D" unique_id=1328612201]
+script = ExtResource("1_pk2jh")
+
+[node name="Mapa" type="Sprite2D" parent="." unique_id=1249989966]
+
+[node name="Instrucao" type="Label" parent="." unique_id=1817619126]
+offset_left = 76.0
+offset_top = 9.0
+offset_right = 553.0
+offset_bottom = 32.0
+text = "Escolha a rota correta para escapar do Cabo das Tormentas!"
+
+[node name="Feedback" type="Label" parent="." unique_id=1998679201]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Dica" type="Label" parent="." unique_id=791014109]
+offset_left = 68.0
+offset_top = 326.0
+offset_right = 563.0
+offset_bottom = 349.0
+text = "Observe a direção dos ventos e das correntes antes de escolher!"
+
+[node name="Rotas" type="Node2D" parent="." unique_id=1013895117]
+
+[node name="Rota1" type="Button" parent="Rotas" unique_id=805765861]
+offset_left = 12.0
+offset_top = 227.0
+offset_right = 94.0
+offset_bottom = 279.0
+text = "Rota1"
+
+[node name="Rota2" type="Button" parent="Rotas" unique_id=1620212793]
+offset_left = 233.0
+offset_top = 229.0
+offset_right = 317.0
+offset_bottom = 282.0
+text = "Rota2"
+
+[node name="Rota3" type="Button" parent="Rotas" unique_id=76146726]
+offset_left = 107.0
+offset_top = 95.0
+offset_right = 202.0
+offset_bottom = 144.0
+text = "Rota3"
+
+[node name="Rota4" type="Button" parent="Rotas" unique_id=155356854]
+offset_left = 356.0
+offset_top = 92.0
+offset_right = 448.0
+offset_bottom = 143.0
+text = "Rota4"
+
+[node name="Rota5" type="Button" parent="Rotas" unique_id=1182000610]
+offset_left = 504.0
+offset_top = 222.0
+offset_right = 585.0
+offset_bottom = 273.0
+text = "Rota5"
