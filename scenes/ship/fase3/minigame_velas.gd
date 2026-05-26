@@ -43,13 +43,7 @@ var fases = [
 		"tipo": "qte",
 		"fato": "As velas das caravelas eram feitas de linho ou algodão reforçado. Um velame rasgado podia condenar toda a tripulação."
 	},
-	{
-		"titulo": "Fase 3 — Controlar o Leme",
-		"contexto": "O vento quer virar o navio! O piloto precisa manter o leme equilibrado para que a caravela não capote nas ondas gigantes do Cabo das Tormentas.",
-		"instrucao": "Use ← → para manter a agulha no centro!",
-		"tipo": "equilibrio",
-		"fato": "O Cabo das Tormentas recebia ventos de mais de 100 km/h. Bartolomeu Dias foi o primeiro europeu a navegar por essas águas em 1488."
-	}
+	
 ]
 
 # ── Estado ────────────────────────────────────────────────────────────────────

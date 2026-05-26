@@ -24,6 +24,21 @@ position = Vector2(314, 179.5)
 scale = Vector2(0.9686609, 0.5077356)
 texture = ExtResource("3_th6mp")
 
+[node name="Remendo2" type="Sprite2D" parent="." unique_id=1012363263]
+position = Vector2(312.7851, 154.14302)
+scale = Vector2(0.31417865, 0.22874306)
+texture = ExtResource("5_utpm4")
+
+[node name="Remendo1" type="Sprite2D" parent="." unique_id=1010658143]
+position = Vector2(250.49997, 154.5)
+scale = Vector2(0.40789476, 0.2706553)
+texture = ExtResource("4_wjjpk")
+
+[node name="Remendo3" type="Sprite2D" parent="." unique_id=193827419]
+position = Vector2(372.76788, 146.36928)
+scale = Vector2(0.24575636, 0.23883262)
+texture = ExtResource("6_bxpci")
+
 [node name="Container" type="Control" parent="." unique_id=1198750617]
 layout_mode = 3
 anchors_preset = 0
@@ -85,18 +100,3 @@ offset_top = 51.0
 offset_right = 365.0
 offset_bottom = 74.0
 text = "Velas ao Mar!"
-
-[node name="Remendo1" type="Sprite2D" parent="." unique_id=1010658143]
-position = Vector2(250.5, 154.5)
-scale = Vector2(0.4078947, 0.27065527)
-texture = ExtResource("4_wjjpk")
-
-[node name="Remendo2" type="Sprite2D" parent="." unique_id=1012363263]
-position = Vector2(312.7851, 154.14302)
-scale = Vector2(0.3141786, 0.22874303)
-texture = ExtResource("5_utpm4")
-
-[node name="Remendo3" type="Sprite2D" parent="." unique_id=193827419]
-position = Vector2(372.76788, 146.36928)
-scale = Vector2(0.24575633, 0.23883261)
-texture = ExtResource("6_bxpci")
