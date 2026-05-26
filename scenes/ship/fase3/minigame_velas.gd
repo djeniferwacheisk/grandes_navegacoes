@@ -3,12 +3,14 @@ extends Node2D
 # ── Sinais ────────────────────────────────────────────────────────────────────
 signal minigame_completo(sucesso: bool)
 var tex_mastro_solto   = preload("res://assets/miniGame/Mastro_com_Vela_Solta.png")
-var tex_mastro_firme   = preload("res://assets/miniGame/Mastro_com_Vela_Firme.png")
 var tex_corda          = preload("res://assets/miniGame/Corda.png")
 var tex_leme           = preload("res://assets/miniGame/Leme_do_Navio.png")
 var tex_navio_inclinado = preload("res://assets/miniGame/Navio_Inclinado.png")
-var tex_vela_rasgada   = preload("res://assets/miniGame/Vela_Rasgada.png")
-var tex_vela_remendada = preload("res://assets/miniGame/Vela_Remendada.png")
+var tex_mastro_parcial = preload("res://assets/miniGame/Mastro_Vela_Parcialmente_Esticada.png")
+var tex_mastro_rasgada = preload("res://assets/miniGame/Mastro_com_Vela_Rasgada.png")
+var tex_remendo1 = preload("res://assets/miniGame/Remendo1.png")
+var tex_remendo2 = preload("res://assets/miniGame/Remendo2.png")
+var tex_remendo3 = preload("res://assets/miniGame/Remendo3.png")
 
 # ── Referências ───────────────────────────────────────────────────────────────
 @onready var corda1: Sprite2D = $Container/Corda1
@@ -20,6 +22,7 @@ var tex_vela_remendada = preload("res://assets/miniGame/Vela_Remendada.png")
 @onready var barra_tempo: ProgressBar = $BarraTempo
 @onready var area_jogo: Control  = $Container
 @onready var btn_avancar: Button = $BtnAvancar
+@onready var sprite_mastro: Sprite2D = $SpriteMastro
 
 # ── Dados das fases ───────────────────────────────────────────────────────────
 var fases = [
@@ -105,10 +108,8 @@ func _mostrar_contexto() -> void:
 	_limpar_area_jogo()
 	var fase_tipo = fase["tipo"]
 	match fase_tipo:
-		"cordas":
-			_criar_sprite(tex_mastro_solto, Vector2(320, 150))
 		"qte":
-			_criar_sprite(tex_vela_rasgada, Vector2(320, 150))
+			_criar_sprite(tex_mastro_rasgada, Vector2(320, 150))
 		"equilibrio":
 			_criar_sprite(tex_navio_inclinado, Vector2(320, 150))
 
@@ -160,8 +161,9 @@ func _input(event: InputEvent) -> void:
 
 # ── CORDAS ────────────────────────────────────────────────────────────────────
 func _setup_cordas() -> void:
-	sprite_principal = _criar_sprite(tex_mastro_solto, Vector2(320, 120))
-	sprite_principal.scale = Vector2(0.5, 0.5)
+	sprite_principal = sprite_mastro
+	sprite_principal.texture = tex_mastro_solto
+	sprite_principal.rotation_degrees = 0
 	
 	# Usa as cordas fixas da cena
 	sprites_cordas.clear()
@@ -206,13 +208,22 @@ func _update_cordas(delta: float) -> void:
 
 func _checar_corda() -> void:
 	if posicao_barra >= zona_verde_min and posicao_barra <= zona_verde_max:
-		acertos += 1
-		instrucao.text = "Perfeito! (%d/3)" % acertos
-		if acertos >= 3:
-			_fase_completa()
-	else:
-		erros += 1
-		instrucao.text = "Errou! Tente novamente."
+		cordas_acertadas += 1
+		# Muda cor da corda para verde
+		if cordas_acertadas <= sprites_cordas.size():
+			sprites_cordas[cordas_acertadas - 1].modulate = Color(0, 1, 0)
+		# Muda o mastro conforme acertos
+		match cordas_acertadas:
+			1:
+				sprite_principal.rotation_degrees = 0
+			2:
+				sprite_principal.texture = tex_mastro_parcial
+				sprite_principal.rotation_degrees = 0
+			3:
+				sprite_principal.texture = tex_mastro_rasgada
+				sprite_principal.rotation_degrees = 0
+				await get_tree().create_timer(0.8).timeout
+				_fase_completa()
 
 
 # ── QTE ───────────────────────────────────────────────────────────────────────
