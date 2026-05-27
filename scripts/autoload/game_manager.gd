@@ -13,6 +13,9 @@ var minimap_revealed: Array[String] = []
 const SAVE_PATH := "user://save_data.json"
 
 
+
+
+
 func _ready() -> void:
 	if not load_game():
 		objectives_completed = {
@@ -123,3 +126,29 @@ func reset_game() -> void:
 	objectives_completed = {
 		1: {"bussola_ventos": false, "caravela": false, "astrolabio": false},
 	}
+	
+
+#Escambo fase 2
+
+var fragmentos_coletados: int = 0
+var fragmentos_ids: Array = []
+
+signal fragmento_coletado(id: String, nome: String)
+signal todos_fragmentos_coletados()
+
+func coletar_fragmento(id: String, nome: String) -> void:
+	if id in fragmentos_ids:
+		return
+	fragmentos_ids.append(id)
+	fragmentos_coletados += 1
+	print("Fragmento coletado: ", nome)
+	fragmento_coletado.emit(id, nome)
+	if fragmentos_coletados >= 3:
+		todos_fragmentos_coletados.emit()
+
+func escambo_completo() -> void:
+	print("Escambo realizado com sucesso!")
+	
+func puzzle_completo() -> void:
+	print("Puzzle do mapa concluído!")
+	get_tree().change_scene_to_file("res://scenes/fase3.tscn")  # ajuste o caminho

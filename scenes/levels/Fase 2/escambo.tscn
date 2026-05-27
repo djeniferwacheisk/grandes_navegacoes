@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d2od8jororimk"]
+
+[ext_resource type="Script" uid="uid://q2b5icjgs6ma" path="res://scripts/fase2/escambo.gd" id="1_0hfx8"]
+
+[node name="Escambo" type="CanvasLayer" unique_id=1898659198]
+script = ExtResource("1_0hfx8")
+
+[node name="Panel" type="Panel" parent="." unique_id=353910844]
+offset_right = 637.0
+offset_bottom = 358.0
+
+[node name="Layout" type="VBoxContainer" parent="Panel" unique_id=1169270347]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelTitulo" type="Label" parent="Panel/Layout" unique_id=714087119]
+layout_mode = 2
+text = "Escambo - Escolha sua troca"
+
+[node name="HBox" type="HBoxContainer" parent="Panel/Layout" unique_id=537734103]
+layout_mode = 2
+
+[node name="LadoPortugues" type="VBoxContainer" parent="Panel/Layout/HBox" unique_id=1084037629]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/Layout/HBox/LadoPortugues" unique_id=169759073]
+layout_mode = 2
+text = "Seus itens"
+
+[node name="Botoes" type="VBoxContainer" parent="Panel/Layout/HBox/LadoPortugues" unique_id=1780962710]
+layout_mode = 2
+
+[node name="LadoLocal" type="VBoxContainer" parent="Panel/Layout/HBox" unique_id=1663519043]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/Layout/HBox/LadoLocal" unique_id=1728940616]
+layout_mode = 2
+text = "Itens Locais"
+
+[node name="Botoes" type="VBoxContainer" parent="Panel/Layout/HBox/LadoLocal" unique_id=605854712]
+layout_mode = 2
+
+[node name="LabelStatus" type="Label" parent="Panel/Layout" unique_id=1539966843]
+layout_mode = 2
+text = "Selecione um item de cada lado"
+
+[node name="BtnConfirmar" type="Button" parent="Panel/Layout" unique_id=1968024113]
+layout_mode = 2
+text = "Confirmar Troca"

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btipqub0s6tdv"]
 
-[ext_resource type="Texture2D" uid="uid://cnixivrxxt81w" path="res://assets/HUD/wind.png" id="1_qpvh6"]
+[ext_resource type="Texture2D" uid="uid://c4a0elnwx32el" path="res://assets/HUD/wind.png" id="1_qpvh6"]
 [ext_resource type="Script" uid="uid://dnvoa51wj1p7d" path="res://scripts/wind_arrow.gd" id="2_fls4u"]
 
 [node name="HUD_barco" type="CanvasLayer" unique_id=220659269]

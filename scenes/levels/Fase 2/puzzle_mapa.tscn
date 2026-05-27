@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://cdswcvdlnul77"]
+
+[ext_resource type="Script" uid="uid://b46bhndiqo8qh" path="res://scripts/fase2/puzzle_mapa.gd" id="1_fdc65"]
+[ext_resource type="Script" uid="uid://dyst3p3wetpm0" path="res://scripts/fase2/peca_mapa.gd" id="2_3uh4j"]
+
+[node name="PuzzleMapa" type="CanvasLayer" unique_id=1054689854]
+script = ExtResource("1_fdc65")
+
+[node name="Panel" type="Panel" parent="." unique_id=84540341]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -160.0
+offset_right = 300.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelTitulo" type="Label" parent="Panel" unique_id=907153400]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 10.0
+offset_right = 414.0
+offset_bottom = 33.0
+text = "Monte o Mapa do Périplo Africano"
+
+[node name="LabelStatus" type="Label" parent="Panel" unique_id=154521889]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 30.0
+offset_right = 228.0
+offset_bottom = 53.0
+text = "Pecas: 0/3"
+
+[node name="Slot1" type="Control" parent="Panel" unique_id=353392722]
+anchors_preset = 0
+offset_left = 350.0
+offset_top = 50.0
+offset_right = 430.0
+offset_bottom = 130.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel/Slot1" unique_id=702157057]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(0.6255971, 0.6255971, 0.6255971, 1)
+
+[node name="Slot2" type="Control" parent="Panel" unique_id=496921808]
+anchors_preset = 0
+offset_left = 350.0
+offset_top = 130.0
+offset_right = 430.0
+offset_bottom = 210.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel/Slot2" unique_id=1635253480]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(0.6255971, 0.6255971, 0.6255971, 1)
+
+[node name="Slot3" type="Control" parent="Panel" unique_id=491386110]
+anchors_preset = 0
+offset_left = 350.0
+offset_top = 210.0
+offset_right = 430.0
+offset_bottom = 290.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel/Slot3" unique_id=1637064954]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+color = Color(0.6255971, 0.6255971, 0.6255971, 1)
+
+[node name="Peca1" type="Control" parent="Panel" unique_id=807739591]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 130.0
+offset_bottom = 130.0
+script = ExtResource("2_3uh4j")
+slot_correto = Vector2(350, 50)
+
+[node name="ColorRect" type="ColorRect" parent="Panel/Peca1" unique_id=1234260900]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.8980392, 0, 0, 1)
+
+[node name="Peca2" type="Control" parent="Panel" unique_id=445655360]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 130.0
+offset_right = 130.0
+offset_bottom = 210.0
+script = ExtResource("2_3uh4j")
+slot_correto = Vector2(350, 130)
+
+[node name="ColorRect" type="ColorRect" parent="Panel/Peca2" unique_id=1671162675]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0, 0.31108022, 0.5983687, 1)
+
+[node name="Peca3" type="Control" parent="Panel" unique_id=486650633]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 210.0
+offset_right = 130.0
+offset_bottom = 290.0
+script = ExtResource("2_3uh4j")
+slot_correto = Vector2(350, 210)
+
+[node name="ColorRect" type="ColorRect" parent="Panel/Peca3" unique_id=381461012]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(1, 1, 0, 1)

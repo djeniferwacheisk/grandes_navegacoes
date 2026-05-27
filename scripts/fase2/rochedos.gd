@@ -1,17 +1,10 @@
 extends Area2D
 
-@export var tipo = "fragmento"
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
 
-func _on_body_entered(body):
-
-	if body.name == "Barco":
-
-		if tipo == "fragmento":
-			GameManager.coletar_fragmento()
-			mostrar_dialogo()
-
-		queue_free()
-
-
-func mostrar_dialogo():
-	print("Esses símbolos antigos... dizem que os fenícios já navegaram por aqui.")
+func _on_body_entered(body: Node2D) -> void:
+	if not body is CharacterBody2D:
+		return
+	GameManager.coletar_fragmento("coastal_rocks", "Rochedos Costeiros")
+	queue_free()
