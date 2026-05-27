@@ -14,7 +14,7 @@ var faixas: Array[float] = [60.0, 120.0, 180.0]
 var _timer_caixote: float = 0.0
 var intervalo_caixote: float = 8.0
 var tempo_fase: float = 0.0
-var duracao_fase: float = 10.0
+var duracao_fase: float = 240.0
 var fase_completa: bool = false
 
 
