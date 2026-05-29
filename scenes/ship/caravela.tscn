@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d1e8jagj0wsdt"]
+
+[ext_resource type="Texture2D" uid="uid://d2vln2o6ny3mg" path="res://assets/Ship/Caravela_Intact.png" id="1_6lvev"]
+[ext_resource type="Script" uid="uid://bu2m6gu1hamo0" path="res://scenes/ship/caravela.gd" id="1_6uptq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evgmh"]
+size = Vector2(101, 18)
+
+[node name="Carvela" type="Node2D" unique_id=1702615336]
+position = Vector2(139, 183)
+script = ExtResource("1_6uptq")
+lane_y_positions = Array[float]([-150.0, 0.0, 150.0])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1268855111]
+z_index = 1
+position = Vector2(17.999992, 99.99999)
+scale = Vector2(0.55668396, 0.54776424)
+texture = ExtResource("1_6lvev")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1050025619]
+position = Vector2(112, 133)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=55477178]
+position = Vector2(-97.5, 31)
+shape = SubResource("RectangleShape2D_evgmh")
