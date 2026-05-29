@@ -1,0 +1,273 @@
+[gd_scene format=3 uid="uid://b0htbo3xuv47u"]
+
+[ext_resource type="Script" uid="uid://lnq3psd1rkh" path="res://scenes/puzzles/fase4/BalancaMercado.gd" id="1_bal"]
+[ext_resource type="Texture2D" uid="uid://bluhp15hperbv" path="res://assets/puzzles/balanca_base.png" id="2_base"]
+[ext_resource type="Texture2D" uid="uid://bwmi4lwmf6afc" path="res://assets/puzzles/balanca_braco.png" id="3_braco"]
+[ext_resource type="Texture2D" uid="uid://dwoqae2832fr1" path="res://assets/puzzles/balanca_corrente.png" id="4_corr"]
+[ext_resource type="Texture2D" uid="uid://ceg37ohog7pnw" path="res://assets/puzzles/balanca_prato.png" id="5_prato"]
+[ext_resource type="Texture2D" uid="uid://d1awwm7ip3yyx" path="res://assets/puzzles/TendaTecidos.jpg" id="6_bg"]
+[ext_resource type="Texture2D" uid="uid://c7y864upj7msb" path="res://assets/puzzles/item_tecidos.png" id="7_item"]
+
+[node name="BalancaTecidos" type="Control" unique_id=450001]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bal")
+nome_mercador = "Lakshmi — Tecelã"
+item_mercador = "Tecidos Finos de Algodão e Seda"
+peso_alvo = 12.0
+chave_troca = "troca_tecidos"
+background_texture = ExtResource("6_bg")
+item_texture = ExtResource("7_item")
+item_offset = Rect2(-10, -18, 50, 60)
+item_rotation = 20.0
+itens_disponiveis = {
+"Canela": {
+"cor": Color(0.75, 0.38, 0.08, 1),
+"icone": "saco_canela",
+"peso": 4.0
+},
+"Cardamomo": {
+"cor": Color(0.7, 0.8, 0.3, 1),
+"icone": "saco_cardamomo",
+"peso": 5.0
+},
+"Cravo": {
+"cor": Color(0.5, 0.25, 0.05, 1),
+"icone": "saco_cravo",
+"peso": 3.0
+},
+"Pimenta": {
+"cor": Color(0.85, 0.15, 0.1, 1),
+"icone": "saco_pimenta",
+"peso": 2.0
+}
+}
+
+[node name="Background" type="TextureRect" parent="." unique_id=450002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 10.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BalancaVisual" type="Control" parent="." unique_id=450003]
+anchors_preset = 0
+offset_left = 270.0
+offset_top = 22.0
+offset_right = 570.0
+offset_bottom = 172.0
+
+[node name="BaseSprite" type="TextureRect" parent="BalancaVisual" unique_id=450004]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 167.0
+offset_right = 68.0
+offset_bottom = 240.0
+texture = ExtResource("2_base")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BracoPivot" type="Control" parent="BalancaVisual" unique_id=450005]
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 174.0
+offset_right = 48.0
+offset_bottom = 174.0
+
+[node name="Braco" type="TextureRect" parent="BalancaVisual/BracoPivot" unique_id=450006]
+layout_mode = 0
+offset_left = -131.0
+offset_top = -8.0
+offset_right = 131.0
+offset_bottom = 13.0
+texture = ExtResource("3_braco")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HangEsq" type="Control" parent="BalancaVisual/BracoPivot" unique_id=450007]
+anchors_preset = 0
+offset_left = -66.0
+offset_top = 7.0
+offset_right = -66.0
+offset_bottom = 7.0
+
+[node name="Corrente" type="TextureRect" parent="BalancaVisual/BracoPivot/HangEsq" unique_id=450008]
+layout_mode = 0
+offset_left = -2.0
+offset_right = 3.0
+offset_bottom = 23.0
+texture = ExtResource("4_corr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Prato" type="TextureRect" parent="BalancaVisual/BracoPivot/HangEsq" unique_id=450009]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 16.0
+offset_right = 30.0
+offset_bottom = 35.0
+texture = ExtResource("5_prato")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HangDir" type="Control" parent="BalancaVisual/BracoPivot" unique_id=450010]
+anchors_preset = 0
+offset_left = 66.0
+offset_top = 4.0
+offset_right = 66.0
+offset_bottom = 4.0
+
+[node name="Corrente" type="TextureRect" parent="BalancaVisual/BracoPivot/HangDir" unique_id=450011]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 25.0
+texture = ExtResource("4_corr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Prato" type="TextureRect" parent="BalancaVisual/BracoPivot/HangDir" unique_id=450012]
+layout_mode = 0
+offset_left = -30.0
+offset_top = 19.0
+offset_right = 32.0
+offset_bottom = 39.0
+texture = ExtResource("5_prato")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PratoEsq" type="Control" parent="." unique_id=450015]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 20.0
+offset_right = 295.0
+offset_bottom = 110.0
+
+[node name="VBox" type="VBoxContainer" parent="PratoEsq" unique_id=450016]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TituloEsq" type="Label" parent="PratoEsq/VBox" unique_id=450017]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.75, 0.4, 1)
+theme_override_font_sizes/font_size = 8
+text = "Suas Especiarias"
+horizontal_alignment = 1
+
+[node name="Itens" type="VBoxContainer" parent="PratoEsq/VBox" unique_id=450018]
+layout_mode = 2
+
+[node name="PratoDir" type="Control" parent="." unique_id=450019]
+anchors_preset = 0
+offset_left = 380.0
+offset_top = 19.0
+offset_right = 670.0
+offset_bottom = 109.0
+
+[node name="VBox" type="VBoxContainer" parent="PratoDir" unique_id=450020]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TituloDir" type="Label" parent="PratoDir/VBox" unique_id=450021]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.75, 0.4, 1)
+theme_override_font_sizes/font_size = 8
+text = "Oferta do Mercador"
+horizontal_alignment = 1
+
+[node name="LabelOferta" type="Label" parent="PratoDir/VBox" unique_id=450022]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelAlvo" type="Label" parent="." unique_id=450023]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 271.0
+offset_right = 441.0
+offset_bottom = 284.0
+theme_override_colors/font_color = Color(0.8, 0.7, 0.3, 1)
+theme_override_font_sizes/font_size = 9
+text = "Necessário: ?"
+horizontal_alignment = 1
+
+[node name="LabelAtual" type="Label" parent="." unique_id=450024]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 271.0
+offset_right = 292.0
+offset_bottom = 284.0
+theme_override_font_sizes/font_size = 9
+text = "Sua oferta: 0"
+horizontal_alignment = 1
+
+[node name="LabelEspeciarias" type="Label" parent="." unique_id=450025]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 161.0
+offset_right = 142.0
+offset_bottom = 173.0
+theme_override_colors/font_color = Color(0.75, 0.65, 0.45, 1)
+theme_override_font_sizes/font_size = 8
+text = "Adicione sacos de especiarias:"
+
+[node name="ContainerEspeciarias" type="VBoxContainer" parent="." unique_id=450026]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 179.0
+offset_right = 87.0
+offset_bottom = 348.0
+theme_override_constants/separation = 4
+
+[node name="LabelFeedback" type="Label" parent="." unique_id=450027]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 538.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+
+[node name="BotoesHBox" type="HBoxContainer" parent="." unique_id=450028]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 322.0
+offset_right = 479.0
+offset_bottom = 344.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="BtnFechar" type="Button" parent="BotoesHBox" unique_id=450029]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Fechar"
+
+[node name="BtnLimpar" type="Button" parent="BotoesHBox" unique_id=450030]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Limpar"
+
+[node name="BtnConfirmar" type="Button" parent="BotoesHBox" unique_id=450031]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Confirmar Troca"

@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://cjk0feqs0mq3x"]
+
+[ext_resource type="Script" uid="uid://51xk40sdrgi2" path="res://scenes/puzzles/fase4/Area_VentosDoIndico.gd" id="1_vent"]
+[ext_resource type="Script" uid="uid://cg8kgovgheg4y" path="res://scripts/fase4/WindArea.gd" id="2_wind"]
+[ext_resource type="Script" uid="uid://dj8dk56wk3qkj" path="res://scripts/fase4/ReefObstacle.gd" id="3_reef"]
+[ext_resource type="PackedScene" uid="uid://cp5kmwja5kh86" path="res://scenes/ship/ship.tscn" id="4_ship"]
+
+[sub_resource type="RectangleShape2D" id="R_wind1"]
+size = Vector2(300, 200)
+
+[sub_resource type="RectangleShape2D" id="R_wind2"]
+size = Vector2(250, 200)
+
+[sub_resource type="RectangleShape2D" id="R_wind3"]
+size = Vector2(200, 300)
+
+[sub_resource type="RectangleShape2D" id="R_wind4"]
+size = Vector2(300, 200)
+
+[sub_resource type="RectangleShape2D" id="R_reef1"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="R_reef2"]
+size = Vector2(50, 80)
+
+[sub_resource type="RectangleShape2D" id="R_reef3"]
+size = Vector2(70, 50)
+
+[sub_resource type="RectangleShape2D" id="R_carta"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="R_chegada"]
+size = Vector2(80, 400)
+
+[node name="Area_VentosDoIndico" type="Node2D" unique_id=1696097535]
+script = ExtResource("1_vent")
+
+[node name="Mar" type="ColorRect" parent="." unique_id=1716074542]
+z_index = -10
+offset_left = -1000.0
+offset_top = -600.0
+offset_right = 2000.0
+offset_bottom = 600.0
+color = Color(0.04, 0.22, 0.52, 1)
+
+[node name="Barco" parent="." unique_id=1191889438 instance=ExtResource("4_ship")]
+position = Vector2(-400, 0)
+
+[node name="ZonasVento" type="Node2D" parent="." unique_id=1496793491]
+
+[node name="Vento1Favoravel" type="Area2D" parent="ZonasVento" unique_id=1066924101]
+position = Vector2(-100, 0)
+script = ExtResource("2_wind")
+force = 60.0
+
+[node name="Col" type="CollisionShape2D" parent="ZonasVento/Vento1Favoravel" unique_id=1169929884]
+shape = SubResource("R_wind1")
+
+[node name="SetaLabel" type="Label" parent="ZonasVento/Vento1Favoravel" unique_id=1584989265]
+modulate = Color(0.3, 1, 0.3, 0.7)
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 24
+text = "→"
+horizontal_alignment = 1
+
+[node name="Vento2Lateral" type="Area2D" parent="ZonasVento" unique_id=261241175]
+position = Vector2(400, -200)
+script = ExtResource("2_wind")
+direction = Vector2(0, 1)
+is_favorable = false
+
+[node name="Col" type="CollisionShape2D" parent="ZonasVento/Vento2Lateral" unique_id=187636945]
+shape = SubResource("R_wind2")
+
+[node name="SetaLabel" type="Label" parent="ZonasVento/Vento2Lateral" unique_id=1416055199]
+modulate = Color(1, 0.5, 0.1, 0.7)
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 24
+text = "↓"
+horizontal_alignment = 1
+
+[node name="Vento3Forte" type="Area2D" parent="ZonasVento" unique_id=1603570366]
+position = Vector2(800, 100)
+script = ExtResource("2_wind")
+direction = Vector2(0.7, -0.3)
+force = 100.0
+
+[node name="Col" type="CollisionShape2D" parent="ZonasVento/Vento3Forte" unique_id=487037761]
+shape = SubResource("R_wind3")
+
+[node name="SetaLabel" type="Label" parent="ZonasVento/Vento3Forte" unique_id=907248954]
+modulate = Color(0.3, 1, 0.3, 0.7)
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 24
+text = "↗"
+horizontal_alignment = 1
+
+[node name="Vento4Perigoso" type="Area2D" parent="ZonasVento" unique_id=106181831]
+position = Vector2(1100, -150)
+script = ExtResource("2_wind")
+direction = Vector2(-0.5, 0.8)
+force = 90.0
+is_favorable = false
+
+[node name="Col" type="CollisionShape2D" parent="ZonasVento/Vento4Perigoso" unique_id=407955163]
+shape = SubResource("R_wind4")
+
+[node name="SetaLabel" type="Label" parent="ZonasVento/Vento4Perigoso" unique_id=1408023609]
+modulate = Color(1, 0.3, 0.1, 0.7)
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 24
+text = "↙"
+horizontal_alignment = 1
+
+[node name="Recifes" type="Node2D" parent="." unique_id=1667222404]
+
+[node name="Recife1" type="StaticBody2D" parent="Recifes" unique_id=2143728337]
+position = Vector2(200, 250)
+script = ExtResource("3_reef")
+
+[node name="Col" type="CollisionShape2D" parent="Recifes/Recife1" unique_id=472725284]
+shape = SubResource("R_reef1")
+
+[node name="Visual" type="ColorRect" parent="Recifes/Recife1" unique_id=1108037847]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+color = Color(0.35, 0.25, 0.1, 1)
+
+[node name="Recife2" type="StaticBody2D" parent="Recifes" unique_id=856035804]
+position = Vector2(600, -280)
+script = ExtResource("3_reef")
+
+[node name="Col" type="CollisionShape2D" parent="Recifes/Recife2" unique_id=76029656]
+shape = SubResource("R_reef2")
+
+[node name="Visual" type="ColorRect" parent="Recifes/Recife2" unique_id=457885439]
+offset_left = -25.0
+offset_top = -40.0
+offset_right = 25.0
+offset_bottom = 40.0
+color = Color(0.35, 0.25, 0.1, 1)
+
+[node name="Recife3" type="StaticBody2D" parent="Recifes" unique_id=1398988935]
+position = Vector2(950, 300)
+script = ExtResource("3_reef")
+
+[node name="Col" type="CollisionShape2D" parent="Recifes/Recife3" unique_id=1136862116]
+shape = SubResource("R_reef3")
+
+[node name="Visual" type="ColorRect" parent="Recifes/Recife3" unique_id=1269251855]
+offset_left = -35.0
+offset_top = -25.0
+offset_right = 35.0
+offset_bottom = 25.0
+color = Color(0.35, 0.25, 0.1, 1)
+
+[node name="CartaNavegacao" type="Area2D" parent="." unique_id=1932417940]
+position = Vector2(700, -50)
+
+[node name="Col" type="CollisionShape2D" parent="CartaNavegacao" unique_id=966097494]
+shape = SubResource("R_carta")
+
+[node name="Visual" type="ColorRect" parent="CartaNavegacao" unique_id=826334910]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.9, 0.75, 0.3, 0.95)
+
+[node name="Label" type="Label" parent="CartaNavegacao" unique_id=997297218]
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = -20.0
+theme_override_font_sizes/font_size = 7
+text = "📜 Carta"
+horizontal_alignment = 1
+
+[node name="ZonaChegada" type="Area2D" parent="." unique_id=1529101657]
+position = Vector2(1500, 0)
+
+[node name="Col" type="CollisionShape2D" parent="ZonaChegada" unique_id=8627881]
+shape = SubResource("R_chegada")
+
+[node name="Visual" type="ColorRect" parent="ZonaChegada" unique_id=244880744]
+offset_left = -40.0
+offset_top = -200.0
+offset_right = 40.0
+offset_bottom = 200.0
+color = Color(0.9, 0.7, 0.2, 0.4)
+
+[node name="Label" type="Label" parent="ZonaChegada" unique_id=702237034]
+offset_left = -60.0
+offset_top = -220.0
+offset_right = 60.0
+offset_bottom = -200.0
+theme_override_font_sizes/font_size = 9
+text = "CALECUTE"
+horizontal_alignment = 1
