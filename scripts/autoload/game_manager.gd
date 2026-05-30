@@ -9,7 +9,7 @@ var current_phase: int = 1
 var inventory: Array[Dictionary] = []
 var objectives_completed: Dictionary = {}
 var minimap_revealed: Array[String] = []
-var phase_data: Dictionary = {} 
+var phase_data: Dictionary = {}
 
 const SAVE_PATH := "user://save_data.json"
 
@@ -23,7 +23,7 @@ static func _default_objectives() -> Dictionary:
 
 func _ready() -> void:
 	objectives_completed = _default_objectives()
-	load_game()  
+	load_game()
 
 
 func add_item(item_name: String, description: String = "", icon_path: String = "") -> void:
@@ -56,7 +56,6 @@ func get_item_count(item_name: String) -> int:
 
 
 func complete_objective(phase: int, objective: String) -> void:
-	
 	if not objectives_completed.has(phase):
 		objectives_completed[phase] = {}
 	objectives_completed[phase][objective] = true
@@ -131,7 +130,6 @@ func load_game() -> bool:
 	for area in raw_minimap:
 		minimap_revealed.append(area)
 	var raw_objectives = data.get("objectives_completed", {})
-
 	objectives_completed = _default_objectives()
 	for key in raw_objectives:
 		var phase_key := int(key)
@@ -153,3 +151,29 @@ func reset_game() -> void:
 	minimap_revealed.clear()
 	phase_data.clear()
 	objectives_completed = _default_objectives()
+
+
+# Escambo fase 2
+
+var fragmentos_coletados: int = 0
+var fragmentos_ids: Array = []
+
+signal fragmento_coletado(id: String, nome: String)
+signal todos_fragmentos_coletados()
+
+func coletar_fragmento(id: String, nome: String) -> void:
+	if id in fragmentos_ids:
+		return
+	fragmentos_ids.append(id)
+	fragmentos_coletados += 1
+	print("Fragmento coletado: ", nome)
+	fragmento_coletado.emit(id, nome)
+	if fragmentos_coletados >= 3:
+		todos_fragmentos_coletados.emit()
+
+func escambo_completo() -> void:
+	print("Escambo realizado com sucesso!")
+
+func puzzle_completo() -> void:
+	print("Puzzle do mapa concluído!")
+	get_tree().change_scene_to_file("res://scenes/fase3.tscn")
