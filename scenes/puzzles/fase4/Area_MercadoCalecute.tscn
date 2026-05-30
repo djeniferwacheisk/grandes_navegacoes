@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dcktu8sumb2tm"]
+
+[ext_resource type="Script" uid="uid://rcoh6jxwghnp" path="res://scenes/puzzles/fase4/Area_MercadoCalecute.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="Texture2D" uid="uid://bkbyjm2f4hilq" path="res://assets/MercadoCalecute.png" id="2_wtkef"]
+[ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
+[ext_resource type="Script" uid="uid://bh7plrrclwmrq" path="res://scenes/levels/fase1/puzzle_trigger.gd" id="4_trigger"]
+
+[sub_resource type="RectangleShape2D" id="wall_top"]
+size = Vector2(640, 16)
+
+[sub_resource type="RectangleShape2D" id="wall_bottom"]
+size = Vector2(640, 16)
+
+[sub_resource type="RectangleShape2D" id="wall_left"]
+size = Vector2(16, 360)
+
+[sub_resource type="RectangleShape2D" id="wall_right"]
+size = Vector2(16, 360)
+
+[sub_resource type="RectangleShape2D" id="shape_trigger"]
+size = Vector2(630, 101)
+
+[node name="Area_MercadoCalecute" type="Node2D" unique_id=834842615]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1537926217]
+position = Vector2(323.74997, 222.5)
+scale = Vector2(0.6293945, 0.6237501)
+texture = ExtResource("2_wtkef")
+
+[node name="Triggers" type="Node2D" parent="." unique_id=1134260706]
+
+[node name="TriggerFerramentas" type="Area2D" parent="Triggers" unique_id=1262386561]
+position = Vector2(113, 159)
+script = ExtResource("4_trigger")
+
+[node name="Label" type="Label" parent="Triggers/TriggerFerramentas" unique_id=1612144301]
+offset_left = -61.0
+offset_top = -8.0
+offset_right = 59.0
+offset_bottom = 6.0
+theme_override_colors/font_color = Color(1, 1, 0.6, 1)
+theme_override_font_sizes/font_size = 7
+text = "[E] Negociar"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TriggerTecidos" type="Area2D" parent="Triggers" unique_id=1297823084]
+position = Vector2(325, 154)
+script = ExtResource("4_trigger")
+
+[node name="Label" type="Label" parent="Triggers/TriggerTecidos" unique_id=264655701]
+offset_left = -61.0
+offset_top = -5.0
+offset_right = 59.0
+offset_bottom = 9.0
+theme_override_colors/font_color = Color(1, 1, 0.6, 1)
+theme_override_font_sizes/font_size = 7
+text = "[E] Negociar"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TriggerVinhos" type="Area2D" parent="Triggers" unique_id=1149923361]
+position = Vector2(538, 156)
+script = ExtResource("4_trigger")
+
+[node name="Label" type="Label" parent="Triggers/TriggerVinhos" unique_id=1571982798]
+offset_left = -59.0
+offset_top = -8.0
+offset_right = 61.0
+offset_bottom = 6.0
+theme_override_colors/font_color = Color(1, 1, 0.6, 1)
+theme_override_font_sizes/font_size = 7
+text = "[E] Negociar"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Paredes" type="Node2D" parent="." unique_id=61373573]
+
+[node name="Top" type="StaticBody2D" parent="Paredes" unique_id=75234968]
+position = Vector2(320, 0)
+
+[node name="Col" type="CollisionShape2D" parent="Paredes/Top" unique_id=368139573]
+shape = SubResource("wall_top")
+
+[node name="Bottom" type="StaticBody2D" parent="Paredes" unique_id=1688068336]
+position = Vector2(320, 360)
+
+[node name="Col" type="CollisionShape2D" parent="Paredes/Bottom" unique_id=669009335]
+shape = SubResource("wall_bottom")
+
+[node name="Left" type="StaticBody2D" parent="Paredes" unique_id=270266207]
+position = Vector2(0, 180)
+
+[node name="Col" type="CollisionShape2D" parent="Paredes/Left" unique_id=1306900294]
+shape = SubResource("wall_left")
+
+[node name="Right" type="StaticBody2D" parent="Paredes" unique_id=1005040115]
+position = Vector2(640, 180)
+
+[node name="Col" type="CollisionShape2D" parent="Paredes/Right" unique_id=676946287]
+shape = SubResource("wall_right")
+
+[node name="ParedesTendas" type="Node2D" parent="." unique_id=260633526]
+
+[node name="Parede" type="StaticBody2D" parent="ParedesTendas" unique_id=1217165779]
+position = Vector2(107, 155)
+
+[node name="Col" type="CollisionShape2D" parent="ParedesTendas/Parede" unique_id=72703275]
+position = Vector2(211, -25.5)
+shape = SubResource("shape_trigger")
+
+[node name="Player" parent="." unique_id=677279666 instance=ExtResource("2_player")]
+position = Vector2(320, 300)
+scale = Vector2(1.2, 1.2)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=501417602]
+layer = 5
+
+[node name="LabelProgresso" type="Label" parent="HUD" unique_id=72741680]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 9
+text = "Trocas: 0 / 3"
+horizontal_alignment = 2
+
+[node name="DialogBox" parent="." unique_id=1434243468 instance=ExtResource("3_dialog")]
+
+[connection signal="triggered" from="Triggers/TriggerFerramentas" to="." method="_on_tenda_ferramentas"]
+[connection signal="triggered" from="Triggers/TriggerTecidos" to="." method="_on_tenda_tecidos"]
+[connection signal="triggered" from="Triggers/TriggerVinhos" to="." method="_on_tenda_vinhos"]

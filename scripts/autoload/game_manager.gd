@@ -9,18 +9,21 @@ var current_phase: int = 1
 var inventory: Array[Dictionary] = []
 var objectives_completed: Dictionary = {}
 var minimap_revealed: Array[String] = []
+var phase_data: Dictionary = {}
 
 const SAVE_PATH := "user://save_data.json"
 
 
-
+static func _default_objectives() -> Dictionary:
+	return {
+		1: {"bussola_ventos": false, "caravela": false, "astrolabio": false},
+		4: {"tripulacao_viva": false, "ventos_indico": false, "carta_navegacao": false, "mercado_calecute": false},
+	}
 
 
 func _ready() -> void:
-	if not load_game():
-		objectives_completed = {
-			1: {"bussola_ventos": false, "caravela": false, "astrolabio": false},
-		}
+	objectives_completed = _default_objectives()
+	load_game()
 
 
 func add_item(item_name: String, description: String = "", icon_path: String = "") -> void:
@@ -53,11 +56,12 @@ func get_item_count(item_name: String) -> int:
 
 
 func complete_objective(phase: int, objective: String) -> void:
-	if objectives_completed.has(phase):
-		objectives_completed[phase][objective] = true
-		objective_completed.emit(phase, objective)
-		if is_phase_complete(phase):
-			phase_changed.emit(phase + 1)
+	if not objectives_completed.has(phase):
+		objectives_completed[phase] = {}
+	objectives_completed[phase][objective] = true
+	objective_completed.emit(phase, objective)
+	if is_phase_complete(phase):
+		phase_changed.emit(phase + 1)
 
 
 func is_objective_complete(phase: int, objective: String) -> bool:
@@ -81,12 +85,25 @@ func reveal_minimap_area(area_id: String) -> void:
 		minimap_area_revealed.emit(area_id)
 
 
+func set_phase_flag(phase: int, key: String, value) -> void:
+	if not phase_data.has(phase):
+		phase_data[phase] = {}
+	phase_data[phase][key] = value
+
+
+func get_phase_flag(phase: int, key: String, default = null):
+	if phase_data.has(phase) and phase_data[phase].has(key):
+		return phase_data[phase][key]
+	return default
+
+
 func save_game() -> void:
 	var data := {
 		"current_phase": current_phase,
 		"inventory": inventory,
 		"objectives_completed": objectives_completed,
 		"minimap_revealed": minimap_revealed,
+		"phase_data": phase_data,
 	}
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
@@ -113,9 +130,18 @@ func load_game() -> bool:
 	for area in raw_minimap:
 		minimap_revealed.append(area)
 	var raw_objectives = data.get("objectives_completed", {})
-	objectives_completed = {}
+	objectives_completed = _default_objectives()
 	for key in raw_objectives:
-		objectives_completed[int(key)] = raw_objectives[key]
+		var phase_key := int(key)
+		var saved_phase: Dictionary = raw_objectives[key]
+		if not objectives_completed.has(phase_key):
+			objectives_completed[phase_key] = {}
+		for obj_key in saved_phase:
+			objectives_completed[phase_key][obj_key] = saved_phase[obj_key]
+	var raw_phase_data = data.get("phase_data", {})
+	phase_data = {}
+	for key in raw_phase_data:
+		phase_data[int(key)] = raw_phase_data[key]
 	return true
 
 
@@ -123,12 +149,11 @@ func reset_game() -> void:
 	current_phase = 1
 	inventory.clear()
 	minimap_revealed.clear()
-	objectives_completed = {
-		1: {"bussola_ventos": false, "caravela": false, "astrolabio": false},
-	}
-	
+	phase_data.clear()
+	objectives_completed = _default_objectives()
 
-#Escambo fase 2
+
+# Escambo fase 2
 
 var fragmentos_coletados: int = 0
 var fragmentos_ids: Array = []
@@ -148,7 +173,7 @@ func coletar_fragmento(id: String, nome: String) -> void:
 
 func escambo_completo() -> void:
 	print("Escambo realizado com sucesso!")
-	
+
 func puzzle_completo() -> void:
 	print("Puzzle do mapa concluído!")
-	get_tree().change_scene_to_file("res://scenes/fase3.tscn")  # ajuste o caminho
+	get_tree().change_scene_to_file("res://scenes/fase3.tscn")

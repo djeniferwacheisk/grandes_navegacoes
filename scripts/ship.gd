@@ -46,10 +46,24 @@ func _ready():
 
 	default_wave_intensity = wave_intensity
 	default_wave_speed = wave_speed
+	add_to_group("barco")
 	
 	#health_bar.max_value = max_health
 	#health_bar.value = health
 
+
+
+## FASE 4 — suporte a força externa (ventos) e multiplicador de velocidade
+var external_force: Vector2 = Vector2.ZERO
+var _speed_multiplier: float = 1.0
+
+
+func apply_external_force(force: Vector2) -> void:
+	external_force = force
+
+
+func set_speed_multiplier(mult: float) -> void:
+	_speed_multiplier = clamp(mult, 0.1, 1.0)
 
 func _physics_process(delta):
 
@@ -112,8 +126,9 @@ func _physics_process(delta):
 			rotation += rotation_speed * delta
 
 	# MOVIMENTO
-	var forward = transform.y * current_speed
-	velocity = forward
+	var forward = transform.y * current_speed * _speed_multiplier
+	velocity = forward + external_force
+	external_force = Vector2.ZERO
 
 	# ONDAS
 	wave_time += delta
@@ -139,14 +154,14 @@ func take_damage(amount):
 	health -= amount
 	health = clamp(health, 0, max_health)
 
-	health_bar.value = health
+	if health_bar:
+		health_bar.value = health
+		if health < max_health * 0.3:
+			health_bar.modulate = Color(1,0,0)
+		else:
+			health_bar.modulate = Color(1,1,1)
 
 	print("Vida:", health)
-	
-	if health < max_health * 0.3:
-		health_bar.modulate = Color(1,0,0)
-	else:
-		health_bar.modulate = Color(1,1,1)
 
 	if health <= 0:
 		die()
