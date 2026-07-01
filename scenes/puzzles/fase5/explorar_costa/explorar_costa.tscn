@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://explorar_costa"]
+
+[ext_resource type="Script" path="res://scenes/puzzles/fase5/explorar_costa/explorar_costa.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
+[ext_resource type="Script" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
+size = Vector2(1280, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(40, 40)
+
+[node name="ExplorarCosta" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Fundo" type="Node2D" parent="."]
+
+[node name="Ceu" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 0
+offset_right = 1152
+offset_bottom = 300
+color = Color(0.4, 0.72, 0.95, 1)
+
+[node name="Mar" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 300
+offset_right = 1152
+offset_bottom = 450
+color = Color(0.1, 0.4, 0.78, 1)
+
+[node name="Areia" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 450
+offset_right = 1152
+offset_bottom = 550
+color = Color(0.87, 0.78, 0.54, 1)
+
+[node name="Mata" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 200
+offset_right = 1152
+offset_bottom = 460
+color = Color(0.08, 0.45, 0.08, 1)
+
+[node name="Morro" type="ColorRect" parent="Fundo"]
+offset_left = 700
+offset_top = 150
+offset_right = 950
+offset_bottom = 460
+color = Color(0.35, 0.52, 0.25, 1)
+
+[node name="Chao" type="StaticBody2D" parent="."]
+position = Vector2(576, 510)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
+shape = SubResource("RectangleShape2D_chao")
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="MorroTrigger" type="Area2D" parent="Triggers"]
+position = Vector2(820, 460)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("4_trigger")
+metadata/ponto_id = "morro"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/MorroTrigger"]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="Triggers/MorroTrigger"]
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 70.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 10
+text = "[E] Serra e Morro"
+horizontal_alignment = 1
+
+[node name="FlorestaTrigger" type="Area2D" parent="Triggers"]
+position = Vector2(300, 460)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("4_trigger")
+metadata/ponto_id = "floresta"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/FlorestaTrigger"]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="Triggers/FlorestaTrigger"]
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 70.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 10
+text = "[E] Floresta Tropical"
+horizontal_alignment = 1
+
+[node name="FaunaTrigger" type="Area2D" parent="Triggers"]
+position = Vector2(560, 460)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("4_trigger")
+metadata/ponto_id = "fauna"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/FaunaTrigger"]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="Triggers/FaunaTrigger"]
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 70.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 10
+text = "[E] Fauna Colorida"
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(100, 460)
+
+[node name="DialogBox" parent="." instance=ExtResource("3_dialog")]
+
+[connection signal="triggered" from="Triggers/MorroTrigger" to="." method="_on_morro_interact"]
+[connection signal="triggered" from="Triggers/FlorestaTrigger" to="." method="_on_floresta_interact"]
+[connection signal="triggered" from="Triggers/FaunaTrigger" to="." method="_on_fauna_interact"]

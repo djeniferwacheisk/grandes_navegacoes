@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://puzzle_cruz"]
+
+[ext_resource type="Script" path="res://scenes/puzzles/fase5/puzzle_cruz/puzzle_cruz.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
+[ext_resource type="Script" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
+size = Vector2(1280, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(40, 40)
+
+[node name="PuzzleCruz" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Fundo" type="Node2D" parent="."]
+
+[node name="Ceu" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 0
+offset_right = 1152
+offset_bottom = 320
+color = Color(0.9, 0.65, 0.35, 1)
+
+[node name="Mar" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 320
+offset_right = 1152
+offset_bottom = 430
+color = Color(0.12, 0.4, 0.8, 1)
+
+[node name="Areia" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 430
+offset_right = 1152
+offset_bottom = 510
+color = Color(0.87, 0.78, 0.54, 1)
+
+[node name="Sol" type="ColorRect" parent="Fundo"]
+offset_left = 540
+offset_top = 60
+offset_right = 612
+offset_bottom = 130
+color = Color(1.0, 0.88, 0.2, 1)
+
+[node name="Navio1" type="ColorRect" parent="Fundo"]
+offset_left = 750
+offset_top = 300
+offset_right = 850
+offset_bottom = 360
+color = Color(0.55, 0.4, 0.18, 1)
+
+[node name="Navio2" type="ColorRect" parent="Fundo"]
+offset_left = 870
+offset_top = 310
+offset_right = 960
+offset_bottom = 365
+color = Color(0.55, 0.4, 0.18, 1)
+
+[node name="Chao" type="StaticBody2D" parent="."]
+position = Vector2(576, 510)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
+shape = SubResource("RectangleShape2D_chao")
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="TroncoTrigger" type="Area2D" parent="Triggers"]
+position = Vector2(250, 460)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("4_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TroncoTrigger"]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="Triggers/TroncoTrigger"]
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 80.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 10
+text = "[E] Carregar Troncos"
+horizontal_alignment = 1
+
+[node name="CordaTrigger" type="Area2D" parent="Triggers"]
+position = Vector2(500, 460)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("4_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/CordaTrigger"]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="Triggers/CordaTrigger"]
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 80.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 10
+text = "[E] Amarrar Cordas"
+horizontal_alignment = 1
+
+[node name="AlinharTrigger" type="Area2D" parent="Triggers"]
+position = Vector2(750, 460)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("4_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/AlinharTrigger"]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="Triggers/AlinharTrigger"]
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 80.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 10
+text = "[E] Alinhar com o Sol"
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(100, 460)
+
+[node name="DialogBox" parent="." instance=ExtResource("3_dialog")]
+
+[connection signal="triggered" from="Triggers/TroncoTrigger" to="." method="_on_tronco_interact"]
+[connection signal="triggered" from="Triggers/CordaTrigger" to="." method="_on_corda_interact"]
+[connection signal="triggered" from="Triggers/AlinharTrigger" to="." method="_on_alinhar_interact"]
