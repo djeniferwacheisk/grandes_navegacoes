@@ -8,13 +8,13 @@ extends Node2D
 @onready var barra_progresso: TextureProgressBar = $HUD/BarraProgresso
 @onready var mini_navio = $HUD/MiniNavio
 
-var onda_cena = preload("res://scenes/ship/fase3/onda.tscn")
-var caixote_cena = preload("res://scenes/ship/fase3/caixote.tscn")
+var onda_cena = preload("res://scenes/levels/fase3/onda.tscn")
+var caixote_cena = preload("res://scenes/levels/fase3/caixote.tscn")
 var faixas: Array[float] = [60.0, 120.0, 180.0]
 var _timer_caixote: float = 0.0
 var intervalo_caixote: float = 8.0
 var tempo_fase: float = 0.0
-var duracao_fase: float = 240.0
+var duracao_fase: float = 60.0
 var fase_completa: bool = false
 
 

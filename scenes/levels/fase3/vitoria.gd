@@ -19,4 +19,4 @@ func mostrar() -> void:
 func _on_continuar() -> void:
 	get_tree().paused = false
 	# Por enquanto volta ao menu principal
-	get_tree().change_scene_to_file("res://scenes/ship/fase3/minigame_velas.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/fase3/minigame_velas.tscn")

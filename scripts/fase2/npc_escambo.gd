@@ -29,7 +29,7 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _abrir_escambo() -> void:
 	print("abrindo escambo")
-	var escambo_scene = preload("res://scenes/levels/Fase 2/escambo.tscn")
+	var escambo_scene = preload("res://scenes/levels/fase2/escambo.tscn")
 	var escambo = escambo_scene.instantiate()
 	get_tree().root.add_child(escambo)
 	print("escambo adicionado: ", escambo)

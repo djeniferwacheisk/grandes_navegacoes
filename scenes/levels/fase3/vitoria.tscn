@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cotbc8n8ffy46"]
 
-[ext_resource type="Script" uid="uid://eygyh03y6of4" path="res://scenes/ship/fase3/vitoria.gd" id="1_ktndq"]
+[ext_resource type="Script" uid="uid://eygyh03y6of4" path="res://scenes/levels/fase3/vitoria.gd" id="1_ktndq"]
 
 [node name="Vitoria" type="CanvasLayer" unique_id=385634118]
 script = ExtResource("1_ktndq")

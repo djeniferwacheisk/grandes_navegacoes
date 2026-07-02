@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8bsqo4lvhxj6"]
 
-[ext_resource type="Script" uid="uid://d2doskvcuuwkv" path="res://scenes/ship/fase3/caixote.gd" id="1_yit5s"]
+[ext_resource type="Script" uid="uid://d2doskvcuuwkv" path="res://scenes/levels/fase3/caixote.gd" id="1_yit5s"]
 [ext_resource type="Texture2D" uid="uid://d08mu20tspx24" path="res://assets/objects/Caixote.png" id="2_fku3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fku3x"]

@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://djcnvn2ut2baf" path="res://assets/Ship/Caravela_Avariada_Medium.png" id="6_wok1e"]
 [ext_resource type="Texture2D" uid="uid://mtu3die6hjs4" path="res://assets/Ship/Caravela_Critical.png" id="7_2unnx"]
 [ext_resource type="Texture2D" uid="uid://cowmlptsp6bq8" path="res://assets/Ship/Caravela_Afundando.png" id="7_mxg1h"]
-[ext_resource type="Script" uid="uid://q5pni4s8jlmx" path="res://scenes/ship/fase3/fase3_tormentas.gd" id="9_843s1"]
+[ext_resource type="Script" uid="uid://q5pni4s8jlmx" path="res://scenes/levels/fase3/fase3_tormentas.gd" id="9_843s1"]
 [ext_resource type="Texture2D" uid="uid://cetdhsl87ydfl" path="res://assets/HUD/Design_sem_nome__1_-removebg-preview.png" id="10_mxg1h"]
 [ext_resource type="Texture2D" uid="uid://comdk6fj6j0vn" path="res://assets/HUD/Design_sem_nome__2_-removebg-preview (1).png" id="11_wok1e"]
 [ext_resource type="Texture2D" uid="uid://dul8cjslfsqoa" path="res://assets/HUD/Design_sem_nome-removebg-preview.png" id="12_62rcq"]
-[ext_resource type="PackedScene" uid="uid://8ohi17ytgl2s" path="res://scenes/ship/fase3/game_over.tscn" id="12_mxg1h"]
+[ext_resource type="PackedScene" uid="uid://8ohi17ytgl2s" path="res://scenes/levels/fase3/game_over.tscn" id="12_mxg1h"]
 [ext_resource type="Texture2D" uid="uid://cg1bvbb6n0d06" path="res://assets/HUD/Caravela_Barra_Progresso.png" id="12_wok1e"]
-[ext_resource type="PackedScene" uid="uid://cotbc8n8ffy46" path="res://scenes/ship/fase3/vitoria.tscn" id="14_62rcq"]
+[ext_resource type="PackedScene" uid="uid://cotbc8n8ffy46" path="res://scenes/levels/fase3/vitoria.tscn" id="14_62rcq"]
 
 [node name="Fase3Tormentas" type="Node2D" unique_id=776043917]
 script = ExtResource("9_843s1")

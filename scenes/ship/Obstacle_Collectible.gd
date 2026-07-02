@@ -1,12 +1,12 @@
-## ─── Obstacle.gd ────────────────────────────────────────────────────────────
-## Anexe em cada cena de obstáculo (onda, corrente, etc.)
+## Obstacle.gd
+## Anexe em cada cena de obstaculo (onda, corrente, etc.)
 extends Area2D
 
 @export var damage: int = 1
-@export var speed: float = 300.0   # velocidade de scroll (px/s, deve casar com o cenário)
-@export var warning_time: float = 1.0  # segundos de aviso antes de chegar na tela
+@export var speed: float = 300.0
+@export var warning_time: float = 1.0
 
-@onready var warning_sprite: Sprite2D = $WarningSprite  # seta/exclamação de aviso (opcional)
+@onready var warning_sprite: Sprite2D = $WarningSprite
 
 var _warned: bool = false
 
@@ -28,23 +28,22 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	# Suporte para HurtBox como Area2D
 	var parent := area.get_parent()
 	if parent and parent.has_method("take_damage"):
 		parent.take_damage(damage)
 
 
-## ─── ObstacleSpawner.gd ──────────────────────────────────────────────────────
+## ObstacleSpawner.gd
 ## Anexe em um Node2D dentro da cena do Objetivo 1.
 class_name ObstacleSpawner
 extends Node2D
 
-@export var obstacle_scenes: Array[PackedScene]  # arraste as cenas de obstáculo
+@export var obstacle_scenes: Array[PackedScene]
 @export var lane_y_positions: Array[float] = [180.0, 320.0, 460.0]
-@export var spawn_x: float = 900.0              # fora da tela à direita
+@export var spawn_x: float = 900.0
 @export var min_interval: float = 1.2
 @export var max_interval: float = 3.0
-@export var difficulty_ramp: float = 0.02       # reduz o intervalo por segundo de jogo
+@export var difficulty_ramp: float = 0.02
 
 var _timer: float = 0.0
 var _next_interval: float = 2.0
@@ -87,7 +86,7 @@ func _schedule_next() -> void:
 	_next_interval = randf_range(min_interval, max(min_interval + 0.2, reduced))
 
 
-## ─── Collectible.gd ──────────────────────────────────────────────────────────
+## Collectible.gd
 ## Anexe nos caixotes de reparo flutuantes.
 class_name Collectible
 extends Area2D
@@ -98,8 +97,8 @@ enum Type { REPAIR_CRATE, ROPE }
 @export var heal_amount: int = 1
 @export var float_amplitude: float = 8.0
 @export var float_speed: float = 2.0
-@export var blink_start_time: float = 2.5   # começa a piscar N segundos antes de sumir
-@export var lifetime: float = 5.0           # tempo de vida total
+@export var blink_start_time: float = 2.5
+@export var lifetime: float = 5.0
 
 signal collected(collectible_type: int)
 
@@ -119,11 +118,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_time += delta
-
-	# Flutua suavemente
 	position.y = _origin_y + sin(_time * float_speed) * float_amplitude
-
-	# Pisca ao perto do fim
 	var remaining := lifetime - _time
 	if remaining <= blink_start_time:
 		_blink_timer += delta
@@ -131,7 +126,6 @@ func _process(delta: float) -> void:
 			_blink_visible = not _blink_visible
 			sprite.visible = _blink_visible
 			_blink_timer = 0.0
-
 	if _time >= lifetime:
 		queue_free()
 
@@ -150,5 +144,4 @@ func _collect(target: Node) -> void:
 	if type == Type.REPAIR_CRATE:
 		target.heal(heal_amount)
 	emit_signal("collected", type)
-	# Partícula de coleta pode ser instanciada aqui se desejar
 	queue_free()

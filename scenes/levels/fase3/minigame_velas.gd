@@ -346,7 +346,7 @@ func _proxima_fase() -> void:
 	instrucao.modulate = Color(1, 1, 1)
 	if fase_atual >= fases.size() - 1:
 		# Vai para o puzzle
-		get_tree().change_scene_to_file("res://scenes/ship/fase3/puzzle_fase3.tscn")
+		get_tree().change_scene_to_file("res://scenes/levels/fase3/puzzle_fase3.tscn")
 	else:
 		fase_atual += 1
 		_mostrar_contexto()
