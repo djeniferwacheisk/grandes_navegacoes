@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://primeiro_contato"]
+
+[ext_resource type="Script" path="res://scenes/puzzles/fase5/primeiro_contato/primeiro_contato.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
+[ext_resource type="Script" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
+size = Vector2(1280, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(40, 40)
+
+[node name="PrimeiroContato" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Fundo" type="Node2D" parent="."]
+
+[node name="Ceu" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 0
+offset_right = 1152
+offset_bottom = 280
+color = Color(0.55, 0.8, 0.98, 1)
+
+[node name="Mar" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 280
+offset_right = 1152
+offset_bottom = 400
+color = Color(0.12, 0.42, 0.82, 1)
+
+[node name="Areia" type="ColorRect" parent="Fundo"]
+offset_left = 0
+offset_top = 400
+offset_right = 1152
+offset_bottom = 510
+color = Color(0.87, 0.78, 0.54, 1)
+
+[node name="Mata" type="ColorRect" parent="Fundo"]
+offset_left = 600
+offset_top = 200
+offset_right = 1152
+offset_bottom = 410
+color = Color(0.08, 0.42, 0.08, 1)
+
+[node name="Indigena1" type="ColorRect" parent="Fundo"]
+offset_left = 650
+offset_top = 380
+offset_right = 675
+offset_bottom = 460
+color = Color(0.72, 0.5, 0.3, 1)
+
+[node name="Indigena2" type="ColorRect" parent="Fundo"]
+offset_left = 700
+offset_top = 385
+offset_right = 722
+offset_bottom = 460
+color = Color(0.75, 0.53, 0.32, 1)
+
+[node name="Indigena3" type="ColorRect" parent="Fundo"]
+offset_left = 748
+offset_top = 382
+offset_right = 770
+offset_bottom = 460
+color = Color(0.7, 0.48, 0.28, 1)
+
+[node name="Chao" type="StaticBody2D" parent="."]
+position = Vector2(576, 510)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
+shape = SubResource("RectangleShape2D_chao")
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="PresenteTrigger" type="Area2D" parent="Triggers"]
+position = Vector2(300, 460)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("4_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/PresenteTrigger"]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="Triggers/PresenteTrigger"]
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 70.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 10
+text = "[E] Oferecer Presente"
+horizontal_alignment = 1
+
+[node name="ContatoTrigger" type="Area2D" parent="Triggers"]
+position = Vector2(600, 460)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("4_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ContatoTrigger"]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="Label" type="Label" parent="Triggers/ContatoTrigger"]
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 70.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 10
+text = "[E] Aproximar dos Tupiniquins"
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(100, 460)
+
+[node name="DialogBox" parent="." instance=ExtResource("3_dialog")]
+
+[connection signal="triggered" from="Triggers/PresenteTrigger" to="." method="_on_presente_interact"]
+[connection signal="triggered" from="Triggers/ContatoTrigger" to="." method="_on_contato_interact"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PainelGesto" type="Panel" parent="HUD"]
+offset_left = 376
+offset_top = 150
+offset_right = 776
+offset_bottom = 380
+visible = false
+
+[node name="LabelTitulo" type="Label" parent="HUD/PainelGesto"]
+offset_left = 0
+offset_top = 10
+offset_right = 400
+offset_bottom = 40
+theme_override_font_sizes/font_size = 16
+text = "Imite o gesto do Tupiniquim!"
+horizontal_alignment = 1
+
+[node name="LabelGesto" type="Label" parent="HUD/PainelGesto"]
+offset_left = 0
+offset_top = 60
+offset_right = 400
+offset_bottom = 160
+theme_override_font_sizes/font_size = 80
+text = "→"
+horizontal_alignment = 1
+
+[node name="LabelInstrucao" type="Label" parent="HUD/PainelGesto"]
+offset_left = 20
+offset_top = 170
+offset_right = 380
+offset_bottom = 200
+theme_override_font_sizes/font_size = 13
+text = "Use as setas do teclado!"
+horizontal_alignment = 1
+
+[node name="LabelProgresso" type="Label" parent="HUD/PainelGesto"]
+offset_left = 0
+offset_top = 200
+offset_right = 400
+offset_bottom = 225
+theme_override_font_sizes/font_size = 14
+text = "Gesto 1 / 5"
+horizontal_alignment = 1
