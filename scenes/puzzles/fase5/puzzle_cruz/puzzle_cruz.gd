@@ -1,93 +1,161 @@
 extends Node2D
 
-var tronco_feito: bool = false
-var corda_feita: bool = false
-var alinhado: bool = false
+var etapa_atual: String = ""
+var etapas_completas: Array[String] = []
+var mashing_ativo: bool = false
+var progresso_atual: float = 0.0
+const PROGRESSO_MAX: float = 20.0
 
 @onready var player: CharacterBody2D = $Player
 @onready var dialog_box = $DialogBox
+@onready var painel_mash: Panel = $HUD/PainelMash
+@onready var label_acao: Label = $HUD/PainelMash/LabelAcao
+@onready var barra_progresso: ProgressBar = $HUD/PainelMash/BarraProgresso
+@onready var label_dica: Label = $HUD/PainelMash/LabelDica
+@onready var sprite_arvore: AnimatedSprite2D = $SpriteArvore
+@onready var sprite_cortar: AnimatedSprite2D = $SpriteCortar
 
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
+	painel_mash.visible = false
 
 	await get_tree().create_timer(0.5).timeout
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct([
 		{"speaker": "Narrador", "text": "Era necessário erguer uma cruz para marcar a posse da terra em nome de Portugal.", "portrait": ""},
-		{"speaker": "Cartógrafo", "text": "Precisamos carregar os troncos, amarrar as cordas e alinhar a cruz com o sol nascente.", "portrait": ""}
+		{"speaker": "Cartógrafo", "text": "Precisamos cortar a madeira, cavar o buraco e erguer a cruz. Mãos à obra!", "portrait": ""}
 	])
 	await dialog_box.dialog_finished
 	player.set_state(player.State.EXPLORING)
+
+func _input(event: InputEvent) -> void:
+	if not mashing_ativo:
+		return
+	if event.is_action_pressed("interact"):
+		_avancar_progresso()
+
+func _avancar_progresso() -> void:
+	progresso_atual += 1.0
+	barra_progresso.value = progresso_atual
+
+	# Avança frame da árvore a cada pressionamento
+	if etapa_atual == "tronco":
+		var frame_idx: int = int((progresso_atual / PROGRESSO_MAX) * 7)
+		sprite_arvore.frame = frame_idx
+
+	if progresso_atual >= PROGRESSO_MAX:
+		_concluir_etapa()
 
 func _on_tronco_interact() -> void:
-	if tronco_feito:
+	if "tronco" in etapas_completas:
 		player.set_state(player.State.IN_DIALOG)
-		dialog_box.start_dialog_direct([{"speaker": "Cartógrafo", "text": "Os troncos já estão no lugar.", "portrait": ""}])
+		dialog_box.start_dialog_direct([{"speaker": "Cartógrafo", "text": "Madeira já cortada!", "portrait": ""}])
 		await dialog_box.dialog_finished
 		player.set_state(player.State.EXPLORING)
 		return
 
-	tronco_feito = true
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct([
-		{"speaker": "Cartógrafo", "text": "Carregamos dois grandes troncos de madeira da floresta até a praia.", "portrait": ""},
-		{"speaker": "Narrador", "text": "A cruz era um símbolo cristão e também de posse territorial. Erguê-la significava declarar a terra como domínio português.", "portrait": ""},
-		{"speaker": "Narrador", "text": "✓ Troncos posicionados!", "portrait": ""}
+		{"speaker": "Cartógrafo", "text": "Precisamos cortar troncos para fazer a cruz. Aperte E repetidamente para cortar!", "portrait": ""}
 	])
 	await dialog_box.dialog_finished
-	player.set_state(player.State.EXPLORING)
-	_verificar_conclusao()
+	_iniciar_mash("tronco", "🪓  Cortando madeira...", "Aperte E repetidamente!")
 
 func _on_corda_interact() -> void:
-	if not tronco_feito:
+	if not "tronco" in etapas_completas:
 		player.set_state(player.State.IN_DIALOG)
-		dialog_box.start_dialog_direct([{"speaker": "Cartógrafo", "text": "Primeiro precisamos carregar os troncos.", "portrait": ""}])
+		dialog_box.start_dialog_direct([{"speaker": "Cartógrafo", "text": "Primeiro precisamos cortar os troncos.", "portrait": ""}])
 		await dialog_box.dialog_finished
 		player.set_state(player.State.EXPLORING)
 		return
 
-	if corda_feita:
+	if "corda" in etapas_completas:
 		player.set_state(player.State.IN_DIALOG)
-		dialog_box.start_dialog_direct([{"speaker": "Cartógrafo", "text": "As cordas já estão amarradas.", "portrait": ""}])
+		dialog_box.start_dialog_direct([{"speaker": "Cartógrafo", "text": "O buraco já está cavado!", "portrait": ""}])
 		await dialog_box.dialog_finished
 		player.set_state(player.State.EXPLORING)
 		return
 
-	corda_feita = true
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct([
-		{"speaker": "Cartógrafo", "text": "Amarramos os troncos com cordas resistentes formando uma grande cruz.", "portrait": ""},
-		{"speaker": "Narrador", "text": "Pero Vaz de Caminha registrou em sua carta que a cerimônia foi realizada com toda a tripulação presente.", "portrait": ""},
-		{"speaker": "Narrador", "text": "✓ Cordas amarradas!", "portrait": ""}
+		{"speaker": "Cartógrafo", "text": "Agora precisamos cavar o buraco para firmar a cruz na areia. Aperte E repetidamente!", "portrait": ""}
 	])
 	await dialog_box.dialog_finished
-	player.set_state(player.State.EXPLORING)
-	_verificar_conclusao()
+	_iniciar_mash("corda", "⛏  Cavando o buraco...", "Aperte E repetidamente!")
 
 func _on_alinhar_interact() -> void:
-	if not corda_feita:
+	if not "corda" in etapas_completas:
 		player.set_state(player.State.IN_DIALOG)
-		dialog_box.start_dialog_direct([{"speaker": "Cartógrafo", "text": "Precisamos amarrar as cordas antes de erguer a cruz.", "portrait": ""}])
+		dialog_box.start_dialog_direct([{"speaker": "Cartógrafo", "text": "Precisamos cavar o buraco primeiro.", "portrait": ""}])
 		await dialog_box.dialog_finished
 		player.set_state(player.State.EXPLORING)
 		return
 
-	if alinhado:
+	if "alinhar" in etapas_completas:
 		return
 
-	alinhado = true
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct([
-		{"speaker": "Cartógrafo", "text": "Erguemos a cruz voltada ao sol nascente, no leste — direção de onde viemos.", "portrait": ""},
-		{"speaker": "Narrador", "text": "A orientação da cruz ao leste tinha significado religioso: o sol nascente simbolizava Cristo e a esperança.", "portrait": ""},
-		{"speaker": "Narrador", "text": "✓ Cruz alinhada e erguida!", "portrait": ""}
+		{"speaker": "Cartógrafo", "text": "Agora erguemos a cruz! Todos juntos — aperte E repetidamente para erguer!", "portrait": ""}
 	])
 	await dialog_box.dialog_finished
-	player.set_state(player.State.EXPLORING)
-	_verificar_conclusao()
+	_iniciar_mash("alinhar", "✝  Erguendo a cruz...", "Aperte E repetidamente!")
 
-func _verificar_conclusao() -> void:
-	if tronco_feito and corda_feita and alinhado:
+func _iniciar_mash(etapa: String, texto_acao: String, dica: String) -> void:
+	etapa_atual = etapa
+	progresso_atual = 0.0
+	mashing_ativo = true
+
+	barra_progresso.max_value = PROGRESSO_MAX
+	barra_progresso.value = 0.0
+	label_acao.text = texto_acao
+	label_dica.text = dica
+	painel_mash.visible = true
+
+	# Mostra animação do personagem cortando só na etapa de madeira
+	if etapa == "tronco":
+		player.visible = false
+		sprite_cortar.visible = true
+		sprite_cortar.play("cortar")
+		sprite_arvore.frame = 0
+		sprite_arvore.stop()
+	else:
+		sprite_cortar.visible = false
+		player.visible = true
+
+func _concluir_etapa() -> void:
+	mashing_ativo = false
+	painel_mash.visible = false
+	player.visible = true
+	etapas_completas.append(etapa_atual)
+
+	# Finaliza animações
+	if etapa_atual == "tronco":
+		sprite_cortar.visible = false
+		player.visible = true
+		# Toca animação da árvore caindo completa
+		sprite_arvore.play("caindo")
+		await sprite_arvore.animation_finished
+
+	var msgs := {
+		"tronco": [
+			{"speaker": "Narrador", "text": "✓ Troncos cortados! A madeira é do Pau-brasil, árvore que daria nome ao país.", "portrait": ""}
+		],
+		"corda": [
+			{"speaker": "Narrador", "text": "✓ Buraco cavado! A cruz precisa ficar firme para resistir ao vento do litoral.", "portrait": ""}
+		],
+		"alinhar": [
+			{"speaker": "Narrador", "text": "✓ Cruz erguida e voltada ao sol nascente — direção leste, símbolo cristão da esperança.", "portrait": ""},
+			{"speaker": "Narrador", "text": "Pero Vaz de Caminha escreveu ao Rei Dom Manuel I descrevendo cada detalhe. Esta carta é o primeiro documento escrito sobre o Brasil.", "portrait": ""}
+		]
+	}
+
+	player.set_state(player.State.IN_DIALOG)
+	dialog_box.start_dialog_direct(msgs[etapa_atual])
+	await dialog_box.dialog_finished
+	player.set_state(player.State.EXPLORING)
+
+	if etapas_completas.size() >= 3:
 		await get_tree().create_timer(0.5).timeout
 		_completar()
 
@@ -95,8 +163,7 @@ func _completar() -> void:
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct([
 		{"speaker": "Narrador", "text": "A cruz foi erguida na praia. Toda a tripulação se ajoelhou diante dela.", "portrait": ""},
-		{"speaker": "Narrador", "text": "Pero Vaz de Caminha escreveu ao Rei Dom Manuel I descrevendo cada detalhe deste momento histórico.", "portrait": ""},
-		{"speaker": "Narrador", "text": "Esta carta, enviada em 1500, é considerada o primeiro documento escrito sobre o Brasil.", "portrait": ""}
+		{"speaker": "Narrador", "text": "Este momento marcou oficialmente o início da história do Brasil.", "portrait": ""}
 	])
 	await dialog_box.dialog_finished
 	GameManager.complete_objective(5, "puzzle_cruz")

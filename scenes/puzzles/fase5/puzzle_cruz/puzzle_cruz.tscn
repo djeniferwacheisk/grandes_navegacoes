@@ -1,9 +1,109 @@
-[gd_scene format=3 uid="uid://puzzle_cruz"]
+[gd_scene format=3 uid="uid://yoo6v7shfyvh"]
 
-[ext_resource type="Script" path="res://scenes/puzzles/fase5/puzzle_cruz/puzzle_cruz.gd" id="1_script"]
-[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
-[ext_resource type="Script" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
+[ext_resource type="Script" uid="uid://b83xtwl2hcwh1" path="res://scenes/puzzles/fase5/puzzle_cruz/puzzle_cruz.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
+[ext_resource type="Texture2D" uid="uid://jp5mua3vuoie" path="res://assets/personagem/Cortando_Arvore.png" id="3_k05r3"]
+[ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
+[ext_resource type="Texture2D" uid="uid://ddre8w53b42fu" path="res://assets/objects/Arvore_cortada.png" id="6_arvore"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83eel"]
+atlas = ExtResource("6_arvore")
+region = Rect2(169, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjngp"]
+atlas = ExtResource("6_arvore")
+region = Rect2(507, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kcgw"]
+atlas = ExtResource("6_arvore")
+region = Rect2(0, 0, 169, 184)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_arvore"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83eel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjngp")
+}],
+"loop": false,
+"name": &"caindo",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kcgw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_by5qj"]
+atlas = ExtResource("3_k05r3")
+region = Rect2(0, 0, 168, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tic78"]
+atlas = ExtResource("3_k05r3")
+region = Rect2(168, 0, 168, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o50ws"]
+atlas = ExtResource("3_k05r3")
+region = Rect2(336, 0, 168, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpqbk"]
+atlas = ExtResource("3_k05r3")
+region = Rect2(504, 0, 168, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yp8g"]
+atlas = ExtResource("3_k05r3")
+region = Rect2(0, 185, 168, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t40fn"]
+atlas = ExtResource("3_k05r3")
+region = Rect2(168, 185, 168, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ronl"]
+atlas = ExtResource("3_k05r3")
+region = Rect2(336, 185, 168, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ll6f"]
+atlas = ExtResource("3_k05r3")
+region = Rect2(504, 185, 168, 185)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cortar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_by5qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tic78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o50ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpqbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yp8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t40fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ronl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ll6f")
+}],
+"loop": true,
+"name": &"cortar",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
@@ -11,119 +111,165 @@ size = Vector2(1280, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(40, 40)
 
-[node name="PuzzleCruz" type="Node2D"]
+[node name="PuzzleCruz" type="Node2D" unique_id=396864295]
 script = ExtResource("1_script")
 
-[node name="Fundo" type="Node2D" parent="."]
+[node name="Fundo" type="Node2D" parent="." unique_id=1514246239]
 
-[node name="Ceu" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 0
-offset_right = 1152
-offset_bottom = 320
+[node name="Ceu" type="ColorRect" parent="Fundo" unique_id=464568066]
+offset_right = 1152.0
+offset_bottom = 320.0
 color = Color(0.9, 0.65, 0.35, 1)
 
-[node name="Mar" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 320
-offset_right = 1152
-offset_bottom = 430
+[node name="Mar" type="ColorRect" parent="Fundo" unique_id=1057553079]
+offset_top = 320.0
+offset_right = 1152.0
+offset_bottom = 430.0
 color = Color(0.12, 0.4, 0.8, 1)
 
-[node name="Areia" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 430
-offset_right = 1152
-offset_bottom = 510
+[node name="Areia" type="ColorRect" parent="Fundo" unique_id=1186308769]
+offset_top = 430.0
+offset_right = 1152.0
+offset_bottom = 510.0
 color = Color(0.87, 0.78, 0.54, 1)
 
-[node name="Sol" type="ColorRect" parent="Fundo"]
-offset_left = 540
-offset_top = 60
-offset_right = 612
-offset_bottom = 130
-color = Color(1.0, 0.88, 0.2, 1)
+[node name="Sol" type="ColorRect" parent="Fundo" unique_id=1329850763]
+offset_left = 540.0
+offset_top = 60.0
+offset_right = 612.0
+offset_bottom = 130.0
+color = Color(1, 0.88, 0.2, 1)
 
-[node name="Navio1" type="ColorRect" parent="Fundo"]
-offset_left = 750
-offset_top = 300
-offset_right = 850
-offset_bottom = 360
+[node name="Navio1" type="ColorRect" parent="Fundo" unique_id=485692372]
+offset_left = 750.0
+offset_top = 300.0
+offset_right = 850.0
+offset_bottom = 360.0
 color = Color(0.55, 0.4, 0.18, 1)
 
-[node name="Navio2" type="ColorRect" parent="Fundo"]
-offset_left = 870
-offset_top = 310
-offset_right = 960
-offset_bottom = 365
+[node name="Navio2" type="ColorRect" parent="Fundo" unique_id=98192152]
+offset_left = 870.0
+offset_top = 310.0
+offset_right = 960.0
+offset_bottom = 365.0
 color = Color(0.55, 0.4, 0.18, 1)
 
-[node name="Chao" type="StaticBody2D" parent="."]
+[node name="SpriteArvore" type="AnimatedSprite2D" parent="." unique_id=1300068508]
+position = Vector2(225, 383)
+scale = Vector2(1.1050296, 1.0326087)
+sprite_frames = SubResource("SpriteFrames_arvore")
+animation = &"caindo"
+autoplay = "idle"
+
+[node name="SpriteCortar" type="AnimatedSprite2D" parent="." unique_id=1138869056]
+visible = false
+position = Vector2(190, 437)
+scale = Vector2(0.5624999, 0.5067567)
+sprite_frames = SubResource("SpriteFrames_cortar")
+animation = &"cortar"
+
+[node name="Chao" type="StaticBody2D" parent="." unique_id=844800607]
 position = Vector2(576, 510)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=709859138]
 shape = SubResource("RectangleShape2D_chao")
 
-[node name="Triggers" type="Node2D" parent="."]
+[node name="Triggers" type="Node2D" parent="." unique_id=1493150324]
 
-[node name="TroncoTrigger" type="Area2D" parent="Triggers"]
+[node name="TroncoTrigger" type="Area2D" parent="Triggers" unique_id=85786089]
 position = Vector2(250, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TroncoTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TroncoTrigger" unique_id=1222686199]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="Triggers/TroncoTrigger"]
+[node name="Label" type="Label" parent="Triggers/TroncoTrigger" unique_id=785979869]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 80.0
 offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
-text = "[E] Carregar Troncos"
+text = "[E] Cortar Madeira"
 horizontal_alignment = 1
 
-[node name="CordaTrigger" type="Area2D" parent="Triggers"]
+[node name="CordaTrigger" type="Area2D" parent="Triggers" unique_id=1616905472]
 position = Vector2(500, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/CordaTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/CordaTrigger" unique_id=1202301650]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="Triggers/CordaTrigger"]
+[node name="Label" type="Label" parent="Triggers/CordaTrigger" unique_id=246914736]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 80.0
 offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
-text = "[E] Amarrar Cordas"
+text = "[E] Cavar Buraco"
 horizontal_alignment = 1
 
-[node name="AlinharTrigger" type="Area2D" parent="Triggers"]
+[node name="AlinharTrigger" type="Area2D" parent="Triggers" unique_id=820873052]
 position = Vector2(750, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/AlinharTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/AlinharTrigger" unique_id=522809590]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="Triggers/AlinharTrigger"]
+[node name="Label" type="Label" parent="Triggers/AlinharTrigger" unique_id=525919539]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 80.0
 offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
-text = "[E] Alinhar com o Sol"
+text = "[E] Erguer Cruz"
 horizontal_alignment = 1
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
+[node name="Player" parent="." unique_id=795922840 instance=ExtResource("2_player")]
 position = Vector2(100, 460)
 
-[node name="DialogBox" parent="." instance=ExtResource("3_dialog")]
+[node name="DialogBox" parent="." unique_id=2036766622 instance=ExtResource("3_dialog")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=537940622]
+
+[node name="PainelMash" type="Panel" parent="HUD" unique_id=802426381]
+visible = false
+offset_left = 326.0
+offset_top = 180.0
+offset_right = 826.0
+offset_bottom = 380.0
+
+[node name="LabelAcao" type="Label" parent="HUD/PainelMash" unique_id=1464590493]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 500.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 22
+text = "Cortando madeira..."
+horizontal_alignment = 1
+
+[node name="BarraProgresso" type="ProgressBar" parent="HUD/PainelMash" unique_id=1328676764]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 80.0
+offset_right = 460.0
+offset_bottom = 120.0
+max_value = 20.0
+show_percentage = false
+
+[node name="LabelDica" type="Label" parent="HUD/PainelMash" unique_id=2135706227]
+layout_mode = 0
+offset_top = 130.0
+offset_right = 500.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 16
+text = "Aperte E repetidamente!"
+horizontal_alignment = 1
 
 [connection signal="triggered" from="Triggers/TroncoTrigger" to="." method="_on_tronco_interact"]
 [connection signal="triggered" from="Triggers/CordaTrigger" to="." method="_on_corda_interact"]
