@@ -86,4 +86,5 @@ func _show_phase_complete() -> void:
 		{"speaker": "Narrador", "text": "A nova terra despertou curiosidade e maravilhamento. O encontro entre portugueses e povos originários marcaria para sempre a história do continente.", "portrait": ""}
 	])
 	await dialog_box.dialog_finished
+	GameManager.finish_phase(5)
 	SceneManager.change_scene("res://scenes/main/phase_complete.tscn")

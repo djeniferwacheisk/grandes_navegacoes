@@ -21,6 +21,9 @@ size = Vector2(16, 360)
 [sub_resource type="RectangleShape2D" id="shape_trigger"]
 size = Vector2(630, 101)
 
+[sub_resource type="RectangleShape2D" id="shape_tenda_trigger"]
+size = Vector2(90, 60)
+
 [node name="Area_MercadoCalecute" type="Node2D" unique_id=834842615]
 script = ExtResource("1_script")
 
@@ -33,7 +36,12 @@ texture = ExtResource("2_wtkef")
 
 [node name="TriggerFerramentas" type="Area2D" parent="Triggers" unique_id=1262386561]
 position = Vector2(113, 159)
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("4_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerFerramentas" unique_id=2262386561]
+shape = SubResource("shape_tenda_trigger")
 
 [node name="Label" type="Label" parent="Triggers/TriggerFerramentas" unique_id=1612144301]
 offset_left = -61.0
@@ -48,7 +56,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TriggerTecidos" type="Area2D" parent="Triggers" unique_id=1297823084]
 position = Vector2(325, 154)
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("4_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerTecidos" unique_id=2297823084]
+shape = SubResource("shape_tenda_trigger")
 
 [node name="Label" type="Label" parent="Triggers/TriggerTecidos" unique_id=264655701]
 offset_left = -61.0
@@ -63,7 +76,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TriggerVinhos" type="Area2D" parent="Triggers" unique_id=1149923361]
 position = Vector2(538, 156)
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("4_trigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerVinhos" unique_id=2149923361]
+shape = SubResource("shape_tenda_trigger")
 
 [node name="Label" type="Label" parent="Triggers/TriggerVinhos" unique_id=1571982798]
 offset_left = -59.0

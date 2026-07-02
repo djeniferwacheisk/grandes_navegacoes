@@ -1,1 +1,2 @@
 .godot/
+*.tscn[0-9]*.tmp
