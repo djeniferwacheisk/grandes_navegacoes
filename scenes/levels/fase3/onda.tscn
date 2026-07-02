@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cq4mavwhyr8fb"]
 
-[ext_resource type="Script" uid="uid://bwdxikhxt5sbj" path="res://scenes/ship/fase3/onda.gd" id="1_sewj2"]
+[ext_resource type="Script" uid="uid://bwdxikhxt5sbj" path="res://scenes/levels/fase3/onda.gd" id="1_sewj2"]
 [ext_resource type="Texture2D" uid="uid://dwai5mmmy02j3" path="res://assets/Ondas/Ondas_Grandes.png" id="1_t7n04"]
 [ext_resource type="Texture2D" uid="uid://od4r2khdpfgo" path="res://assets/Ondas/Ondas_Medias.png" id="2_sewj2"]
 [ext_resource type="Texture2D" uid="uid://clhmxiqj2ohq7" path="res://assets/Ondas/Ondas_Pequenas.png" id="3_4p56i"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0f0ed16eqd87"]
 
-[ext_resource type="Script" uid="uid://c0ss6vc8x2xs1" path="res://scenes/ship/fase3/minigame_velas.gd" id="1_mo0dk"]
+[ext_resource type="Script" uid="uid://c0ss6vc8x2xs1" path="res://scenes/levels/fase3/minigame_velas.gd" id="1_mo0dk"]
 [ext_resource type="Texture2D" uid="uid://0mjmbhoarrgu" path="res://assets/miniGame/Corda.png" id="2_hxwj8"]
 [ext_resource type="Texture2D" uid="uid://di3m1symm7kq3" path="res://assets/miniGame/Mastro_com_Vela_Solta.png" id="3_th6mp"]
 [ext_resource type="Texture2D" uid="uid://d0ghinwu8lpkq" path="res://assets/miniGame/Remendo1.png" id="4_wjjpk"]

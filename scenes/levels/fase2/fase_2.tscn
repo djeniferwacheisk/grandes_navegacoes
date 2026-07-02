@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cp5kmwja5kh86" path="res://scenes/ship/ship.tscn" id="1_cwwhj"]
 [ext_resource type="Script" uid="uid://bfn1xtqbb1td7" path="res://scripts/fase2/fase_2.gd" id="1_h7qxw"]
 [ext_resource type="Texture2D" uid="uid://c87lvt2e05g4f" path="res://assets/Terrain/Water_tiles.png" id="2_naxtn"]
-[ext_resource type="PackedScene" uid="uid://d3fqdp4v7wfii" path="res://scenes/levels/Fase 2/ponto_interesse.tscn" id="2_y2bj5"]
+[ext_resource type="PackedScene" uid="uid://d3fqdp4v7wfii" path="res://scenes/levels/fase2/ponto_interesse.tscn" id="2_y2bj5"]
 [ext_resource type="Texture2D" uid="uid://c67cwc6njv8ux" path="res://assets/Terrain/sea.jpg" id="3_r4ims"]
 [ext_resource type="Script" uid="uid://h6llac626ckc" path="res://scripts/fase2/cais.gd" id="4_x4xsg"]
-[ext_resource type="PackedScene" uid="uid://cg5ed6p573iun" path="res://scenes/levels/Fase 2/npc_escambo.tscn" id="5_t8fbh"]
+[ext_resource type="PackedScene" uid="uid://cg5ed6p573iun" path="res://scenes/levels/fase2/npc_escambo.tscn" id="5_t8fbh"]
 [ext_resource type="Texture2D" uid="uid://c0lk1b782nvqs" path="res://assets/mapa/floresta.png" id="6_jb6p8"]
 [ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="6_x4xsg"]
 [ext_resource type="Texture2D" uid="uid://bcuy3gy112r1b" path="res://assets/objects/rocks.png" id="7_6yedq"]
@@ -4432,6 +4432,7 @@ sources/3 = SubResource("TileSetAtlasSource_22ypq")
 size = Vector2(122.20889, 31.638275)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4xsg"]
+size = Vector2(21, 20)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_yqcki"]
 specular_color = Color(0, 0.5137255, 1, 1)
@@ -4449,16 +4450,16 @@ layer_0/tile_data = PackedInt32Array(65537, 65537, 11, 131073, 65537, 12, 196609
 [node name="POIs" type="Node2D" parent="." unique_id=143632099]
 
 [node name="Vegetacao" parent="POIs" unique_id=2044338686 instance=ExtResource("2_y2bj5")]
-position = Vector2(1293, 224)
+position = Vector2(1111, 67)
 collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="POIs/Vegetacao" unique_id=1744558517]
-position = Vector2(2, -5)
+position = Vector2(3.9999998, -15.999999)
 scale = Vector2(0.34, 0.34)
 texture = ExtResource("6_jb6p8")
 
 [node name="Aldeia" parent="POIs" unique_id=800387119 instance=ExtResource("2_y2bj5")]
-position = Vector2(1061, 507)
+position = Vector2(867, 458)
 collision_mask = 3
 ponto_id = "aldeia"
 ponto_nome = "Povoado Local"
@@ -4535,18 +4536,21 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(544, 382)
 
 [node name="NpcEscambo" parent="." unique_id=458341231 instance=ExtResource("5_t8fbh")]
-position = Vector2(1200, 380)
+position = Vector2(1027, 220)
+scale = Vector2(0.8, 0.8)
 collision_mask = 3
 
 [node name="Player" parent="." unique_id=1600619080 groups=["player"] instance=ExtResource("6_x4xsg")]
 visible = false
+scale = Vector2(0.8, 0.8)
 
 [node name="Pergaminho" type="Area2D" parent="." unique_id=1491359917]
-position = Vector2(1136, 480)
+position = Vector2(863, 459)
 collision_mask = 3
 script = ExtResource("7_yqcki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pergaminho" unique_id=710279192]
+position = Vector2(3, -2)
 shape = SubResource("RectangleShape2D_x4xsg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pergaminho" unique_id=427863499]

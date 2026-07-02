@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhlk4sbjj4n3n"]
 
-[ext_resource type="Script" uid="uid://dkschs68iqaj4" path="res://scenes/ship/fase3/puzzle_Fase3.gd" id="1_pk2jh"]
+[ext_resource type="Script" uid="uid://dkschs68iqaj4" path="res://scenes/levels/fase3/puzzle_Fase3.gd" id="1_pk2jh"]
 [ext_resource type="Texture2D" uid="uid://cmec8elg8o2ef" path="res://assets/miniGame/Costa_Africana.png" id="2_35tg5"]
 [ext_resource type="Texture2D" uid="uid://dlvn3xc88mue8" path="res://assets/Ship/Caravela finalizada.png" id="3_1wkv2"]
 [ext_resource type="Texture2D" uid="uid://b2up6i354ldk8" path="res://assets/miniGame/Rochas.png" id="3_y1j7m"]
