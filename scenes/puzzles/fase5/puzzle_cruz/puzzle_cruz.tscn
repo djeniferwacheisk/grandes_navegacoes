@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c10xygjsf6aa5" path="res://assets/personagem/Personagem_cavando.png" id="4_3cofm"]
 [ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
 [ext_resource type="Texture2D" uid="uid://c2ce2pxplc75i" path="res://assets/objects/Buraco.png" id="5_6hkor"]
+[ext_resource type="Texture2D" uid="uid://c6itkrg1tpl5e" path="res://assets/personagem/Construir_cruz.png" id="6_6hkor"]
 [ext_resource type="Texture2D" uid="uid://ddre8w53b42fu" path="res://assets/objects/Arvore_cortada.png" id="6_arvore"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k05r3"]
@@ -200,6 +201,63 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j0ot"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(0, 0, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3gqn"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(182, 0, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6byui"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(364, 0, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe2s8"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(546, 0, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkb46"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(0, 110, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciw7q"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(182, 110, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhvc6"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(364, 110, 182, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5pv8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j0ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3gqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6byui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe2s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkb46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciw7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhvc6")
+}],
+"loop": true,
+"name": &"construir",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
 
@@ -271,8 +329,17 @@ sprite_frames = SubResource("SpriteFrames_1j0ot")
 animation = &"cavar"
 
 [node name="SpriteBuraco" type="AnimatedSprite2D" parent="." unique_id=122158306]
+visible = false
+position = Vector2(620.00006, 464)
+scale = Vector2(0.31621623, 0.43137255)
 sprite_frames = SubResource("SpriteFrames_t3gqn")
 animation = &"buraco"
+
+[node name="SpriteCruz" type="AnimatedSprite2D" parent="." unique_id=827438862]
+position = Vector2(637, 456.00003)
+scale = Vector2(0.64285713, 0.6772728)
+sprite_frames = SubResource("SpriteFrames_5pv8s")
+animation = &"construir"
 
 [node name="Chao" type="StaticBody2D" parent="." unique_id=844800607]
 position = Vector2(576, 510)

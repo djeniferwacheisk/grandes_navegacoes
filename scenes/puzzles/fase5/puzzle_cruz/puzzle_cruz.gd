@@ -14,10 +14,13 @@ const PROGRESSO_MAX: float = 20.0
 @onready var label_dica: Label = $HUD/PainelMash/LabelDica
 @onready var sprite_arvore: AnimatedSprite2D = $SpriteArvore
 @onready var sprite_cortar: AnimatedSprite2D = $SpriteCortar
+@onready var sprite_cavar: AnimatedSprite2D = $SpriteCavar
+@onready var sprite_buraco: AnimatedSprite2D = $SpriteBuraco
 
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
 	painel_mash.visible = false
+	sprite_buraco.visible = false
 
 	await get_tree().create_timer(0.5).timeout
 	player.set_state(player.State.IN_DIALOG)
@@ -112,15 +115,20 @@ func _iniciar_mash(etapa: String, texto_acao: String, dica: String) -> void:
 	label_dica.text = dica
 	painel_mash.visible = true
 
-	# Mostra animação do personagem cortando só na etapa de madeira
 	if etapa == "tronco":
 		player.visible = false
 		sprite_cortar.visible = true
 		sprite_cortar.play("cortar")
 		sprite_arvore.frame = 0
 		sprite_arvore.stop()
+	elif etapa == "corda":
+		player.visible = false
+		sprite_cavar.visible = true
+		sprite_cavar.frame = 0
+		sprite_cavar.play("cavar")
 	else:
 		sprite_cortar.visible = false
+		sprite_cavar.visible = false
 		player.visible = true
 
 func _concluir_etapa() -> void:
@@ -129,13 +137,15 @@ func _concluir_etapa() -> void:
 	player.visible = true
 	etapas_completas.append(etapa_atual)
 
-	# Finaliza animações
 	if etapa_atual == "tronco":
 		sprite_cortar.visible = false
 		player.visible = true
-		# Toca animação da árvore caindo completa
 		sprite_arvore.play("caindo")
 		await sprite_arvore.animation_finished
+	elif etapa_atual == "corda":
+		sprite_cavar.stop()
+		sprite_cavar.visible = false
+		sprite_buraco.visible = true
 
 	var msgs := {
 		"tronco": [
