@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://du1h20n1gyryo"]
+
+[ext_resource type="Texture2D" uid="uid://bo7mmswk58n1r" path="res://assets/fase2/Mapa_africa.png" id="1_gfbuy"]
+
+[resource]
+atlas = ExtResource("1_gfbuy")
+region = Rect2(0, 580.275, 287, 288.72498)

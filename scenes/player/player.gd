@@ -22,7 +22,11 @@ func _ready() -> void:
 	interaction_area.body_exited.connect(_on_interaction_area_exited)
 	interaction_area.area_entered.connect(_on_interaction_area_area_entered)
 	interaction_area.area_exited.connect(_on_interaction_area_area_exited)
-	_setup_camera_limits()
+	if get_tree().current_scene.name == "Fase2":
+		_reset_camera_limits()
+	else:
+		# Se for Fase 2 ou qualquer outra, deixa a câmera livre para seguir o player
+		_setup_camera_limits()
 
 
 func _setup_camera_limits() -> void:
@@ -32,6 +36,12 @@ func _setup_camera_limits() -> void:
 	camera.limit_right  = -130 + int(2580 * 0.5)  # 1160
 	camera.limit_bottom = -127 + int(1536 * 0.5)  # 641
 
+func _reset_camera_limits() -> void:
+	 # Remove as travas rígidas da câmera redefinindo para os valores padrão do Godot
+	camera.limit_left   = -10000000
+	camera.limit_top    = -10000000
+	camera.limit_right  = 10000000
+	camera.limit_bottom = 10000000
 
 func _physics_process(_delta: float) -> void:
 	if state != State.EXPLORING:

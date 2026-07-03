@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cg5ed6p573iun"]
 
 [ext_resource type="Script" uid="uid://wdnd7hm01icg" path="res://scripts/fase2/npc_escambo.gd" id="1_ticvc"]
-[ext_resource type="Texture2D" uid="uid://dfk6cfugnfga8" path="res://assets/personagem/idle.png" id="2_ml3ua"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_65eql"]
 radius = 50.0
@@ -11,10 +10,6 @@ script = ExtResource("1_ticvc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580520267]
 shape = SubResource("CircleShape2D_65eql")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=890860258]
-scale = Vector2(0.24, 0.24)
-texture = ExtResource("2_ml3ua")
 
 [node name="Label" type="Label" parent="." unique_id=1885478418]
 offset_left = -52.0
