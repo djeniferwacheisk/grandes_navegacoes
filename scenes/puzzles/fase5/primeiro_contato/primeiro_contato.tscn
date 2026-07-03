@@ -1,9 +1,11 @@
-[gd_scene format=3 uid="uid://primeiro_contato"]
+[gd_scene format=3 uid="uid://7jl2rimouwce"]
 
-[ext_resource type="Script" path="res://scenes/puzzles/fase5/primeiro_contato/primeiro_contato.gd" id="1_script"]
-[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
-[ext_resource type="Script" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
+[ext_resource type="Script" uid="uid://dk0xci1gkpe44" path="res://scenes/puzzles/fase5/primeiro_contato/primeiro_contato.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
+[ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
+[ext_resource type="Texture2D" uid="uid://dxhif1ebhg0r1" path="res://assets/personagem/Imitação_indio.png" id="5_ec7bi"]
+[ext_resource type="Texture2D" uid="uid://bbevovck23qmb" path="res://assets/personagem/Imitacao_portugues.png" id="6_q2y0k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
@@ -11,78 +13,153 @@ size = Vector2(1280, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(40, 40)
 
-[node name="PrimeiroContato" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gehq"]
+atlas = ExtResource("5_ec7bi")
+region = Rect2(0, 0, 166, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyih6"]
+atlas = ExtResource("5_ec7bi")
+region = Rect2(0, 187, 166, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mshcx"]
+atlas = ExtResource("5_ec7bi")
+region = Rect2(332, 187, 166, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08quf"]
+atlas = ExtResource("5_ec7bi")
+region = Rect2(498, 187, 166, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amd1b"]
+atlas = ExtResource("5_ec7bi")
+region = Rect2(166, 187, 166, 187)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vohg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gehq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyih6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mshcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08quf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amd1b")
+}],
+"loop": true,
+"name": &"gesto",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of4dj"]
+atlas = ExtResource("6_q2y0k")
+region = Rect2(498, 0, 166, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikg30"]
+atlas = ExtResource("6_q2y0k")
+region = Rect2(332, 187, 166, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovsgx"]
+atlas = ExtResource("6_q2y0k")
+region = Rect2(332, 0, 166, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp2yx"]
+atlas = ExtResource("6_q2y0k")
+region = Rect2(0, 187, 166, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q22q0"]
+atlas = ExtResource("6_q2y0k")
+region = Rect2(166, 0, 166, 187)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cj6id"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of4dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikg30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovsgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp2yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q22q0")
+}],
+"loop": true,
+"name": &"gesto",
+"speed": 5.0
+}]
+
+[node name="PrimeiroContato" type="Node2D" unique_id=176142653]
 script = ExtResource("1_script")
 
-[node name="Fundo" type="Node2D" parent="."]
+[node name="Fundo" type="Node2D" parent="." unique_id=1789782777]
 
-[node name="Ceu" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 0
-offset_right = 1152
-offset_bottom = 280
+[node name="Ceu" type="ColorRect" parent="Fundo" unique_id=1860361583]
+offset_right = 1152.0
+offset_bottom = 280.0
 color = Color(0.55, 0.8, 0.98, 1)
 
-[node name="Mar" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 280
-offset_right = 1152
-offset_bottom = 400
+[node name="Mar" type="ColorRect" parent="Fundo" unique_id=1606952208]
+offset_top = 280.0
+offset_right = 1152.0
+offset_bottom = 400.0
 color = Color(0.12, 0.42, 0.82, 1)
 
-[node name="Areia" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 400
-offset_right = 1152
-offset_bottom = 510
+[node name="Areia" type="ColorRect" parent="Fundo" unique_id=884937022]
+offset_top = 400.0
+offset_right = 1152.0
+offset_bottom = 510.0
 color = Color(0.87, 0.78, 0.54, 1)
 
-[node name="Mata" type="ColorRect" parent="Fundo"]
-offset_left = 600
-offset_top = 200
-offset_right = 1152
-offset_bottom = 410
-color = Color(0.08, 0.42, 0.08, 1)
-
-[node name="Indigena1" type="ColorRect" parent="Fundo"]
-offset_left = 650
-offset_top = 380
-offset_right = 675
-offset_bottom = 460
+[node name="Indigena1" type="ColorRect" parent="Fundo" unique_id=945481328]
+offset_left = 650.0
+offset_top = 380.0
+offset_right = 675.0
+offset_bottom = 460.0
 color = Color(0.72, 0.5, 0.3, 1)
 
-[node name="Indigena2" type="ColorRect" parent="Fundo"]
-offset_left = 700
-offset_top = 385
-offset_right = 722
-offset_bottom = 460
+[node name="Indigena2" type="ColorRect" parent="Fundo" unique_id=672815873]
+offset_left = 700.0
+offset_top = 385.0
+offset_right = 722.0
+offset_bottom = 460.0
 color = Color(0.75, 0.53, 0.32, 1)
 
-[node name="Indigena3" type="ColorRect" parent="Fundo"]
-offset_left = 748
-offset_top = 382
-offset_right = 770
-offset_bottom = 460
+[node name="Indigena3" type="ColorRect" parent="Fundo" unique_id=1291028668]
+offset_left = 748.0
+offset_top = 382.0
+offset_right = 770.0
+offset_bottom = 460.0
 color = Color(0.7, 0.48, 0.28, 1)
 
-[node name="Chao" type="StaticBody2D" parent="."]
+[node name="Chao" type="StaticBody2D" parent="." unique_id=532045868]
 position = Vector2(576, 510)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=1655935676]
 shape = SubResource("RectangleShape2D_chao")
 
-[node name="Triggers" type="Node2D" parent="."]
+[node name="Triggers" type="Node2D" parent="." unique_id=447909077]
 
-[node name="PresenteTrigger" type="Area2D" parent="Triggers"]
+[node name="PresenteTrigger" type="Area2D" parent="Triggers" unique_id=3670806]
 position = Vector2(300, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/PresenteTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/PresenteTrigger" unique_id=714756268]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="Triggers/PresenteTrigger"]
+[node name="Label" type="Label" parent="Triggers/PresenteTrigger" unique_id=337641783]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 70.0
@@ -91,16 +168,16 @@ theme_override_font_sizes/font_size = 10
 text = "[E] Oferecer Presente"
 horizontal_alignment = 1
 
-[node name="ContatoTrigger" type="Area2D" parent="Triggers"]
+[node name="ContatoTrigger" type="Area2D" parent="Triggers" unique_id=35304546]
 position = Vector2(600, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ContatoTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/ContatoTrigger" unique_id=571686622]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="Triggers/ContatoTrigger"]
+[node name="Label" type="Label" parent="Triggers/ContatoTrigger" unique_id=1447194814]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 70.0
@@ -109,55 +186,70 @@ theme_override_font_sizes/font_size = 10
 text = "[E] Aproximar dos Tupiniquins"
 horizontal_alignment = 1
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
+[node name="Player" parent="." unique_id=972039130 instance=ExtResource("2_player")]
 position = Vector2(100, 460)
 
-[node name="DialogBox" parent="." instance=ExtResource("3_dialog")]
+[node name="DialogBox" parent="." unique_id=1025875093 instance=ExtResource("3_dialog")]
 
-[connection signal="triggered" from="Triggers/PresenteTrigger" to="." method="_on_presente_interact"]
-[connection signal="triggered" from="Triggers/ContatoTrigger" to="." method="_on_contato_interact"]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=620499004]
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="PainelGesto" type="Panel" parent="HUD" unique_id=913776123]
+offset_left = -3.0
+offset_top = 58.0
+offset_right = 397.0
+offset_bottom = 293.0
 
-[node name="PainelGesto" type="Panel" parent="HUD"]
-offset_left = 376
-offset_top = 150
-offset_right = 776
-offset_bottom = 380
-visible = false
-
-[node name="LabelTitulo" type="Label" parent="HUD/PainelGesto"]
-offset_left = 0
-offset_top = 10
-offset_right = 400
-offset_bottom = 40
+[node name="LabelTitulo" type="Label" parent="HUD/PainelGesto" unique_id=1926095839]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 22.0
+offset_right = 403.0
+offset_bottom = 52.0
 theme_override_font_sizes/font_size = 16
 text = "Imite o gesto do Tupiniquim!"
 horizontal_alignment = 1
 
-[node name="LabelGesto" type="Label" parent="HUD/PainelGesto"]
-offset_left = 0
-offset_top = 60
-offset_right = 400
-offset_bottom = 160
+[node name="LabelGesto" type="Label" parent="HUD/PainelGesto" unique_id=1528768028]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 400.0
+offset_bottom = 160.0
 theme_override_font_sizes/font_size = 80
 text = "→"
 horizontal_alignment = 1
 
-[node name="LabelInstrucao" type="Label" parent="HUD/PainelGesto"]
-offset_left = 20
-offset_top = 170
-offset_right = 380
-offset_bottom = 200
+[node name="LabelInstrucao" type="Label" parent="HUD/PainelGesto" unique_id=1555381161]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 170.0
+offset_right = 380.0
+offset_bottom = 200.0
 theme_override_font_sizes/font_size = 13
 text = "Use as setas do teclado!"
 horizontal_alignment = 1
 
-[node name="LabelProgresso" type="Label" parent="HUD/PainelGesto"]
-offset_left = 0
-offset_top = 200
-offset_right = 400
-offset_bottom = 225
+[node name="LabelProgresso" type="Label" parent="HUD/PainelGesto" unique_id=705519043]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 400.0
+offset_bottom = 225.0
 theme_override_font_sizes/font_size = 14
 text = "Gesto 1 / 5"
 horizontal_alignment = 1
+
+[node name="SpriteIndio" type="AnimatedSprite2D" parent="." unique_id=965341952]
+visible = false
+position = Vector2(754.00006, 449)
+scale = Vector2(0.48192754, 0.3729948)
+sprite_frames = SubResource("SpriteFrames_vohg8")
+animation = &"gesto"
+
+[node name="SpritePortugues" type="AnimatedSprite2D" parent="." unique_id=172887857]
+visible = false
+position = Vector2(657.99994, 438.99997)
+scale = Vector2(0.43975914, 0.43716577)
+sprite_frames = SubResource("SpriteFrames_cj6id")
+animation = &"gesto"
+
+[connection signal="triggered" from="Triggers/PresenteTrigger" to="." method="_on_presente_interact"]
+[connection signal="triggered" from="Triggers/ContatoTrigger" to="." method="_on_contato_interact"]

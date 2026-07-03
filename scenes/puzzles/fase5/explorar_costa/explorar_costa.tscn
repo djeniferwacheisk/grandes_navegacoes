@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://explorar_costa"]
+[gd_scene format=3 uid="uid://iwdmy6r3775k"]
 
-[ext_resource type="Script" path="res://scenes/puzzles/fase5/explorar_costa/explorar_costa.gd" id="1_script"]
-[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
-[ext_resource type="Script" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
+[ext_resource type="Script" uid="uid://dfhx6r0qj2tb0" path="res://scenes/puzzles/fase5/explorar_costa/explorar_costa.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
+[ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
@@ -11,65 +11,60 @@ size = Vector2(1280, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(40, 40)
 
-[node name="ExplorarCosta" type="Node2D"]
+[node name="ExplorarCosta" type="Node2D" unique_id=2042797149]
 script = ExtResource("1_script")
 
-[node name="Fundo" type="Node2D" parent="."]
+[node name="Fundo" type="Node2D" parent="." unique_id=882374897]
 
-[node name="Ceu" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 0
-offset_right = 1152
-offset_bottom = 300
+[node name="Ceu" type="ColorRect" parent="Fundo" unique_id=173653898]
+offset_right = 1152.0
+offset_bottom = 300.0
 color = Color(0.4, 0.72, 0.95, 1)
 
-[node name="Mar" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 300
-offset_right = 1152
-offset_bottom = 450
+[node name="Mar" type="ColorRect" parent="Fundo" unique_id=1676805232]
+offset_top = 300.0
+offset_right = 1152.0
+offset_bottom = 450.0
 color = Color(0.1, 0.4, 0.78, 1)
 
-[node name="Areia" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 450
-offset_right = 1152
-offset_bottom = 550
+[node name="Areia" type="ColorRect" parent="Fundo" unique_id=722044065]
+offset_top = 450.0
+offset_right = 1152.0
+offset_bottom = 550.0
 color = Color(0.87, 0.78, 0.54, 1)
 
-[node name="Mata" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 200
-offset_right = 1152
-offset_bottom = 460
+[node name="Mata" type="ColorRect" parent="Fundo" unique_id=670741425]
+offset_top = 200.0
+offset_right = 1152.0
+offset_bottom = 460.0
 color = Color(0.08, 0.45, 0.08, 1)
 
-[node name="Morro" type="ColorRect" parent="Fundo"]
-offset_left = 700
-offset_top = 150
-offset_right = 950
-offset_bottom = 460
+[node name="Morro" type="ColorRect" parent="Fundo" unique_id=1918023222]
+offset_left = 700.0
+offset_top = 150.0
+offset_right = 950.0
+offset_bottom = 460.0
 color = Color(0.35, 0.52, 0.25, 1)
 
-[node name="Chao" type="StaticBody2D" parent="."]
+[node name="Chao" type="StaticBody2D" parent="." unique_id=503388716]
 position = Vector2(576, 510)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=1919201137]
 shape = SubResource("RectangleShape2D_chao")
 
-[node name="Triggers" type="Node2D" parent="."]
+[node name="Triggers" type="Node2D" parent="." unique_id=1769104107]
 
-[node name="MorroTrigger" type="Area2D" parent="Triggers"]
+[node name="MorroTrigger" type="Area2D" parent="Triggers" unique_id=1688574937]
 position = Vector2(820, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
 metadata/ponto_id = "morro"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/MorroTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/MorroTrigger" unique_id=1699991561]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="Triggers/MorroTrigger"]
+[node name="Label" type="Label" parent="Triggers/MorroTrigger" unique_id=702908570]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 70.0
@@ -78,17 +73,17 @@ theme_override_font_sizes/font_size = 10
 text = "[E] Serra e Morro"
 horizontal_alignment = 1
 
-[node name="FlorestaTrigger" type="Area2D" parent="Triggers"]
+[node name="FlorestaTrigger" type="Area2D" parent="Triggers" unique_id=1659857745]
 position = Vector2(300, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
 metadata/ponto_id = "floresta"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/FlorestaTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/FlorestaTrigger" unique_id=953813128]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="Triggers/FlorestaTrigger"]
+[node name="Label" type="Label" parent="Triggers/FlorestaTrigger" unique_id=1425088293]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 70.0
@@ -97,17 +92,17 @@ theme_override_font_sizes/font_size = 10
 text = "[E] Floresta Tropical"
 horizontal_alignment = 1
 
-[node name="FaunaTrigger" type="Area2D" parent="Triggers"]
+[node name="FaunaTrigger" type="Area2D" parent="Triggers" unique_id=1990129648]
 position = Vector2(560, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
 metadata/ponto_id = "fauna"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/FaunaTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/FaunaTrigger" unique_id=652165720]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="Triggers/FaunaTrigger"]
+[node name="Label" type="Label" parent="Triggers/FaunaTrigger" unique_id=328407559]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 70.0
@@ -116,10 +111,10 @@ theme_override_font_sizes/font_size = 10
 text = "[E] Fauna Colorida"
 horizontal_alignment = 1
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
+[node name="Player" parent="." unique_id=123037907 instance=ExtResource("2_player")]
 position = Vector2(100, 460)
 
-[node name="DialogBox" parent="." instance=ExtResource("3_dialog")]
+[node name="DialogBox" parent="." unique_id=386839138 instance=ExtResource("3_dialog")]
 
 [connection signal="triggered" from="Triggers/MorroTrigger" to="." method="_on_morro_interact"]
 [connection signal="triggered" from="Triggers/FlorestaTrigger" to="." method="_on_floresta_interact"]

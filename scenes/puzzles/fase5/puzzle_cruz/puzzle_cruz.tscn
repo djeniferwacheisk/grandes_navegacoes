@@ -435,11 +435,10 @@ position = Vector2(100, 460)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=537940622]
 
 [node name="PainelMash" type="Panel" parent="HUD" unique_id=802426381]
-visible = false
-offset_left = 326.0
-offset_top = 180.0
-offset_right = 826.0
-offset_bottom = 380.0
+offset_left = 11.0
+offset_top = 231.0
+offset_right = 473.0
+offset_bottom = 361.0
 
 [node name="LabelAcao" type="Label" parent="HUD/PainelMash" unique_id=1464590493]
 layout_mode = 0
@@ -452,21 +451,24 @@ horizontal_alignment = 1
 
 [node name="BarraProgresso" type="ProgressBar" parent="HUD/PainelMash" unique_id=1328676764]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 80.0
-offset_right = 460.0
-offset_bottom = 120.0
+offset_left = 22.0
+offset_top = 58.0
+offset_right = 442.0
+offset_bottom = 98.0
 max_value = 20.0
 show_percentage = false
 
 [node name="LabelDica" type="Label" parent="HUD/PainelMash" unique_id=2135706227]
 layout_mode = 0
-offset_top = 130.0
-offset_right = 500.0
-offset_bottom = 160.0
+offset_left = -18.0
+offset_top = 107.0
+offset_right = 482.0
+offset_bottom = 137.0
 theme_override_font_sizes/font_size = 16
 text = "Aperte E repetidamente!"
 horizontal_alignment = 1
+
+[node name="barco" type="Sprite2D" parent="HUD/PainelMash" unique_id=1033902001]
 
 [connection signal="triggered" from="Triggers/TroncoTrigger" to="." method="_on_tronco_interact"]
 [connection signal="triggered" from="Triggers/CordaTrigger" to="." method="_on_corda_interact"]
