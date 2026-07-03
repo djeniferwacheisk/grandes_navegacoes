@@ -1,18 +1,15 @@
 ## BalanceScale.gd
-## Puzzle da balança de negociação — Mercado de Calecute — Objetivo 3
-
+## Puzzle da balanca de negociacao - Mercado de Calecute - Objetivo 3
 extends Control
 
 signal trade_accepted()
 signal trade_rejected(reason: String)
 
-# Margem de erro aceitável
 @export var margin: float = 2.0
 @export var target_value: float = 10.0
 
 var current_offer_value: float = 0.0
 
-# Nós visuais (ajuste ao criar a cena)
 @onready var prato_europeu: Control = $Balanca/PratoEuropeu
 @onready var prato_especiarias: Control = $Balanca/PratoEspeciarias
 @onready var barra_balanca: Control = $Balanca/Barra
@@ -20,15 +17,13 @@ var current_offer_value: float = 0.0
 @onready var label_alvo: Label = $LabelAlvo
 @onready var btn_confirmar: Button = $BtnConfirmar
 
-# Itens europeus disponíveis (nome: valor)
 const ITENS_EUROPEUS := {
-	"Tecidos":    3,
-	"Metais":     5,
-	"Vidro":      2,
-	"Ferramentas":4,
+	"Tecidos":     3,
+	"Metais":      5,
+	"Vidro":       2,
+	"Ferramentas": 4,
 }
 
-# Itens no prato do jogador
 var itens_no_prato: Dictionary = {}
 
 
@@ -65,14 +60,10 @@ func limpar_prato() -> void:
 
 func _atualizar_balanca() -> void:
 	label_valor.text = "Sua oferta: %.0f" % current_offer_value
-
-	# Inclinar barra visualmente
 	var diferenca := current_offer_value - target_value
 	var angulo := clamp(diferenca * 3.0, -30.0, 30.0)
 	if barra_balanca:
 		barra_balanca.rotation_degrees = angulo
-
-	# Cor do label
 	var diff_abs := abs(diferenca)
 	if diff_abs <= margin:
 		label_valor.modulate = Color.GREEN
@@ -83,14 +74,11 @@ func _atualizar_balanca() -> void:
 
 
 func _on_confirmar() -> void:
-	var diferenca := abs(current_offer_value - target_value)
-
 	if current_offer_value <= 0:
-		trade_rejected.emit("Adicione itens à balança primeiro.")
+		trade_rejected.emit("Adicione itens a balanca primeiro.")
 		return
-
 	if current_offer_value < target_value - margin:
-		trade_rejected.emit("Essa oferta não honra o valor das especiarias.")
+		trade_rejected.emit("Essa oferta nao honra o valor das especiarias.")
 	elif current_offer_value > target_value + margin:
 		trade_rejected.emit("Cuidado, estamos entregando mais do que podemos.")
 	else:

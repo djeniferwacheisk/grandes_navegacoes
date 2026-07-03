@@ -10,6 +10,7 @@ var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
 	GameManager.objective_completed.connect(_on_objective_completed)
+	_setup_camera()
 
 	await get_tree().create_timer(0.5).timeout
 	if not _intro_shown and not GameManager.is_objective_complete(5, "explorar_costa"):
@@ -27,6 +28,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		var pause := _pause_menu_scene.instantiate()
 		add_child(pause)
 		get_viewport().set_input_as_handled()
+
+func _setup_camera() -> void:
+	await get_tree().process_frame
+	var cam := player.get_node_or_null("Camera2D")
+	if cam:
+		cam.limit_left   = 0
+		cam.limit_top    = 0
+		cam.limit_right  = 1152
+		cam.limit_bottom = 510
+		cam.position_smoothing_enabled = true
 
 func _on_explorar_interact() -> void:
 	if GameManager.is_objective_complete(5, "explorar_costa"):
@@ -86,4 +97,5 @@ func _show_phase_complete() -> void:
 		{"speaker": "Narrador", "text": "A nova terra despertou curiosidade e maravilhamento. O encontro entre portugueses e povos originários marcaria para sempre a história do continente.", "portrait": ""}
 	])
 	await dialog_box.dialog_finished
+	GameManager.finish_phase(5)
 	SceneManager.change_scene("res://scenes/main/phase_complete.tscn")

@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://bhlk4sbjj4n3n"]
+
+[ext_resource type="Script" uid="uid://dkschs68iqaj4" path="res://scenes/levels/fase3/puzzle_Fase3.gd" id="1_pk2jh"]
+[ext_resource type="Texture2D" uid="uid://cmec8elg8o2ef" path="res://assets/miniGame/Costa_Africana.png" id="2_35tg5"]
+[ext_resource type="Texture2D" uid="uid://dlvn3xc88mue8" path="res://assets/Ship/Caravela finalizada.png" id="3_1wkv2"]
+[ext_resource type="Texture2D" uid="uid://b2up6i354ldk8" path="res://assets/miniGame/Rochas.png" id="3_y1j7m"]
+[ext_resource type="Texture2D" uid="uid://cenig7rhyssot" path="res://assets/Ondas/Ondas.png" id="5_4ner2"]
+
+[node name="PuzzleFase3" type="Node2D" unique_id=1328612201]
+script = ExtResource("1_pk2jh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=487682991]
+offset_right = 639.0
+offset_bottom = 361.0
+color = Color(0, 0.22745098, 0.4, 1)
+
+[node name="linha_Rota1" type="Line2D" parent="." unique_id=1526290233]
+position = Vector2(58.17969, 312.48633)
+scale = Vector2(0.07602895, 0.08971809)
+points = PackedVector2Array(1839.0405, -2725.0505, 1970.5693, -2557.8604, 2259.9326, -2223.4795, 2444.073, -1989.413, 2707.1309, -1699.6163, 2983.3413, -1554.718, 3285.8577, -1532.4259, 3522.6096, -1554.718, 3759.3616, -1632.7401, 3969.8079, -1733.0544, 4088.1838, -1866.8066, 4285.4766, -2078.581, 4417.0054, -2212.3335, 4548.534, -2424.108, 4614.299, -2624.7363, 4798.439, -2791.9268, 5061.497, -2858.8027, 5311.402, -2914.533, 5521.8477, -2936.825, 5732.294, -2959.1172, 6389.938, -3014.8472, 6679.302, -3092.8694, 7718.3794, -3338.082)
+width = 60.0
+default_color = Color(0, 1, 0, 1)
+joint_mode = 1
+begin_cap_mode = 2
+
+[node name="linha_Rota2" type="Line2D" parent="." unique_id=700012157]
+position = Vector2(-2, 2)
+points = PackedVector2Array(173, 69, 175, 147, 176, 178, 179, 202, 182, 225, 186, 242, 190, 251, 198, 257, 255, 268, 327, 281, 335, 277, 340, 272, 340, 264, 338, 257, 329, 251, 316, 252, 308, 262, 304, 270, 297, 281, 292, 286, 281, 291, 268, 298, 254, 306, 246, 311, 232, 312)
+width = 5.0
+default_color = Color(1, 0.64705884, 0, 1)
+
+[node name="linha_Rota3" type="Line2D" parent="." unique_id=1108780603]
+position = Vector2(62, 324.00003)
+scale = Vector2(0.07602895, 0.08971809)
+points = PackedVector2Array(1591.499, -2819.9446, 1720.6646, -2424.108, 1825.8875, -2190.0415, 1917.9578, -1978.267, 2036.3337, -1766.4924, 2128.4038, -1554.718, 2352.003, -1342.9435, 2615.0605, -1153.4612, 3261.9155, -1025.4343, 3695.9604, -1036.5803, 3972.171, -1159.1865, 4182.617, -1315.231, 4340.452, -1482.4213, 4511.4395, -1671.9038, 4748.191, -1850.2402, 4998.0957, -2017.4305, 5300.6123, -2162.3289, 5524.2114, -2284.935, 5708.3516, -2407.5415, 5958.2563, -2519.0017, 6181.8555, -2619.316, 6444.9136, -2719.63, 6721.124, -2819.944, 7128.8633, -2964.8425, 7692.0737, -3215.4756)
+width = 60.0
+default_color = Color(1, 1, 0, 1)
+
+[node name="linha_Rota4" type="Line2D" parent="." unique_id=1187735789]
+position = Vector2(5, 1)
+points = PackedVector2Array(144, 68, 136, 81, 124, 89, 104, 87, 93, 89, 80, 104, 79, 118, 83, 135, 82, 151, 76, 159, 66, 163, 52, 163, 43, 162, 33, 157, 24, 143, 14, 128, 9, 113, 8, 103, 8, 87, 10, 74, 14, 56, 15, 42, 10, 34, -12, 27)
+width = 5.0
+default_color = Color(1, 0.4117647, 0.7058824, 1)
+
+[node name="linha_Rota5" type="Line2D" parent="." unique_id=952190166]
+position = Vector2(0, 4)
+points = PackedVector2Array(159, 65, 152, 92, 144, 128, 133, 158, 117, 181, 103, 195, 71, 210, 38, 226, 20, 248, 13, 275, 11, 289, 13, 306, 19, 320, 29, 333, 44, 337, 73, 337, 85, 332, 99, 319, 102, 308, 96, 282, 87, 271, 77, 267, 61, 268, 51, 272, 40, 282, 39, 293)
+width = 5.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Costa_Africana" type="Sprite2D" parent="." unique_id=1249989966]
+position = Vector2(330.375, 85.78124)
+scale = Vector2(0.38545296, 0.4010058)
+texture = ExtResource("2_35tg5")
+
+[node name="Caravela" type="Sprite2D" parent="." unique_id=1204185941]
+position = Vector2(175, 45.000004)
+scale = Vector2(0.35532817, 0.36468205)
+texture = ExtResource("3_1wkv2")
+
+[node name="Rochas" type="Sprite2D" parent="." unique_id=345252958]
+position = Vector2(50, 297)
+scale = Vector2(0.07602895, 0.08971809)
+texture = ExtResource("3_y1j7m")
+
+[node name="Onda" type="Sprite2D" parent="." unique_id=1011101420]
+position = Vector2(224.00002, 307)
+scale = Vector2(0.111356966, 0.14538042)
+texture = ExtResource("5_4ner2")
+
+[node name="Instrucao" type="Label" parent="." unique_id=1817619126]
+offset_left = 76.0
+offset_top = 22.0
+offset_right = 553.0
+offset_bottom = 45.0
+text = "Escolha a rota correta para escapar do Cabo das Tormentas!"
+
+[node name="Feedback" type="Label" parent="." unique_id=1998679201]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Dica" type="Label" parent="." unique_id=791014109]
+offset_left = 89.0
+offset_top = 336.0
+offset_right = 584.0
+offset_bottom = 359.0
+text = "Observe a direção dos ventos e das correntes antes de escolher!"
+
+[node name="Rotas" type="Node2D" parent="." unique_id=1013895117]
+
+[node name="Rota1" type="Button" parent="Rotas" unique_id=805765861]
+offset_left = 415.0
+offset_top = 54.0
+offset_right = 468.0
+offset_bottom = 85.0
+text = "Rota1"
+
+[node name="Rota2" type="Button" parent="Rotas" unique_id=1620212793]
+offset_left = 160.0
+offset_top = 214.0
+offset_right = 213.0
+offset_bottom = 245.0
+text = "Rota2"
+
+[node name="Rota3" type="Button" parent="Rotas" unique_id=76146726]
+offset_left = 329.0
+offset_top = 208.0
+offset_right = 382.0
+offset_bottom = 239.0
+text = "Rota3"
+
+[node name="Rota4" type="Button" parent="Rotas" unique_id=155356854]
+offset_left = 65.0
+offset_top = 88.0
+offset_right = 118.0
+offset_bottom = 119.0
+text = "Rota4"
+
+[node name="Rota5" type="Button" parent="Rotas" unique_id=1182000610]
+offset_left = 12.0
+offset_top = 215.0
+offset_right = 65.0
+offset_bottom = 246.0
+text = "Rota5"

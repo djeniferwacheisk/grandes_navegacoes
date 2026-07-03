@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://mjn5p4asen4s"]
+
+[ext_resource type="Texture2D" uid="uid://do27xeq82ikjl" path="res://assets/fase2/pergaminho_final.png" id="1_th1nk"]
+
+[resource]
+atlas = ExtResource("1_th1nk")
+region = Rect2(348.24316, 60.75638, 300.10254, 251.38461)

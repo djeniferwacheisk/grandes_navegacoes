@@ -146,6 +146,7 @@ func _on_objective_completed(phase: int, objective: String) -> void:
 		"mercado_calecute":
 			_falar("Vasco da Gama", "Em 1498, chegamos às Índias! O caminho das especiarias está aberto.")
 			await get_tree().create_timer(0.5).timeout
+			GameManager.finish_phase(4)
 			SceneManager.change_scene("res://scenes/main/phase_complete.tscn")
 
 

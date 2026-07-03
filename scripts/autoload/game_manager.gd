@@ -6,6 +6,7 @@ signal item_collected(item_name: String)
 signal minimap_area_revealed(area_id: String)
 
 var current_phase: int = 1
+var last_completed_phase: int = 0
 var inventory: Array[Dictionary] = []
 var objectives_completed: Dictionary = {}
 var minimap_revealed: Array[String] = []
@@ -18,6 +19,7 @@ static func _default_objectives() -> Dictionary:
 	return {
 		1: {"bussola_ventos": false, "caravela": false, "astrolabio": false},
 		4: {"tripulacao_viva": false, "ventos_indico": false, "carta_navegacao": false, "mercado_calecute": false},
+		5: {"explorar_costa": false, "primeiro_contato": false, "puzzle_cruz": false},
 	}
 
 
@@ -77,6 +79,17 @@ func is_phase_complete(phase: int) -> bool:
 		if not objectives_completed[phase][obj_key]:
 			return false
 	return true
+
+
+## Chamado por cada fase ao ser concluida, logo antes de ir para a tela
+## de transicao (phase_complete.tscn). Guarda qual fase terminou (para a
+## tela de transicao montar a mensagem certa) e avanca current_phase, para
+## que o proximo "Continuar" carregue a fase seguinte automaticamente.
+func finish_phase(phase: int) -> void:
+	last_completed_phase = phase
+	if current_phase <= phase:
+		current_phase = phase + 1
+	save_game()
 
 
 func reveal_minimap_area(area_id: String) -> void:

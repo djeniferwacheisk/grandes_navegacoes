@@ -88,4 +88,5 @@ func _show_phase_complete() -> void:
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog("conclusao")
 	await dialog_box.dialog_finished
+	GameManager.finish_phase(1)
 	SceneManager.change_scene("res://scenes/main/phase_complete.tscn")

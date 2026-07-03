@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cg5ed6p573iun"]
+
+[ext_resource type="Script" uid="uid://wdnd7hm01icg" path="res://scripts/fase2/npc_escambo.gd" id="1_ticvc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_65eql"]
+radius = 50.0
+
+[node name="NpcEscambo" type="Area2D" unique_id=458341231]
+script = ExtResource("1_ticvc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580520267]
+shape = SubResource("CircleShape2D_65eql")
+
+[node name="Label" type="Label" parent="." unique_id=1885478418]
+offset_left = -52.0
+offset_top = -63.0
+offset_right = 51.0
+offset_bottom = -40.0
+text = "[E] Conversar"
+metadata/_edit_use_anchors_ = true

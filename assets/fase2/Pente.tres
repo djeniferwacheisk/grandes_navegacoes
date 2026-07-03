@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://bmdcdeaxusr3"]
+
+[ext_resource type="Texture2D" uid="uid://u2bb5a210qqn" path="res://assets/fase2/Escambo.png" id="1_n01ic"]
+
+[resource]
+atlas = ExtResource("1_n01ic")
+region = Rect2(18.5, 24, 135, 132)

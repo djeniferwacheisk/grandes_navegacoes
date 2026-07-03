@@ -27,6 +27,6 @@ func _abrir_puzzle() -> void:
 	if GameManager.fragmentos_coletados < 3:
 		print("Colete os 3 fragmentos primeiro!")
 		return
-	var puzzle_scene = preload("res://scenes/levels/Fase 2/puzzle_mapa.tscn")
+	var puzzle_scene = preload("res://scenes/levels/fase2/puzzle_mapa.tscn")
 	var puzzle = puzzle_scene.instantiate()
 	get_tree().root.add_child(puzzle)

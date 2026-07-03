@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cotbc8n8ffy46"]
+
+[ext_resource type="Script" uid="uid://eygyh03y6of4" path="res://scenes/levels/fase3/vitoria.gd" id="1_ktndq"]
+
+[node name="Vitoria" type="CanvasLayer" unique_id=385634118]
+script = ExtResource("1_ktndq")
+
+[node name="Control" type="Control" parent="." unique_id=938383735]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fundo" type="ColorRect" parent="Control" unique_id=1677473916]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 16.050001
+anchor_bottom = 9.200001
+offset_left = -8.0
+offset_top = -2.0
+offset_right = 6.999939
+offset_bottom = -1.0000305
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.20392157, 0.35686275, 0.67058825)
+
+[node name="Titulo" type="Label" parent="Control" unique_id=1694546113]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 30.0
+offset_right = 516.0
+offset_bottom = 53.0
+text = "Parabéns! Você atravessou o Cabo das Tormentas!"
+
+[node name="Explicacao" type="Label" parent="Control" unique_id=1315462267]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 148.0
+offset_right = 636.0
+offset_bottom = 276.0
+text = "O Cabo das Tormentas, localizado no extremo sul da África, era temido pelos navegadores por suas tempestades violentas e correntes traiçoeiras. Em 1488, Bartolomeu Dias foi o primeiro europeu a contorná-lo, abrindo caminho para as Índias. O rei D. João II o rebatizou de Cabo da Boa Esperança, simbolizando a esperança de chegar ao Oriente"
+autowrap_mode = 2
+
+[node name="BtnContinuar" type="Button" parent="Control" unique_id=1136110910]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 302.0
+offset_right = 347.0
+offset_bottom = 333.0
+text = "Continuar"
+
+[node name="Mensagem" type="Label" parent="Control" unique_id=590978267]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 79.0
+offset_right = 596.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sua coragem e habilidade guiaram a caravela através das águas mais perigosas do mundo!"
+autowrap_mode = 2
