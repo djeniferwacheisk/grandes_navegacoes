@@ -5,18 +5,14 @@ var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
 var presente_dado: bool = false
 var contato_feito: bool = false
 
-# Minigame de gestos
-var gestos_sequencia: Array[String] = []
+const TOTAL_GESTOS := 5
+const ACOES: Array[String] = ["ui_left", "ui_right", "ui_up", "ui_down"]
+const SIMBOLOS: Dictionary = {"ui_left": "←", "ui_right": "→", "ui_up": "↑", "ui_down": "↓"}
+
+var sequencia: Array[int] = []
+var acoes_sequencia: Array[String] = []
 var gesto_atual: int = 0
 var minigame_ativo: bool = false
-
-const GESTOS := {
-	"ui_left":  "←",
-	"ui_right": "→",
-	"ui_up":    "↑",
-	"ui_down":  "↓"
-}
-const KEYS_GESTOS := ["ui_left", "ui_right", "ui_up", "ui_down"]
 
 @onready var player: CharacterBody2D = $Player
 @onready var dialog_box = $DialogBox
@@ -24,10 +20,14 @@ const KEYS_GESTOS := ["ui_left", "ui_right", "ui_up", "ui_down"]
 @onready var label_gesto: Label = $HUD/PainelGesto/LabelGesto
 @onready var label_instrucao: Label = $HUD/PainelGesto/LabelInstrucao
 @onready var label_progresso: Label = $HUD/PainelGesto/LabelProgresso
+@onready var sprite_indio: AnimatedSprite2D = $SpriteIndio
+@onready var sprite_portugues: AnimatedSprite2D = $SpritePortugues
 
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
 	painel_gesto.visible = false
+sprite_indio.visible = false
+	sprite_portugues.visible = false
 	_setup_camera()
 
 	await get_tree().create_timer(0.5).timeout
@@ -52,10 +52,10 @@ func _setup_camera() -> void:
 func _input(event: InputEvent) -> void:
 	if not minigame_ativo:
 		return
-
-	for action in KEYS_GESTOS:
-		if event.is_action_pressed(action):
-			_checar_gesto(action)
+	for i in range(ACOES.size()):
+		var acao: String = ACOES[i]
+		if event.is_action_pressed(acao):
+			_checar_gesto(acao)
 			return
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -96,49 +96,60 @@ func _on_contato_interact() -> void:
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct([
 		{"speaker": "Tupiniquim", "text": "...", "portrait": ""},
-		{"speaker": "Narrador", "text": "Um Tupiniquim faz gestos com as mãos. Imite-os para demonstrar amizade!", "portrait": ""},
-		{"speaker": "Narrador", "text": "Use as setas do teclado para imitar os gestos. Acerte 5 seguidos!", "portrait": ""}
+		{"speaker": "Narrador", "text": "Um Tupiniquim faz gestos com as mãos. Imite-os usando as setas do teclado!", "portrait": ""},
+		{"speaker": "Narrador", "text": "Acerte os 5 gestos para completar o contato!", "portrait": ""}
 	])
 	await dialog_box.dialog_finished
-	_iniciar_minigame_gestos()
+	_iniciar_minigame()
 
-func _iniciar_minigame_gestos() -> void:
-	# Gera sequência aleatória de 5 gestos
-	gestos_sequencia.clear()
+func _iniciar_minigame() -> void:
+	sequencia.clear()
+	acoes_sequencia.clear()
 	gesto_atual = 0
-	for i in range(5):
-		gestos_sequencia.append(KEYS_GESTOS[randi() % 4])
+
+	for i in range(TOTAL_GESTOS):
+		var frame: int = randi() % 5
+		var idx: int = randi() % 4
+		var acao: String = ACOES[idx]
+		sequencia.append(frame)
+		acoes_sequencia.append(acao)
 
 	minigame_ativo = true
+	sprite_indio.visible = true
+	sprite_portugues.visible = true
 	painel_gesto.visible = true
-	_mostrar_proximo_gesto()
+	_mostrar_gesto()
 
-func _mostrar_proximo_gesto() -> void:
-	var gesto := gestos_sequencia[gesto_atual]
-	label_gesto.text = GESTOS[gesto]
-	label_instrucao.text = "Imite o gesto do Tupiniquim!"
-	label_progresso.text = "Gesto %d / 5" % (gesto_atual + 1)
+func _mostrar_gesto() -> void:
+	sprite_indio.frame = sequencia[gesto_atual]
+	sprite_portugues.frame = 0
+	var acao: String = acoes_sequencia[gesto_atual]
+	label_gesto.text = "Imite: " + SIMBOLOS[acao]
+	label_instrucao.text = "Use as setas do teclado!"
+	label_progresso.text = "Gesto %d / %d" % [gesto_atual + 1, TOTAL_GESTOS]
 
-func _checar_gesto(action: String) -> void:
-	if action == gestos_sequencia[gesto_atual]:
+func _checar_gesto(acao: String) -> void:
+	var esperado: String = acoes_sequencia[gesto_atual]
+	if acao == esperado:
+		sprite_portugues.frame = sequencia[gesto_atual]
+		label_gesto.text = "✓ Correto!"
+		await get_tree().create_timer(0.6).timeout
 		gesto_atual += 1
-		label_gesto.text = "✓"
-		if gesto_atual >= gestos_sequencia.size():
+		if gesto_atual >= TOTAL_GESTOS:
 			_minigame_sucesso()
 		else:
-			await get_tree().create_timer(0.3).timeout
-			_mostrar_proximo_gesto()
+			_mostrar_gesto()
 	else:
-		# Erro — reinicia a sequência
-		label_gesto.text = "✗"
-		label_instrucao.text = "Errou! Recomeçando..."
-		await get_tree().create_timer(0.6).timeout
-		gesto_atual = 0
-		_mostrar_proximo_gesto()
+		sprite_portugues.frame = 0
+		label_gesto.text = "✗ Errou! Tente: " + SIMBOLOS[esperado]
+		await get_tree().create_timer(0.8).timeout
+		_mostrar_gesto()
 
 func _minigame_sucesso() -> void:
 	minigame_ativo = false
 	painel_gesto.visible = false
+	sprite_indio.visible = false
+	sprite_portugues.visible = false
 	contato_feito = true
 
 	player.set_state(player.State.IN_DIALOG)

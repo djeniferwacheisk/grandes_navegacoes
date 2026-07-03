@@ -4,12 +4,40 @@
 [ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
 [ext_resource type="Texture2D" uid="uid://jp5mua3vuoie" path="res://assets/personagem/Cortando_Arvore.png" id="3_k05r3"]
+[ext_resource type="Texture2D" uid="uid://c10xygjsf6aa5" path="res://assets/personagem/Personagem_cavando.png" id="4_3cofm"]
 [ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
+[ext_resource type="Texture2D" uid="uid://c2ce2pxplc75i" path="res://assets/objects/Buraco.png" id="5_6hkor"]
+[ext_resource type="Texture2D" uid="uid://c6itkrg1tpl5e" path="res://assets/personagem/Construir_cruz.png" id="6_6hkor"]
 [ext_resource type="Texture2D" uid="uid://ddre8w53b42fu" path="res://assets/objects/Arvore_cortada.png" id="6_arvore"]
+[ext_resource type="Texture2D" uid="uid://cfesp0l1fvru8" path="res://assets/objects/Cruz.png" id="7_qoqm4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k05r3"]
+atlas = ExtResource("6_arvore")
+region = Rect2(0, 0, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0gex"]
+atlas = ExtResource("6_arvore")
+region = Rect2(169, 0, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cofm"]
+atlas = ExtResource("6_arvore")
+region = Rect2(338, 0, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hkor"]
+atlas = ExtResource("6_arvore")
+region = Rect2(507, 0, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoqm4"]
+atlas = ExtResource("6_arvore")
+region = Rect2(0, 184, 169, 184)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83eel"]
 atlas = ExtResource("6_arvore")
 region = Rect2(169, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxbep"]
+atlas = ExtResource("6_arvore")
+region = Rect2(338, 184, 169, 184)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjngp"]
 atlas = ExtResource("6_arvore")
@@ -23,7 +51,25 @@ region = Rect2(0, 0, 169, 184)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_k05r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0gex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cofm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hkor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoqm4")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_83eel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxbep")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bjngp")
@@ -105,6 +151,129 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt8fa"]
+atlas = ExtResource("4_3cofm")
+region = Rect2(0, 0, 249, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxg4n"]
+atlas = ExtResource("4_3cofm")
+region = Rect2(249, 0, 249, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6pc7"]
+atlas = ExtResource("4_3cofm")
+region = Rect2(0, 250, 249, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqdf0"]
+atlas = ExtResource("4_3cofm")
+region = Rect2(249, 250, 249, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1j0ot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt8fa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxg4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6pc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqdf0")
+}],
+"loop": true,
+"name": &"cavar",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4vyi"]
+atlas = ExtResource("5_6hkor")
+region = Rect2(0, 0, 185, 102)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t3gqn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4vyi")
+}],
+"loop": true,
+"name": &"buraco",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j0ot"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(0, 0, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3gqn"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(182, 0, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6byui"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(364, 0, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe2s8"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(546, 0, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkb46"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(0, 110, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciw7q"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(182, 110, 182, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhvc6"]
+atlas = ExtResource("6_6hkor")
+region = Rect2(364, 110, 182, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5pv8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j0ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3gqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6byui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe2s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkb46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciw7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhvc6")
+}],
+"loop": true,
+"name": &"construir",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pv8s"]
+atlas = ExtResource("7_qoqm4")
+region = Rect2(0, 0, 270, 432)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xv1he"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pv8s")
+}],
+"loop": true,
+"name": &"cruz",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
 
@@ -170,6 +339,34 @@ position = Vector2(190, 437)
 scale = Vector2(0.5624999, 0.5067567)
 sprite_frames = SubResource("SpriteFrames_cortar")
 animation = &"cortar"
+
+[node name="SpriteCavar" type="AnimatedSprite2D" parent="." unique_id=1236707851]
+visible = false
+position = Vector2(597, 443)
+scale = Vector2(0.39673945, 0.35415208)
+sprite_frames = SubResource("SpriteFrames_1j0ot")
+animation = &"cavar"
+
+[node name="SpriteBuraco" type="AnimatedSprite2D" parent="." unique_id=122158306]
+visible = false
+position = Vector2(620.00006, 464)
+scale = Vector2(0.31621623, 0.43137255)
+sprite_frames = SubResource("SpriteFrames_t3gqn")
+animation = &"buraco"
+
+[node name="SpriteCruz" type="AnimatedSprite2D" parent="." unique_id=827438862]
+visible = false
+position = Vector2(637, 456.00003)
+scale = Vector2(0.64285713, 0.6772728)
+sprite_frames = SubResource("SpriteFrames_5pv8s")
+animation = &"construir"
+
+[node name="SpriteCruzFinal" type="AnimatedSprite2D" parent="." unique_id=1420170197]
+visible = false
+position = Vector2(620, 406.00003)
+scale = Vector2(0.4833335, 0.42418978)
+sprite_frames = SubResource("SpriteFrames_xv1he")
+animation = &"cruz"
 
 [node name="Chao" type="StaticBody2D" parent="." unique_id=844800607]
 position = Vector2(576, 510)
@@ -253,11 +450,10 @@ position = Vector2(100, 460)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=537940622]
 
 [node name="PainelMash" type="Panel" parent="HUD" unique_id=802426381]
-visible = false
-offset_left = 326.0
-offset_top = 180.0
-offset_right = 826.0
-offset_bottom = 380.0
+offset_left = 11.0
+offset_top = 231.0
+offset_right = 473.0
+offset_bottom = 361.0
 
 [node name="LabelAcao" type="Label" parent="HUD/PainelMash" unique_id=1464590493]
 layout_mode = 0
@@ -270,21 +466,24 @@ horizontal_alignment = 1
 
 [node name="BarraProgresso" type="ProgressBar" parent="HUD/PainelMash" unique_id=1328676764]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 80.0
-offset_right = 460.0
-offset_bottom = 120.0
+offset_left = 22.0
+offset_top = 58.0
+offset_right = 442.0
+offset_bottom = 98.0
 max_value = 20.0
 show_percentage = false
 
 [node name="LabelDica" type="Label" parent="HUD/PainelMash" unique_id=2135706227]
 layout_mode = 0
-offset_top = 130.0
-offset_right = 500.0
-offset_bottom = 160.0
+offset_left = -18.0
+offset_top = 107.0
+offset_right = 482.0
+offset_bottom = 137.0
 theme_override_font_sizes/font_size = 16
 text = "Aperte E repetidamente!"
 horizontal_alignment = 1
+
+[node name="barco" type="Sprite2D" parent="HUD/PainelMash" unique_id=1033902001]
 
 [connection signal="triggered" from="Triggers/TroncoTrigger" to="." method="_on_tronco_interact"]
 [connection signal="triggered" from="Triggers/CordaTrigger" to="." method="_on_corda_interact"]
