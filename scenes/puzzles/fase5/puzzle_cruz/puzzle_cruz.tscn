@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ce2pxplc75i" path="res://assets/objects/Buraco.png" id="5_6hkor"]
 [ext_resource type="Texture2D" uid="uid://c6itkrg1tpl5e" path="res://assets/personagem/Construir_cruz.png" id="6_6hkor"]
 [ext_resource type="Texture2D" uid="uid://ddre8w53b42fu" path="res://assets/objects/Arvore_cortada.png" id="6_arvore"]
+[ext_resource type="Texture2D" uid="uid://cfesp0l1fvru8" path="res://assets/objects/Cruz.png" id="7_qoqm4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k05r3"]
 atlas = ExtResource("6_arvore")
@@ -258,6 +259,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pv8s"]
+atlas = ExtResource("7_qoqm4")
+region = Rect2(0, 0, 270, 432)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xv1he"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pv8s")
+}],
+"loop": true,
+"name": &"cruz",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
 
@@ -336,10 +352,18 @@ sprite_frames = SubResource("SpriteFrames_t3gqn")
 animation = &"buraco"
 
 [node name="SpriteCruz" type="AnimatedSprite2D" parent="." unique_id=827438862]
+visible = false
 position = Vector2(637, 456.00003)
 scale = Vector2(0.64285713, 0.6772728)
 sprite_frames = SubResource("SpriteFrames_5pv8s")
 animation = &"construir"
+
+[node name="SpriteCruzFinal" type="AnimatedSprite2D" parent="." unique_id=1420170197]
+visible = false
+position = Vector2(620, 406.00003)
+scale = Vector2(0.4833335, 0.42418978)
+sprite_frames = SubResource("SpriteFrames_xv1he")
+animation = &"cruz"
 
 [node name="Chao" type="StaticBody2D" parent="." unique_id=844800607]
 position = Vector2(576, 510)

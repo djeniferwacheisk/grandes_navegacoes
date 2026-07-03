@@ -16,11 +16,15 @@ const PROGRESSO_MAX: float = 20.0
 @onready var sprite_cortar: AnimatedSprite2D = $SpriteCortar
 @onready var sprite_cavar: AnimatedSprite2D = $SpriteCavar
 @onready var sprite_buraco: AnimatedSprite2D = $SpriteBuraco
+@onready var sprite_cruz: AnimatedSprite2D = $SpriteCruz
+@onready var sprite_cruz_final: AnimatedSprite2D = $SpriteCruzFinal
 
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
 	painel_mash.visible = false
 	sprite_buraco.visible = false
+	sprite_cruz.visible = false
+	sprite_cruz_final.visible = false
 
 	await get_tree().create_timer(0.5).timeout
 	player.set_state(player.State.IN_DIALOG)
@@ -41,10 +45,13 @@ func _avancar_progresso() -> void:
 	progresso_atual += 1.0
 	barra_progresso.value = progresso_atual
 
-	# Avança frame da árvore a cada pressionamento
 	if etapa_atual == "tronco":
 		var frame_idx: int = int((progresso_atual / PROGRESSO_MAX) * 7)
 		sprite_arvore.frame = frame_idx
+
+	if etapa_atual == "alinhar":
+		var frame_idx: int = int((progresso_atual / PROGRESSO_MAX) * 6)
+		sprite_cruz.frame = frame_idx
 
 	if progresso_atual >= PROGRESSO_MAX:
 		_concluir_etapa()
@@ -126,9 +133,15 @@ func _iniciar_mash(etapa: String, texto_acao: String, dica: String) -> void:
 		sprite_cavar.visible = true
 		sprite_cavar.frame = 0
 		sprite_cavar.play("cavar")
+	elif etapa == "alinhar":
+		player.visible = false
+		sprite_cruz.visible = true
+		sprite_cruz.frame = 0
+		sprite_cruz.stop()
 	else:
 		sprite_cortar.visible = false
 		sprite_cavar.visible = false
+		sprite_cruz.visible = false
 		player.visible = true
 
 func _concluir_etapa() -> void:
@@ -139,13 +152,16 @@ func _concluir_etapa() -> void:
 
 	if etapa_atual == "tronco":
 		sprite_cortar.visible = false
-		player.visible = true
 		sprite_arvore.play("caindo")
 		await sprite_arvore.animation_finished
 	elif etapa_atual == "corda":
 		sprite_cavar.stop()
 		sprite_cavar.visible = false
 		sprite_buraco.visible = true
+	elif etapa_atual == "alinhar":
+		sprite_cruz.visible = false
+		sprite_cruz_final.visible = true
+		sprite_cruz_final.play("idle")
 
 	var msgs := {
 		"tronco": [
