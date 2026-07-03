@@ -1,17 +1,17 @@
 extends CanvasLayer
 
-# Itens portugueses e seus valores
+# Itens portugueses com os caminhos das texturas novas (AtlasTexture)
 var itens_portugueses = [
-	{"nome": "Pente", "valor": 2},
-	{"nome": "Tecido", "valor": 3},
-	{"nome": "Espelho", "valor": 4},
+	{"nome": "Pente", "valor": 2, "texture": preload("res://assets/fase2/pente.tres")},
+	{"nome": "Tecido", "valor": 3, "texture": preload("res://assets/fase2/tecido.tres")},
+	{"nome": "Espelho", "valor": 4, "texture": preload("res://assets/fase2/espelho.tres")},
 ]
 
-# Itens locais e seus valores
+# Itens locais com os caminhos das texturas novas (AtlasTexture)
 var itens_locais = [
-	{"nome": "Amuleto", "valor": 2},
-	{"nome": "Cerâmica", "valor": 3},
-	{"nome": "Especiaria", "valor": 4},
+	{"nome": "Amuleto", "valor": 2, "texture": preload("res://assets/fase2/amuleto.tres")},
+	{"nome": "Cerâmica", "valor": 3, "texture": preload("res://assets/fase2/ceramica.tres")},
+	{"nome": "Especiaria", "valor": 4, "texture": preload("res://assets/fase2/especiaria.tres")},
 ]
 
 var selecionado_portugues: Dictionary = {}
@@ -27,27 +27,42 @@ func _ready() -> void:
 	_criar_botoes()
 
 func _criar_botoes() -> void:
+	# Criação dos botões de textura para os itens portugueses
 	for item in itens_portugueses:
-		var btn = Button.new()
-		btn.text = "%s (valor: %d)" % [item["nome"], item["valor"]]
+		var btn = TextureButton.new()
+		btn.texture_normal = item["texture"]
+		btn.ignore_texture_size = true
+		btn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		btn.custom_minimum_size = Vector2(64, 64) # Tamanho proporcional à tela de 640x360
+		
+		# Texto flutuante que aparece ao passar o mouse por cima do item
+		btn.tooltip_text = "%s (Valor: %d)" % [item["nome"], item["valor"]]
+		
 		btn.pressed.connect(_selecionar_portugues.bind(item, btn))
 		botoes_portugueses.add_child(btn)
 
+	# Criação dos botões de textura para os itens locais
 	for item in itens_locais:
-		var btn = Button.new()
-		btn.text = "%s (valor: %d)" % [item["nome"], item["valor"]]
+		var btn = TextureButton.new()
+		btn.texture_normal = item["texture"]
+		btn.ignore_texture_size = true
+		btn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		btn.custom_minimum_size = Vector2(64, 64)
+		
+		btn.tooltip_text = "%s (Valor: %d)" % [item["nome"], item["valor"]]
+		
 		btn.pressed.connect(_selecionar_local.bind(item, btn))
 		botoes_locais.add_child(btn)
 
-func _selecionar_portugues(item: Dictionary, btn: Button) -> void:
+func _selecionar_portugues(item: Dictionary, btn: TextureButton) -> void:
 	selecionado_portugues = item
-	# Destaca o botão selecionado
+	# Destaca o botão selecionado aplicando modulação visual
 	for b in botoes_portugueses.get_children():
 		b.modulate = Color(1, 1, 1)
-	btn.modulate = Color(0.5, 1.0, 0.5)
+	btn.modulate = Color(0.5, 1.0, 0.5) # Fica esverdeado ao selecionar
 	_atualizar_status()
 
-func _selecionar_local(item: Dictionary, btn: Button) -> void:
+func _selecionar_local(item: Dictionary, btn: TextureButton) -> void:
 	selecionado_local = item
 	for b in botoes_locais.get_children():
 		b.modulate = Color(1, 1, 1)
