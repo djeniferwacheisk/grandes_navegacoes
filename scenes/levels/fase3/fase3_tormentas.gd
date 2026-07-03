@@ -1,5 +1,7 @@
 extends Node2D
 
+var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
+
 @onready var carvela = $Carvela
 @onready var barra_vida: TextureProgressBar = $HUD/BarraVida
 @onready var spawn_timer: Timer = $swapnTimer
@@ -26,6 +28,13 @@ func _ready() -> void:
 	barra_vida.value = carvela.health
 	barra_progresso.max_value = duracao_fase
 	barra_progresso.value = 0
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		var pause := _pause_menu_scene.instantiate()
+		add_child(pause)
+		get_viewport().set_input_as_handled()
 
 
 func _process(delta: float) -> void:

@@ -1,5 +1,7 @@
 extends Node2D
 
+var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
+
 var presente_dado: bool = false
 var contato_feito: bool = false
 
@@ -26,6 +28,7 @@ const KEYS_GESTOS := ["ui_left", "ui_right", "ui_up", "ui_down"]
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
 	painel_gesto.visible = false
+	_setup_camera()
 
 	await get_tree().create_timer(0.5).timeout
 	player.set_state(player.State.IN_DIALOG)
@@ -36,6 +39,16 @@ func _ready() -> void:
 	await dialog_box.dialog_finished
 	player.set_state(player.State.EXPLORING)
 
+func _setup_camera() -> void:
+	await get_tree().process_frame
+	var cam := player.get_node_or_null("Camera2D")
+	if cam:
+		cam.limit_left   = 0
+		cam.limit_top    = 0
+		cam.limit_right  = 1152
+		cam.limit_bottom = 510
+		cam.position_smoothing_enabled = true
+
 func _input(event: InputEvent) -> void:
 	if not minigame_ativo:
 		return
@@ -44,6 +57,12 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed(action):
 			_checar_gesto(action)
 			return
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		var pause := _pause_menu_scene.instantiate()
+		add_child(pause)
+		get_viewport().set_input_as_handled()
 
 func _on_presente_interact() -> void:
 	if presente_dado:

@@ -1,82 +1,93 @@
 [gd_scene format=3 uid="uid://fase5brasil"]
 
-[ext_resource type="Script" path="res://scenes/levels/fase5/fase5_brasil.gd" id="1_fase5"]
-[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
-[ext_resource type="PackedScene" path="res://scenes/hud/hud.tscn" id="4_hud"]
-[ext_resource type="Script" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="5_trigger"]
+[ext_resource type="Script" uid="uid://bds7dog7ipjqc" path="res://scenes/levels/fase5/fase5_brasil.gd" id="1_fase5"]
+[ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
+[ext_resource type="PackedScene" uid="uid://chud001" path="res://scenes/hud/hud.tscn" id="4_hud"]
+[ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="5_trigger"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
-size = Vector2(1280, 20)
+size = Vector2(1280, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_parede_lateral"]
+size = Vector2(20, 620)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(40, 40)
 
-[node name="Fase5Brasil" type="Node2D"]
+[node name="Fase5Brasil" type="Node2D" unique_id=893618867]
 script = ExtResource("1_fase5")
 
-[node name="Fundo" type="Node2D" parent="."]
+[node name="Fundo" type="Node2D" parent="." unique_id=59160497]
 
-[node name="Ceu" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 0
-offset_right = 1152
-offset_bottom = 300
+[node name="Ceu" type="ColorRect" parent="Fundo" unique_id=589840343]
+offset_right = 1152.0
+offset_bottom = 300.0
 color = Color(0.4, 0.72, 0.95, 1)
 
-[node name="Mar" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 300
-offset_right = 1152
-offset_bottom = 430
+[node name="Mar" type="ColorRect" parent="Fundo" unique_id=2043415511]
+offset_top = 300.0
+offset_right = 1152.0
+offset_bottom = 430.0
 color = Color(0.1, 0.4, 0.78, 1)
 
-[node name="Areia" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 430
-offset_right = 1152
-offset_bottom = 510
+[node name="Areia" type="ColorRect" parent="Fundo" unique_id=102935820]
+offset_top = 430.0
+offset_right = 1152.0
+offset_bottom = 510.0
 color = Color(0.87, 0.78, 0.54, 1)
 
-[node name="Mata" type="ColorRect" parent="Fundo"]
-offset_left = 0
-offset_top = 200
-offset_right = 400
-offset_bottom = 440
+[node name="Mata" type="ColorRect" parent="Fundo" unique_id=824847820]
+offset_top = 200.0
+offset_right = 400.0
+offset_bottom = 440.0
 color = Color(0.08, 0.45, 0.08, 1)
 
-[node name="Morro" type="ColorRect" parent="Fundo"]
-offset_left = 700
-offset_top = 150
-offset_right = 950
-offset_bottom = 440
+[node name="Morro" type="ColorRect" parent="Fundo" unique_id=1213320121]
+offset_left = 700.0
+offset_top = 150.0
+offset_right = 950.0
+offset_bottom = 440.0
 color = Color(0.35, 0.52, 0.25, 1)
 
-[node name="Navio" type="ColorRect" parent="Fundo"]
-offset_left = 480
-offset_top = 270
-offset_right = 620
-offset_bottom = 340
+[node name="Navio" type="ColorRect" parent="Fundo" unique_id=1056461796]
+offset_left = 480.0
+offset_top = 270.0
+offset_right = 620.0
+offset_bottom = 340.0
 color = Color(0.55, 0.4, 0.18, 1)
 
-[node name="Chao" type="StaticBody2D" parent="."]
+[node name="Chao" type="StaticBody2D" parent="." unique_id=708977534]
 position = Vector2(576, 510)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=1183863894]
+position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_chao")
 
-[node name="PuzzleTriggers" type="Node2D" parent="."]
+[node name="ParedeEsquerda" type="StaticBody2D" parent="."]
+position = Vector2(-10, 200)
 
-[node name="ExplorarTrigger" type="Area2D" parent="PuzzleTriggers"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsquerda"]
+shape = SubResource("RectangleShape2D_parede_lateral")
+
+[node name="ParedeDireita" type="StaticBody2D" parent="."]
+position = Vector2(1162, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDireita"]
+shape = SubResource("RectangleShape2D_parede_lateral")
+
+[node name="PuzzleTriggers" type="Node2D" parent="." unique_id=727950460]
+
+[node name="ExplorarTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=609840955]
 position = Vector2(200, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("5_trigger")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/ExplorarTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/ExplorarTrigger" unique_id=586788855]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="PuzzleTriggers/ExplorarTrigger"]
+[node name="Label" type="Label" parent="PuzzleTriggers/ExplorarTrigger" unique_id=407819612]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 80.0
@@ -85,16 +96,16 @@ theme_override_font_sizes/font_size = 10
 text = "Explorar Costa"
 horizontal_alignment = 1
 
-[node name="ContatoTrigger" type="Area2D" parent="PuzzleTriggers"]
+[node name="ContatoTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=1545739356]
 position = Vector2(550, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("5_trigger")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/ContatoTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/ContatoTrigger" unique_id=2146071344]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="PuzzleTriggers/ContatoTrigger"]
+[node name="Label" type="Label" parent="PuzzleTriggers/ContatoTrigger" unique_id=601788384]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 80.0
@@ -103,16 +114,16 @@ theme_override_font_sizes/font_size = 10
 text = "Primeiro Contato"
 horizontal_alignment = 1
 
-[node name="CruzTrigger" type="Area2D" parent="PuzzleTriggers"]
+[node name="CruzTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=1791266647]
 position = Vector2(900, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("5_trigger")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/CruzTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/CruzTrigger" unique_id=1588827670]
 shape = SubResource("RectangleShape2D_trigger")
 
-[node name="Label" type="Label" parent="PuzzleTriggers/CruzTrigger"]
+[node name="Label" type="Label" parent="PuzzleTriggers/CruzTrigger" unique_id=766485114]
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 80.0
@@ -121,12 +132,13 @@ theme_override_font_sizes/font_size = 10
 text = "A Cruz e a Posse"
 horizontal_alignment = 1
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
+[node name="Player" parent="." unique_id=534475526 instance=ExtResource("2_player")]
 position = Vector2(100, 460)
 
-[node name="DialogBox" parent="." instance=ExtResource("3_dialog")]
+[node name="DialogBox" parent="." unique_id=1663121615 instance=ExtResource("3_dialog")]
 
-[node name="HUD" parent="." instance=ExtResource("4_hud")]
+[node name="HUD" parent="." unique_id=1795449354 instance=ExtResource("4_hud")]
+phase = 5
 
 [connection signal="triggered" from="PuzzleTriggers/ExplorarTrigger" to="." method="_on_explorar_interact"]
 [connection signal="triggered" from="PuzzleTriggers/ContatoTrigger" to="." method="_on_contato_interact"]

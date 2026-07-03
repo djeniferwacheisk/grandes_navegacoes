@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://chud001"]
 
 [ext_resource type="Script" uid="uid://d0obm46gd55kk" path="res://scenes/hud/hud.gd" id="1_hud"]
-[ext_resource type="PackedScene" uid="uid://4x2bgeyxkm3y" path="res://scenes/hud/objective_compass.tscn" id="2_compass"]
+[ext_resource type="PackedScene" uid="uid://cwdph61uj3h41" path="res://scenes/hud/objective_compass.tscn" id="2_compass"]
 
 [node name="HUD" type="CanvasLayer" unique_id=647162572]
 layer = 5

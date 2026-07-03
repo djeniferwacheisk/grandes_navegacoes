@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_parede_lateral"]
+size = Vector2(20, 660)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(40, 40)
 
@@ -56,6 +59,18 @@ position = Vector2(576, 510)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chao"]
 shape = SubResource("RectangleShape2D_chao")
+
+[node name="ParedeEsquerda" type="StaticBody2D" parent="."]
+position = Vector2(-10, 220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsquerda"]
+shape = SubResource("RectangleShape2D_parede_lateral")
+
+[node name="ParedeDireita" type="StaticBody2D" parent="."]
+position = Vector2(1162, 220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDireita"]
+shape = SubResource("RectangleShape2D_parede_lateral")
 
 [node name="Triggers" type="Node2D" parent="."]
 

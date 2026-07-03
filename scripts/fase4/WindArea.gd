@@ -5,6 +5,9 @@
 class_name WindArea
 extends Area2D
 
+signal ship_entered_wind(is_favorable: bool)
+signal ship_exited_wind()
+
 @export var direction: Vector2 = Vector2.RIGHT
 @export var force: float = 80.0
 @export var is_favorable: bool = true
@@ -30,9 +33,10 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("barco"):
 		_ships_inside.append(body)
-		var msg := "Vento favorável!" if is_favorable else "Cuidado! O vento empurra o navio para os recifes."
-		print("[VentoIndico] ", msg)
+		ship_entered_wind.emit(is_favorable)
 
 
 func _on_body_exited(body: Node) -> void:
 	_ships_inside.erase(body)
+	if body.is_in_group("barco"):
+		ship_exited_wind.emit()

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal health_changed(current: float, max_health: float)
+
 @export var max_speed: float = 400.0
 
 # ANCORA
@@ -153,6 +155,7 @@ func take_damage(amount):
 
 	health -= amount
 	health = clamp(health, 0, max_health)
+	health_changed.emit(health, max_health)
 
 	if health_bar:
 		health_bar.value = health

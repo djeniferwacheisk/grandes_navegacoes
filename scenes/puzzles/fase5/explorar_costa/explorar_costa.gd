@@ -1,5 +1,7 @@
 extends Node2D
 
+var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
+
 var registros_feitos: int = 0
 var itens_coletados: Array[String] = []
 
@@ -26,6 +28,17 @@ const ANOTACOES := {
 
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
+	_setup_camera()
+
+func _setup_camera() -> void:
+	await get_tree().process_frame
+	var cam := player.get_node_or_null("Camera2D")
+	if cam:
+		cam.limit_left   = 0
+		cam.limit_top    = 0
+		cam.limit_right  = 1152
+		cam.limit_bottom = 550
+		cam.position_smoothing_enabled = true
 
 func _on_morro_interact() -> void:
 	_registrar("morro")
@@ -67,3 +80,10 @@ func _completar() -> void:
 	await dialog_box.dialog_finished
 	GameManager.complete_objective(5, "explorar_costa")
 	SceneManager.change_scene("res://scenes/levels/fase5/fase5_brasil.tscn")
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		var pause := _pause_menu_scene.instantiate()
+		add_child(pause)
+		get_viewport().set_input_as_handled()
