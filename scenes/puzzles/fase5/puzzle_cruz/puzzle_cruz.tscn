@@ -11,57 +11,45 @@
 [ext_resource type="Texture2D" uid="uid://ddre8w53b42fu" path="res://assets/objects/Arvore_cortada.png" id="6_arvore"]
 [ext_resource type="Texture2D" uid="uid://cfesp0l1fvru8" path="res://assets/objects/Cruz.png" id="7_qoqm4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k05r3"]
-atlas = ExtResource("6_arvore")
-region = Rect2(0, 0, 169, 184)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0gex"]
-atlas = ExtResource("6_arvore")
-region = Rect2(169, 0, 169, 184)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cofm"]
-atlas = ExtResource("6_arvore")
-region = Rect2(338, 0, 169, 184)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6hkor"]
-atlas = ExtResource("6_arvore")
-region = Rect2(507, 0, 169, 184)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qoqm4"]
 atlas = ExtResource("6_arvore")
-region = Rect2(0, 184, 169, 184)
+region = Rect2(2, 0, 169, 184)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83eel"]
 atlas = ExtResource("6_arvore")
-region = Rect2(169, 184, 169, 184)
+region = Rect2(171, 0, 169, 184)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxbep"]
 atlas = ExtResource("6_arvore")
-region = Rect2(338, 184, 169, 184)
+region = Rect2(340, 0, 169, 184)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjngp"]
 atlas = ExtResource("6_arvore")
-region = Rect2(507, 184, 169, 184)
+region = Rect2(509, 0, 169, 184)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kcgw"]
 atlas = ExtResource("6_arvore")
-region = Rect2(0, 0, 169, 184)
+region = Rect2(2, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv1he"]
+atlas = ExtResource("6_arvore")
+region = Rect2(171, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_778ew"]
+atlas = ExtResource("6_arvore")
+region = Rect2(340, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7pxi"]
+atlas = ExtResource("6_arvore")
+region = Rect2(509, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdovx"]
+atlas = ExtResource("6_arvore")
+region = Rect2(2, 0, 169, 184)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_arvore"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k05r3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p0gex")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3cofm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6hkor")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qoqm4")
 }, {
@@ -73,6 +61,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bjngp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kcgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv1he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_778ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7pxi")
 }],
 "loop": false,
 "name": &"caindo",
@@ -80,7 +80,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7kcgw")
+"texture": SubResource("AtlasTexture_sdovx")
 }],
 "loop": true,
 "name": &"idle",
@@ -374,16 +374,16 @@ position = Vector2(576, 510)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=709859138]
 shape = SubResource("RectangleShape2D_chao")
 
-[node name="ParedeEsquerda" type="StaticBody2D" parent="."]
+[node name="ParedeEsquerda" type="StaticBody2D" parent="." unique_id=1538626972]
 position = Vector2(-10, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsquerda"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsquerda" unique_id=984540399]
 shape = SubResource("RectangleShape2D_parede_lateral")
 
-[node name="ParedeDireita" type="StaticBody2D" parent="."]
+[node name="ParedeDireita" type="StaticBody2D" parent="." unique_id=1997846752]
 position = Vector2(1162, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDireita"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDireita" unique_id=1967760951]
 shape = SubResource("RectangleShape2D_parede_lateral")
 
 [node name="Triggers" type="Node2D" parent="." unique_id=1493150324]
