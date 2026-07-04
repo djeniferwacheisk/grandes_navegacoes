@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c6itkrg1tpl5e" path="res://assets/personagem/Construir_cruz.png" id="6_6hkor"]
 [ext_resource type="Texture2D" uid="uid://ddre8w53b42fu" path="res://assets/objects/Arvore_cortada.png" id="6_arvore"]
 [ext_resource type="Texture2D" uid="uid://cfesp0l1fvru8" path="res://assets/objects/Cruz.png" id="7_qoqm4"]
+[ext_resource type="Texture2D" uid="uid://doavg635lwaee" path="res://assets/fase5/fundo_puzzle_cruz.png" id="8_fundo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qoqm4"]
 atlas = ExtResource("6_arvore")
@@ -288,46 +289,13 @@ script = ExtResource("1_script")
 
 [node name="Fundo" type="Node2D" parent="." unique_id=1514246239]
 
-[node name="Ceu" type="ColorRect" parent="Fundo" unique_id=464568066]
-offset_right = 1152.0
-offset_bottom = 320.0
-color = Color(0.9, 0.65, 0.35, 1)
-
-[node name="Mar" type="ColorRect" parent="Fundo" unique_id=1057553079]
-offset_top = 320.0
-offset_right = 1152.0
-offset_bottom = 430.0
-color = Color(0.12, 0.4, 0.8, 1)
-
-[node name="Areia" type="ColorRect" parent="Fundo" unique_id=1186308769]
-offset_top = 430.0
-offset_right = 1152.0
-offset_bottom = 510.0
-color = Color(0.87, 0.78, 0.54, 1)
-
-[node name="Sol" type="ColorRect" parent="Fundo" unique_id=1329850763]
-offset_left = 540.0
-offset_top = 60.0
-offset_right = 612.0
-offset_bottom = 130.0
-color = Color(1, 0.88, 0.2, 1)
-
-[node name="Navio1" type="ColorRect" parent="Fundo" unique_id=485692372]
-offset_left = 750.0
-offset_top = 300.0
-offset_right = 850.0
-offset_bottom = 360.0
-color = Color(0.55, 0.4, 0.18, 1)
-
-[node name="Navio2" type="ColorRect" parent="Fundo" unique_id=98192152]
-offset_left = 870.0
-offset_top = 310.0
-offset_right = 960.0
-offset_bottom = 365.0
-color = Color(0.55, 0.4, 0.18, 1)
+[node name="Background" type="Sprite2D" parent="Fundo" unique_id=1708479908]
+position = Vector2(594, 303)
+scale = Vector2(0.6425159, 0.5935252)
+texture = ExtResource("8_fundo")
 
 [node name="SpriteArvore" type="AnimatedSprite2D" parent="." unique_id=1300068508]
-position = Vector2(225, 383)
+position = Vector2(340, 384.99997)
 scale = Vector2(1.1050296, 1.0326087)
 sprite_frames = SubResource("SpriteFrames_arvore")
 animation = &"caindo"
@@ -335,22 +303,22 @@ autoplay = "idle"
 
 [node name="SpriteCortar" type="AnimatedSprite2D" parent="." unique_id=1138869056]
 visible = false
-position = Vector2(190, 437)
+position = Vector2(272, 427)
 scale = Vector2(0.5624999, 0.5067567)
 sprite_frames = SubResource("SpriteFrames_cortar")
 animation = &"cortar"
 
 [node name="SpriteCavar" type="AnimatedSprite2D" parent="." unique_id=1236707851]
 visible = false
-position = Vector2(597, 443)
+position = Vector2(951.00006, 425.00003)
 scale = Vector2(0.39673945, 0.35415208)
 sprite_frames = SubResource("SpriteFrames_1j0ot")
 animation = &"cavar"
 
 [node name="SpriteBuraco" type="AnimatedSprite2D" parent="." unique_id=122158306]
 visible = false
-position = Vector2(620.00006, 464)
-scale = Vector2(0.31621623, 0.43137255)
+position = Vector2(980.9375, 444)
+scale = Vector2(0.2601348, 0.35294136)
 sprite_frames = SubResource("SpriteFrames_t3gqn")
 animation = &"buraco"
 
@@ -363,7 +331,7 @@ animation = &"construir"
 
 [node name="SpriteCruzFinal" type="AnimatedSprite2D" parent="." unique_id=1420170197]
 visible = false
-position = Vector2(620, 406.00003)
+position = Vector2(983, 378)
 scale = Vector2(0.4833335, 0.42418978)
 sprite_frames = SubResource("SpriteFrames_xv1he")
 animation = &"cruz"
@@ -374,10 +342,18 @@ position = Vector2(576, 510)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=709859138]
 shape = SubResource("RectangleShape2D_chao")
 
+[node name="Chao2" type="StaticBody2D" parent="." unique_id=1372999875]
+position = Vector2(576, 510)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao2" unique_id=1488915148]
+position = Vector2(7, -126)
+shape = SubResource("RectangleShape2D_chao")
+
 [node name="ParedeEsquerda" type="StaticBody2D" parent="." unique_id=1538626972]
 position = Vector2(-10, 200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsquerda" unique_id=984540399]
+position = Vector2(9, 9)
 shape = SubResource("RectangleShape2D_parede_lateral")
 
 [node name="ParedeDireita" type="StaticBody2D" parent="." unique_id=1997846752]
@@ -389,7 +365,7 @@ shape = SubResource("RectangleShape2D_parede_lateral")
 [node name="Triggers" type="Node2D" parent="." unique_id=1493150324]
 
 [node name="TroncoTrigger" type="Area2D" parent="Triggers" unique_id=85786089]
-position = Vector2(250, 460)
+position = Vector2(327, 451)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -405,9 +381,10 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "[E] Cortar Madeira"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CordaTrigger" type="Area2D" parent="Triggers" unique_id=1616905472]
-position = Vector2(500, 460)
+position = Vector2(976, 442)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -423,9 +400,10 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "[E] Cavar Buraco"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="AlinharTrigger" type="Area2D" parent="Triggers" unique_id=820873052]
-position = Vector2(750, 460)
+position = Vector2(686, 444)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -441,6 +419,7 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "[E] Erguer Cruz"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." unique_id=795922840 instance=ExtResource("2_player")]
 position = Vector2(100, 460)

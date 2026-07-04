@@ -7,11 +7,6 @@ var contato_feito: bool = false
 var _sprite_frames_original: SpriteFrames = null
 var _sprite_scale_original: Vector2 = Vector2.ONE
 
-# Fator de compensacao de escala por animacao - as imagens "com presente"
-# vieram em canvas de tamanhos bem diferentes entre si (idle, andar de
-# frente/lado/costas), entao cada uma precisa do proprio ajuste pra
-# aparecer do mesmo tamanho que o personagem normal, sem precisar
-# recortar/redimensionar os arquivos de imagem.
 const PRESENTES_ESCALA := {
 	"idle": 0.12363,
 	"walk_down": 0.11860,
