@@ -13,7 +13,7 @@ var _sprite_scale_original: Vector2 = Vector2.ONE
 # aparecer do mesmo tamanho que o personagem normal, sem precisar
 # recortar/redimensionar os arquivos de imagem.
 const PRESENTES_ESCALA := {
-	"idle": 0.13982,
+	"idle": 0.12363,
 	"walk_down": 0.11860,
 	"walk_side": 0.12057,
 	"walk_up": 0.13251,

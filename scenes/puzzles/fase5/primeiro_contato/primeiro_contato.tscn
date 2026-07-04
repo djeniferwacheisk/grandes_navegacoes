@@ -283,14 +283,21 @@ script = ExtResource("1_script")
 [node name="Fundo" type="Node2D" parent="." unique_id=1789782777]
 
 [node name="Background" type="Sprite2D" parent="Fundo" unique_id=732510261]
-position = Vector2(584, 291.75)
-scale = Vector2(0.6496815, 0.5617506)
+position = Vector2(541.5, 331)
+scale = Vector2(0.6045647, 0.46762586)
 texture = ExtResource("7_fundo")
+
+[node name="Chao2" type="StaticBody2D" parent="." unique_id=1787413584]
+position = Vector2(576, 510)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao2" unique_id=1039355202]
+shape = SubResource("RectangleShape2D_chao")
 
 [node name="Chao" type="StaticBody2D" parent="." unique_id=532045868]
 position = Vector2(576, 510)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=1655935676]
+position = Vector2(0, -97)
 shape = SubResource("RectangleShape2D_chao")
 
 [node name="ParedeEsquerda" type="StaticBody2D" parent="." unique_id=1070682472]
@@ -303,6 +310,7 @@ shape = SubResource("RectangleShape2D_parede_lateral")
 position = Vector2(1162, 200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDireita" unique_id=286248955]
+position = Vector2(-55, 48)
 shape = SubResource("RectangleShape2D_parede_lateral")
 
 [node name="Triggers" type="Node2D" parent="." unique_id=447909077]
@@ -349,16 +357,16 @@ visible = false
 position = Vector2(47.000004, 459)
 scale = Vector2(0.15744905, 0.1213216)
 sprite_frames = SubResource("SpriteFrames_presentes")
-animation = &"idle"
+animation = &"walk_down"
 
 [node name="SpriteGrupoTupiniquim" type="Sprite2D" parent="." unique_id=110372079]
-position = Vector2(874.25, 340.75)
-scale = Vector2(0.48229164, 0.47678587)
+position = Vector2(870, 373.00003)
+scale = Vector2(0.32135397, 0.31785733)
 texture = ExtResource("15_grupo_antes")
 
 [node name="SpriteIndioPresente" type="Sprite2D" parent="." unique_id=337528158]
-position = Vector2(310.46875, 324.53125)
-scale = Vector2(0.33379653, 0.33883342)
+position = Vector2(298.5, 399.00195)
+scale = Vector2(0.21481496, 0.20801048)
 texture = ExtResource("13_indio_antes")
 
 [node name="Player" parent="." unique_id=972039130 instance=ExtResource("2_player")]
@@ -366,8 +374,8 @@ position = Vector2(45, 458)
 
 [node name="SpriteTrocaPresente" type="AnimatedSprite2D" parent="." unique_id=434395124]
 visible = false
-position = Vector2(310.00003, 388.00003)
-scale = Vector2(0.43495297, 0.41533333)
+position = Vector2(297.40625, 399.46875)
+scale = Vector2(0.25450626, 0.22116674)
 sprite_frames = SubResource("SpriteFrames_troca_presente")
 
 [node name="DialogBox" parent="." unique_id=1025875093 instance=ExtResource("3_dialog")]
@@ -421,15 +429,15 @@ horizontal_alignment = 1
 
 [node name="SpriteIndio" type="AnimatedSprite2D" parent="." unique_id=965341952]
 visible = false
-position = Vector2(754.00006, 449)
-scale = Vector2(0.48192754, 0.3729948)
+position = Vector2(909, 437.00003)
+scale = Vector2(0.14590828, 0.19304806)
 sprite_frames = SubResource("SpriteFrames_vohg8")
 animation = &"gesto"
 
 [node name="SpritePortugues" type="AnimatedSprite2D" parent="." unique_id=172887857]
 visible = false
-position = Vector2(657.99994, 438.99997)
-scale = Vector2(0.43975914, 0.43716577)
+position = Vector2(831, 438.00003)
+scale = Vector2(0.14351153, 0.1998196)
 sprite_frames = SubResource("SpriteFrames_cj6id")
 animation = &"gesto"
 

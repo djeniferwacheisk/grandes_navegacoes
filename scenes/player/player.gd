@@ -15,7 +15,7 @@ var nearby_interactable: Node2D = null
 # de caminhar, entao precisa de uma escala propria pra nao ficar maior
 # que o personagem andando.
 const ESCALA_ANDANDO := 0.11624
-const ESCALA_PARADO := 0.04822
+const ESCALA_PARADO := 0.12162
 
 var _default_sprite_frames: SpriteFrames = null
 
