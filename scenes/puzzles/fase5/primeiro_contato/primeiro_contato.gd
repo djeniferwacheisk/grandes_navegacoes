@@ -25,6 +25,7 @@ var minigame_ativo: bool = false
 @onready var sprite_portugues: AnimatedSprite2D = $SpritePortugues
 @onready var sprite_troca_presente: AnimatedSprite2D = $SpriteTrocaPresente
 @onready var sprite_indio_presente: Sprite2D = $SpriteIndioPresente
+@onready var sprite_grupo_tupiniquim: Sprite2D = $SpriteGrupoTupiniquim
 
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
@@ -206,6 +207,7 @@ func _minigame_sucesso() -> void:
 	painel_gesto.visible = false
 	sprite_indio.visible = false
 	sprite_portugues.visible = false
+	sprite_grupo_tupiniquim.texture = preload("res://assets/personagem/grupo_tupiniquim_felizes.png")
 	contato_feito = true
 
 	player.set_state(player.State.IN_DIALOG)

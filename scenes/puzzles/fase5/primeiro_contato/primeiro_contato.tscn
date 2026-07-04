@@ -4,8 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
 [ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
-[ext_resource type="Texture2D" uid="uid://dxhif1ebhg0r1" path="res://assets/personagem/Imitação_indio.png" id="5_ec7bi"]
-[ext_resource type="Texture2D" uid="uid://bbevovck23qmb" path="res://assets/personagem/Imitacao_portugues.png" id="6_q2y0k"]
 [ext_resource type="Texture2D" uid="uid://dw8gjlklsgf6k" path="res://assets/fase5/fundo_primeiro_contato.png" id="7_fundo"]
 [ext_resource type="Texture2D" uid="uid://dwcjty4qxrlgj" path="res://assets/personagem/idle_presentes.png" id="8_idle_pres"]
 [ext_resource type="Texture2D" uid="uid://b8dc62cm8jc1b" path="res://assets/personagem/walker_down_presentes.png" id="9_down_pres"]
@@ -13,6 +11,19 @@
 [ext_resource type="Texture2D" uid="uid://b1n8e5ftyirr1" path="res://assets/personagem/walker_up_presentes.png" id="11_up_pres"]
 [ext_resource type="Texture2D" uid="uid://d4bvhr4jf61h5" path="res://assets/personagem/sprite_troca_presente.png" id="12_troca"]
 [ext_resource type="Texture2D" uid="uid://bjybica1es70s" path="res://assets/personagem/indio_presente_antes.png" id="13_indio_antes"]
+[ext_resource type="Texture2D" uid="uid://c76d24we5kvnv" path="res://assets/personagem/gesto1indio.png" id="13_xcmai"]
+[ext_resource type="Texture2D" uid="uid://b5tay8m0qwcgj" path="res://assets/personagem/gesto2indio.png" id="14_gn32y"]
+[ext_resource type="Texture2D" uid="uid://c00nqrcoanaet" path="res://assets/personagem/grupo_tupiniquim_conversando.png" id="15_grupo_antes"]
+[ext_resource type="Texture2D" uid="uid://cusah6jj2wut0" path="res://assets/personagem/gesto3indio.png" id="15_p787n"]
+[ext_resource type="Texture2D" uid="uid://dhr84ddi2oxi7" path="res://assets/personagem/gesto4indio.png" id="16_lu0qe"]
+[ext_resource type="Texture2D" uid="uid://oiyqeo5wewlt" path="res://assets/personagem/gesto5indio.png" id="17_2qih7"]
+[ext_resource type="Texture2D" uid="uid://mfk34nli5e75" path="res://assets/personagem/gesto6indio.png" id="18_qsxmk"]
+[ext_resource type="Texture2D" uid="uid://brjeodpiuht86" path="res://assets/personagem/gesto1.png" id="19_2of8a"]
+[ext_resource type="Texture2D" uid="uid://bxat1sam4ouyj" path="res://assets/personagem/gesto2.png" id="20_x8e3t"]
+[ext_resource type="Texture2D" uid="uid://cb8pbeorear1v" path="res://assets/personagem/gesto3.png" id="21_7eomt"]
+[ext_resource type="Texture2D" uid="uid://cqvktq71sjpfu" path="res://assets/personagem/gesto4.png" id="22_gku61"]
+[ext_resource type="Texture2D" uid="uid://vcscammdxwau" path="res://assets/personagem/gesto5.png" id="23_j4q21"]
+[ext_resource type="Texture2D" uid="uid://wysggb42corw" path="res://assets/personagem/gesto6.png" id="24_0fvd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
@@ -166,86 +177,100 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7gehq"]
-atlas = ExtResource("5_ec7bi")
-region = Rect2(0, 0, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdbei"]
+atlas = ExtResource("13_xcmai")
+region = Rect2(0, 0, 342, 440)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyih6"]
-atlas = ExtResource("5_ec7bi")
-region = Rect2(0, 187, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bti6"]
+atlas = ExtResource("14_gn32y")
+region = Rect2(0, 0, 425, 446)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mshcx"]
-atlas = ExtResource("5_ec7bi")
-region = Rect2(332, 187, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tomsj"]
+atlas = ExtResource("15_p787n")
+region = Rect2(0, 0, 340, 452)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_08quf"]
-atlas = ExtResource("5_ec7bi")
-region = Rect2(498, 187, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_70r0h"]
+atlas = ExtResource("16_lu0qe")
+region = Rect2(0, 0, 324, 458)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_amd1b"]
-atlas = ExtResource("5_ec7bi")
-region = Rect2(166, 187, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8714"]
+atlas = ExtResource("17_2qih7")
+region = Rect2(0, 0, 332, 450)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yyyk"]
+atlas = ExtResource("18_qsxmk")
+region = Rect2(0, 0, 442, 452)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vohg8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7gehq")
+"texture": SubResource("AtlasTexture_sdbei")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gyih6")
+"texture": SubResource("AtlasTexture_3bti6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mshcx")
+"texture": SubResource("AtlasTexture_tomsj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_08quf")
+"texture": SubResource("AtlasTexture_70r0h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_amd1b")
+"texture": SubResource("AtlasTexture_g8714")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yyyk")
 }],
 "loop": true,
 "name": &"gesto",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_of4dj"]
-atlas = ExtResource("6_q2y0k")
-region = Rect2(498, 0, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c2bj"]
+atlas = ExtResource("19_2of8a")
+region = Rect2(0, 0, 349, 427)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikg30"]
-atlas = ExtResource("6_q2y0k")
-region = Rect2(332, 187, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybctq"]
+atlas = ExtResource("20_x8e3t")
+region = Rect2(0, 0, 346, 456)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovsgx"]
-atlas = ExtResource("6_q2y0k")
-region = Rect2(332, 0, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_q44yh"]
+atlas = ExtResource("21_7eomt")
+region = Rect2(0, 0, 357, 436)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mp2yx"]
-atlas = ExtResource("6_q2y0k")
-region = Rect2(0, 187, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjyuh"]
+atlas = ExtResource("22_gku61")
+region = Rect2(0, 0, 307, 430)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q22q0"]
-atlas = ExtResource("6_q2y0k")
-region = Rect2(166, 0, 166, 187)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bav5"]
+atlas = ExtResource("23_j4q21")
+region = Rect2(0, 0, 341, 463)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk5e4"]
+atlas = ExtResource("24_0fvd5")
+region = Rect2(0, 0, 356, 474)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cj6id"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_of4dj")
+"texture": SubResource("AtlasTexture_7c2bj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ikg30")
+"texture": SubResource("AtlasTexture_ybctq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ovsgx")
+"texture": SubResource("AtlasTexture_q44yh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mp2yx")
+"texture": SubResource("AtlasTexture_yjyuh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q22q0")
+"texture": SubResource("AtlasTexture_3bav5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk5e4")
 }],
 "loop": true,
 "name": &"gesto",
@@ -258,8 +283,8 @@ script = ExtResource("1_script")
 [node name="Fundo" type="Node2D" parent="." unique_id=1789782777]
 
 [node name="Background" type="Sprite2D" parent="Fundo" unique_id=732510261]
-position = Vector2(584.00006, 276.99997)
-scale = Vector2(0.6496815, 0.57074344)
+position = Vector2(584, 291.75)
+scale = Vector2(0.6496815, 0.5617506)
 texture = ExtResource("7_fundo")
 
 [node name="Chao" type="StaticBody2D" parent="." unique_id=532045868]
@@ -283,7 +308,7 @@ shape = SubResource("RectangleShape2D_parede_lateral")
 [node name="Triggers" type="Node2D" parent="." unique_id=447909077]
 
 [node name="PresenteTrigger" type="Area2D" parent="Triggers" unique_id=3670806]
-position = Vector2(311, 411)
+position = Vector2(300, 460)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -299,10 +324,9 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "[E] Oferecer Presente"
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ContatoTrigger" type="Area2D" parent="Triggers" unique_id=35304546]
-position = Vector2(600, 460)
+position = Vector2(889, 437)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -318,6 +342,7 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "[E] Aproximar dos Tupiniquins"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SpriteFramesPresentes" type="AnimatedSprite2D" parent="." unique_id=103304596]
 visible = false
@@ -326,13 +351,24 @@ scale = Vector2(0.15744905, 0.1213216)
 sprite_frames = SubResource("SpriteFrames_presentes")
 animation = &"idle"
 
-[node name="SpriteIndioPresente" type="Sprite2D" parent="." unique_id=2095931929]
-position = Vector2(320, 307)
-scale = Vector2(0.33171317, 0.31137505)
+[node name="SpriteGrupoTupiniquim" type="Sprite2D" parent="." unique_id=110372079]
+position = Vector2(874.25, 340.75)
+scale = Vector2(0.48229164, 0.47678587)
+texture = ExtResource("15_grupo_antes")
+
+[node name="SpriteIndioPresente" type="Sprite2D" parent="." unique_id=337528158]
+position = Vector2(310.46875, 324.53125)
+scale = Vector2(0.33379653, 0.33883342)
 texture = ExtResource("13_indio_antes")
 
 [node name="Player" parent="." unique_id=972039130 instance=ExtResource("2_player")]
-position = Vector2(57, 411)
+position = Vector2(45, 458)
+
+[node name="SpriteTrocaPresente" type="AnimatedSprite2D" parent="." unique_id=434395124]
+visible = false
+position = Vector2(310.00003, 388.00003)
+scale = Vector2(0.43495297, 0.41533333)
+sprite_frames = SubResource("SpriteFrames_troca_presente")
 
 [node name="DialogBox" parent="." unique_id=1025875093 instance=ExtResource("3_dialog")]
 
@@ -381,12 +417,6 @@ offset_bottom = 225.0
 theme_override_font_sizes/font_size = 14
 text = "Gesto 1 / 5"
 horizontal_alignment = 1
-
-[node name="SpriteTrocaPresente" type="AnimatedSprite2D" parent="." unique_id=1144519470]
-visible = false
-position = Vector2(318, 385.00003)
-scale = Vector2(0.42554858, 0.43933332)
-sprite_frames = SubResource("SpriteFrames_troca_presente")
 
 [node name="SpriteIndio" type="AnimatedSprite2D" parent="." unique_id=965341952]
 visible = false
