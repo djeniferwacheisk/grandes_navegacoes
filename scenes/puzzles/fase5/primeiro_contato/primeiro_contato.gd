@@ -4,6 +4,7 @@ var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
 
 var presente_dado: bool = false
 var contato_feito: bool = false
+var _sprite_frames_original: SpriteFrames = null
 
 const TOTAL_GESTOS := 5
 const ACOES: Array[String] = ["ui_left", "ui_right", "ui_up", "ui_down"]
@@ -29,6 +30,7 @@ func _ready() -> void:
 	sprite_indio.visible = false
 	sprite_portugues.visible = false
 	_setup_camera()
+	_equipar_presentes()
 
 	await get_tree().create_timer(0.5).timeout
 	player.set_state(player.State.IN_DIALOG)
@@ -38,6 +40,21 @@ func _ready() -> void:
 	])
 	await dialog_box.dialog_finished
 	player.set_state(player.State.EXPLORING)
+
+func _equipar_presentes() -> void:
+	var sprite: AnimatedSprite2D = player.get_node_or_null("AnimatedSprite2D")
+	var holder: AnimatedSprite2D = get_node_or_null("SpriteFramesPresentes")
+	if not sprite or not holder:
+		return
+	_sprite_frames_original = sprite.sprite_frames
+	sprite.sprite_frames = holder.sprite_frames
+	sprite.play("idle")
+
+func _remover_presentes() -> void:
+	var sprite: AnimatedSprite2D = player.get_node_or_null("AnimatedSprite2D")
+	if sprite and _sprite_frames_original:
+		sprite.sprite_frames = _sprite_frames_original
+		sprite.play("idle")
 
 func _setup_camera() -> void:
 	await get_tree().process_frame
@@ -94,6 +111,7 @@ func _on_presente_interact() -> void:
 	])
 	await dialog_box.dialog_finished
 	player.set_state(player.State.EXPLORING)
+	_remover_presentes()
 
 func _on_contato_interact() -> void:
 	if not presente_dado:
