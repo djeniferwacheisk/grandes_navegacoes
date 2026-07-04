@@ -11,51 +11,51 @@ size = Vector2(4, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("3_75vfm")
-region = Rect2(0, 0, 166, 375)
+region = Rect2(0, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
 atlas = ExtResource("3_75vfm")
-region = Rect2(166, 0, 166, 375)
+region = Rect2(417, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
 atlas = ExtResource("3_75vfm")
-region = Rect2(332, 0, 166, 375)
+region = Rect2(834, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
 atlas = ExtResource("3_75vfm")
-region = Rect2(498, 0, 166, 375)
+region = Rect2(1251, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
 atlas = ExtResource("4_0owmy")
-region = Rect2(0, 0, 166, 375)
+region = Rect2(0, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
 atlas = ExtResource("4_0owmy")
-region = Rect2(166, 0, 166, 375)
+region = Rect2(417, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
 atlas = ExtResource("4_0owmy")
-region = Rect2(332, 0, 166, 375)
+region = Rect2(834, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
 atlas = ExtResource("4_0owmy")
-region = Rect2(498, 0, 166, 375)
+region = Rect2(1251, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
 atlas = ExtResource("5_qek5x")
-region = Rect2(0, 0, 166, 375)
+region = Rect2(0, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
 atlas = ExtResource("5_qek5x")
-region = Rect2(166, 0, 166, 375)
+region = Rect2(417, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
 atlas = ExtResource("5_qek5x")
-region = Rect2(332, 0, 166, 375)
+region = Rect2(834, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("5_qek5x")
-region = Rect2(498, 0, 166, 375)
+region = Rect2(1251, 0, 417, 943)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yj68g"]
 animations = [{
@@ -131,10 +131,10 @@ script = ExtResource("1_player")
 shape = SubResource("RectangleShape2D_body")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=530811635]
-position = Vector2(-0.99999994, -2)
-scale = Vector2(0.2, 0.2)
+position = Vector2(-0.99999994, -10.874999)
+scale = Vector2(0.3, 0.34733334)
 sprite_frames = SubResource("SpriteFrames_yj68g")
-animation = &"walk_up"
+animation = &"walk_side"
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1884528449]
 collision_layer = 0

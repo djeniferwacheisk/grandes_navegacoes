@@ -5,6 +5,19 @@ var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
 var presente_dado: bool = false
 var contato_feito: bool = false
 var _sprite_frames_original: SpriteFrames = null
+var _sprite_scale_original: Vector2 = Vector2.ONE
+
+# Fator de compensacao de escala por animacao - as imagens "com presente"
+# vieram em canvas de tamanhos bem diferentes entre si (idle, andar de
+# frente/lado/costas), entao cada uma precisa do proprio ajuste pra
+# aparecer do mesmo tamanho que o personagem normal, sem precisar
+# recortar/redimensionar os arquivos de imagem.
+const PRESENTES_ESCALA := {
+	"idle": 0.05801,
+	"walk_down": 0.11797,
+	"walk_side": 0.12812,
+	"walk_up": 0.12509,
+}
 
 const TOTAL_GESTOS := 5
 const ACOES: Array[String] = ["ui_left", "ui_right", "ui_up", "ui_down"]
@@ -50,13 +63,27 @@ func _equipar_presentes() -> void:
 	if not sprite or not holder:
 		return
 	_sprite_frames_original = sprite.sprite_frames
+	_sprite_scale_original = sprite.scale
 	sprite.sprite_frames = holder.sprite_frames
+	if not sprite.animation_changed.is_connected(_ajustar_escala_presentes):
+		sprite.animation_changed.connect(_ajustar_escala_presentes)
 	sprite.play("idle")
+	_ajustar_escala_presentes()
+
+func _ajustar_escala_presentes() -> void:
+	var sprite: AnimatedSprite2D = player.get_node_or_null("AnimatedSprite2D")
+	if not sprite:
+		return
+	var fator: float = PRESENTES_ESCALA.get(sprite.animation, 0.2)
+	sprite.scale = Vector2(fator, fator)
 
 func _remover_presentes() -> void:
 	var sprite: AnimatedSprite2D = player.get_node_or_null("AnimatedSprite2D")
 	if sprite and _sprite_frames_original:
+		if sprite.animation_changed.is_connected(_ajustar_escala_presentes):
+			sprite.animation_changed.disconnect(_ajustar_escala_presentes)
 		sprite.sprite_frames = _sprite_frames_original
+		sprite.scale = _sprite_scale_original
 		sprite.play("idle")
 
 func _setup_camera() -> void:
@@ -175,6 +202,7 @@ func _iniciar_minigame() -> void:
 	sprite_indio.visible = true
 	sprite_portugues.visible = true
 	painel_gesto.visible = true
+	player.visible = false
 	_mostrar_gesto()
 
 func _mostrar_gesto() -> void:
@@ -209,6 +237,7 @@ func _minigame_sucesso() -> void:
 	sprite_portugues.visible = false
 	sprite_grupo_tupiniquim.texture = preload("res://assets/personagem/grupo_tupiniquim_felizes.png")
 	contato_feito = true
+	player.visible = true
 
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct([
