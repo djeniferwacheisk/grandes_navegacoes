@@ -23,6 +23,8 @@ var minigame_ativo: bool = false
 @onready var label_progresso: Label = $HUD/PainelGesto/LabelProgresso
 @onready var sprite_indio: AnimatedSprite2D = $SpriteIndio
 @onready var sprite_portugues: AnimatedSprite2D = $SpritePortugues
+@onready var sprite_troca_presente: AnimatedSprite2D = $SpriteTrocaPresente
+@onready var sprite_indio_presente: Sprite2D = $SpriteIndioPresente
 
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
@@ -106,12 +108,35 @@ func _on_presente_interact() -> void:
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct([
 		{"speaker": "Cartógrafo", "text": "Oferecemos espelhos e miçangas coloridas. Os Tupiniquins olham curiosos!", "portrait": ""},
-		{"speaker": "Narrador", "text": "Oferecer presentes era a forma de demonstrar intenções pacíficas no primeiro contato entre povos.", "portrait": ""},
+		{"speaker": "Narrador", "text": "Oferecer presentes era a forma de demonstrar intenções pacíficas no primeiro contato entre povos.", "portrait": ""}
+	])
+	await dialog_box.dialog_finished
+
+	await _tocar_animacao_troca()
+
+	dialog_box.start_dialog_direct([
 		{"speaker": "Narrador", "text": "✓ Presente oferecido! Agora aproxime-se e imite os gestos deles.", "portrait": ""}
 	])
 	await dialog_box.dialog_finished
 	player.set_state(player.State.EXPLORING)
+
+func _tocar_animacao_troca() -> void:
+	player.visible = false
+	sprite_indio_presente.visible = false
+	sprite_troca_presente.visible = true
+	sprite_troca_presente.frame = 0
+
+	await get_tree().create_timer(0.7).timeout
+	sprite_troca_presente.frame = 1
+	await get_tree().create_timer(0.7).timeout
+	sprite_troca_presente.frame = 2
+	await get_tree().create_timer(0.9).timeout
+
+	sprite_troca_presente.visible = false
+	sprite_indio_presente.texture = preload("res://assets/personagem/indio_presente_depois.png")
+	sprite_indio_presente.visible = true
 	_remover_presentes()
+	player.visible = true
 
 func _on_contato_interact() -> void:
 	if not presente_dado:

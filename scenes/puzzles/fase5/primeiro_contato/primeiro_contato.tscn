@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://b8dc62cm8jc1b" path="res://assets/personagem/walker_down_presentes.png" id="9_down_pres"]
 [ext_resource type="Texture2D" uid="uid://bpbjr23hewyg8" path="res://assets/personagem/walker_side_presentes.png" id="10_side_pres"]
 [ext_resource type="Texture2D" uid="uid://b1n8e5ftyirr1" path="res://assets/personagem/walker_up_presentes.png" id="11_up_pres"]
+[ext_resource type="Texture2D" uid="uid://d4bvhr4jf61h5" path="res://assets/personagem/sprite_troca_presente.png" id="12_troca"]
+[ext_resource type="Texture2D" uid="uid://bjybica1es70s" path="res://assets/personagem/indio_presente_antes.png" id="13_indio_antes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
@@ -135,6 +137,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_troca0"]
+atlas = ExtResource("12_troca")
+region = Rect2(0, 0, 319, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_troca1"]
+atlas = ExtResource("12_troca")
+region = Rect2(319, 0, 319, 375)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_troca2"]
+atlas = ExtResource("12_troca")
+region = Rect2(638, 0, 319, 375)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_troca_presente"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_troca0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_troca1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_troca2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gehq"]
 atlas = ExtResource("5_ec7bi")
 region = Rect2(0, 0, 166, 187)
@@ -227,8 +258,8 @@ script = ExtResource("1_script")
 [node name="Fundo" type="Node2D" parent="." unique_id=1789782777]
 
 [node name="Background" type="Sprite2D" parent="Fundo" unique_id=732510261]
-position = Vector2(578.00006, 321)
-scale = Vector2(0.6496815, 0.5923261)
+position = Vector2(584.00006, 276.99997)
+scale = Vector2(0.6496815, 0.57074344)
 texture = ExtResource("7_fundo")
 
 [node name="Chao" type="StaticBody2D" parent="." unique_id=532045868]
@@ -252,7 +283,7 @@ shape = SubResource("RectangleShape2D_parede_lateral")
 [node name="Triggers" type="Node2D" parent="." unique_id=447909077]
 
 [node name="PresenteTrigger" type="Area2D" parent="Triggers" unique_id=3670806]
-position = Vector2(300, 460)
+position = Vector2(311, 411)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -268,6 +299,7 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "[E] Oferecer Presente"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ContatoTrigger" type="Area2D" parent="Triggers" unique_id=35304546]
 position = Vector2(600, 460)
@@ -294,8 +326,13 @@ scale = Vector2(0.15744905, 0.1213216)
 sprite_frames = SubResource("SpriteFrames_presentes")
 animation = &"idle"
 
+[node name="SpriteIndioPresente" type="Sprite2D" parent="." unique_id=2095931929]
+position = Vector2(320, 307)
+scale = Vector2(0.33171317, 0.31137505)
+texture = ExtResource("13_indio_antes")
+
 [node name="Player" parent="." unique_id=972039130 instance=ExtResource("2_player")]
-position = Vector2(45, 458)
+position = Vector2(57, 411)
 
 [node name="DialogBox" parent="." unique_id=1025875093 instance=ExtResource("3_dialog")]
 
@@ -344,6 +381,12 @@ offset_bottom = 225.0
 theme_override_font_sizes/font_size = 14
 text = "Gesto 1 / 5"
 horizontal_alignment = 1
+
+[node name="SpriteTrocaPresente" type="AnimatedSprite2D" parent="." unique_id=1144519470]
+visible = false
+position = Vector2(318, 385.00003)
+scale = Vector2(0.42554858, 0.43933332)
+sprite_frames = SubResource("SpriteFrames_troca_presente")
 
 [node name="SpriteIndio" type="AnimatedSprite2D" parent="." unique_id=965341952]
 visible = false
