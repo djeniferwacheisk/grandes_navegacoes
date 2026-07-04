@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
 [ext_resource type="PackedScene" uid="uid://chud001" path="res://scenes/hud/hud.tscn" id="4_hud"]
 [ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="5_trigger"]
+[ext_resource type="Texture2D" uid="uid://cffkkwg74t7w0" path="res://assets/fase5/fundo_fase5_brasil.png" id="6_fundo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kyh6"]
+size = Vector2(1116, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 14)
@@ -20,66 +24,40 @@ script = ExtResource("1_fase5")
 
 [node name="Fundo" type="Node2D" parent="." unique_id=59160497]
 
-[node name="Ceu" type="ColorRect" parent="Fundo" unique_id=589840343]
-offset_right = 1152.0
-offset_bottom = 300.0
-color = Color(0.4, 0.72, 0.95, 1)
+[node name="Background" type="Sprite2D" parent="Fundo" unique_id=97960186]
+position = Vector2(503.5, 262.5)
+scale = Vector2(0.58227175, 0.54796165)
+texture = ExtResource("6_fundo")
 
-[node name="Mar" type="ColorRect" parent="Fundo" unique_id=2043415511]
-offset_top = 300.0
-offset_right = 1152.0
-offset_bottom = 430.0
-color = Color(0.1, 0.4, 0.78, 1)
-
-[node name="Areia" type="ColorRect" parent="Fundo" unique_id=102935820]
-offset_top = 430.0
-offset_right = 1152.0
-offset_bottom = 510.0
-color = Color(0.87, 0.78, 0.54, 1)
-
-[node name="Mata" type="ColorRect" parent="Fundo" unique_id=824847820]
-offset_top = 200.0
-offset_right = 400.0
-offset_bottom = 440.0
-color = Color(0.08, 0.45, 0.08, 1)
-
-[node name="Morro" type="ColorRect" parent="Fundo" unique_id=1213320121]
-offset_left = 700.0
-offset_top = 150.0
-offset_right = 950.0
-offset_bottom = 440.0
-color = Color(0.35, 0.52, 0.25, 1)
-
-[node name="Navio" type="ColorRect" parent="Fundo" unique_id=1056461796]
-offset_left = 480.0
-offset_top = 270.0
-offset_right = 620.0
-offset_bottom = 340.0
-color = Color(0.55, 0.4, 0.18, 1)
+[node name="Limitação" type="CollisionShape2D" parent="." unique_id=1644918884]
+position = Vector2(501, 360)
+shape = SubResource("RectangleShape2D_5kyh6")
 
 [node name="Chao" type="StaticBody2D" parent="." unique_id=708977534]
 position = Vector2(576, 510)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=1183863894]
-position = Vector2(0, -6)
+position = Vector2(-21, -19)
 shape = SubResource("RectangleShape2D_chao")
 
-[node name="ParedeEsquerda" type="StaticBody2D" parent="."]
+[node name="ParedeEsquerda" type="StaticBody2D" parent="." unique_id=1153765065]
 position = Vector2(-10, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsquerda"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsquerda" unique_id=843042705]
+position = Vector2(-43, 9)
 shape = SubResource("RectangleShape2D_parede_lateral")
 
-[node name="ParedeDireita" type="StaticBody2D" parent="."]
+[node name="ParedeDireita" type="StaticBody2D" parent="." unique_id=690118008]
 position = Vector2(1162, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDireita"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDireita" unique_id=1732767436]
+position = Vector2(-102, 0)
 shape = SubResource("RectangleShape2D_parede_lateral")
 
 [node name="PuzzleTriggers" type="Node2D" parent="." unique_id=727950460]
 
 [node name="ExplorarTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=609840955]
-position = Vector2(200, 460)
+position = Vector2(152, 407)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("5_trigger")
@@ -95,9 +73,10 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "Explorar Costa"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ContatoTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=1545739356]
-position = Vector2(550, 460)
+position = Vector2(399, 401)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("5_trigger")
@@ -113,9 +92,10 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "Primeiro Contato"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CruzTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=1791266647]
-position = Vector2(900, 460)
+position = Vector2(886, 405)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("5_trigger")
@@ -131,9 +111,10 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "A Cruz e a Posse"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." unique_id=534475526 instance=ExtResource("2_player")]
-position = Vector2(100, 460)
+position = Vector2(-11, 418)
 
 [node name="DialogBox" parent="." unique_id=1663121615 instance=ExtResource("3_dialog")]
 

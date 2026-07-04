@@ -3223,6 +3223,7 @@ position = Vector2(516.00024, 1283.0001)
 
 [node name="Player" parent="." unique_id=1600619080 groups=["player"] instance=ExtResource("6_x4xsg")]
 visible = false
+scale = Vector2(0.7, 0.7)
 collision_mask = 2
 
 [node name="POIs" type="Node2D" parent="." unique_id=143632099]
@@ -3266,8 +3267,10 @@ rotation = 0.0007059034
 shape = SubResource("RectangleShape2D_8p5qw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cais/CollisionShape2D" unique_id=1709195456]
-position = Vector2(21.003536, 4.985154)
-scale = Vector2(0.869, 0.227)
+position = Vector2(13.999244, -1.0098181)
+rotation = -0.35081118
+scale = Vector2(0.5218358, 0.3827727)
+skew = -0.3525565
 texture = ExtResource("9_wuc60")
 
 [node name="Label" type="Label" parent="Cais" unique_id=890195816]

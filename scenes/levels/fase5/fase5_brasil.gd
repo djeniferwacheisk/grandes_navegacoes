@@ -32,12 +32,29 @@ func _unhandled_input(event: InputEvent) -> void:
 func _setup_camera() -> void:
 	await get_tree().process_frame
 	var cam := player.get_node_or_null("Camera2D")
-	if cam:
+	if not cam:
+		return
+
+	# Calcula os limites da camera com base no tamanho/posicao REAIS do
+	# sprite de fundo (em vez de numeros fixos) - assim, se a imagem for
+	# reposicionada ou redimensionada no editor, a camera nunca mostra
+	# alem da area realmente desenhada.
+	var background: Sprite2D = get_node_or_null("Fundo/Background")
+	if background and background.texture:
+		var tex_size: Vector2 = background.texture.get_size()
+		var half_size: Vector2 = (tex_size * background.scale) / 2.0
+		var center: Vector2 = background.global_position
+		cam.limit_left   = int(center.x - half_size.x)
+		cam.limit_top    = int(center.y - half_size.y)
+		cam.limit_right  = int(center.x + half_size.x)
+		cam.limit_bottom = int(center.y + half_size.y)
+	else:
 		cam.limit_left   = 0
 		cam.limit_top    = 0
 		cam.limit_right  = 1152
 		cam.limit_bottom = 510
-		cam.position_smoothing_enabled = true
+
+	cam.position_smoothing_enabled = true
 
 func _on_explorar_interact() -> void:
 	if GameManager.is_objective_complete(5, "explorar_costa"):

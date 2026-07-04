@@ -24,7 +24,7 @@ const PROGRESSO_MAX: float = 20.0
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
 	painel_mash.visible = false
-sprite_buraco.visible = false
+	sprite_buraco.visible = false
 	sprite_cruz.visible = false
 	sprite_cruz_final.visible = false
 	_setup_camera()

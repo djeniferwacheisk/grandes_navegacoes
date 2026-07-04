@@ -7,6 +7,14 @@ var itens_coletados: Array[String] = []
 
 @onready var player: CharacterBody2D = $Player
 @onready var dialog_box = $DialogBox
+@onready var polaroid_dim: ColorRect = $PolaroidLayer/Dim
+@onready var polaroid_rect: TextureRect = $PolaroidLayer/PolaroidImage
+
+const POLAROIDS := {
+	"morro": preload("res://assets/fase5/polaroid_morro.png"),
+	"floresta": preload("res://assets/fase5/polaroid_floresta.png"),
+	"fauna": preload("res://assets/fase5/polaroid_fauna.png"),
+}
 
 const ANOTACOES := {
 	"morro": [
@@ -33,12 +41,30 @@ func _ready() -> void:
 func _setup_camera() -> void:
 	await get_tree().process_frame
 	var cam := player.get_node_or_null("Camera2D")
-	if cam:
+	if not cam:
+		return
+
+	# Calcula os limites da camera com base no tamanho/posicao REAIS do
+	# sprite de fundo (em vez de numeros fixos) - assim, se a imagem for
+	# reposicionada ou redimensionada no editor, a camera nunca mostra
+	# alem da area realmente desenhada (evita a "faixa cinza").
+	var background: Sprite2D = get_node_or_null("Fundo/Background")
+	if background and background.texture:
+		var tex_size: Vector2 = background.texture.get_size()
+		var half_size: Vector2 = (tex_size * background.scale) / 2.0
+		var center: Vector2 = background.global_position
+		cam.limit_left   = int(center.x - half_size.x)
+		cam.limit_top    = int(center.y - half_size.y)
+		cam.limit_right  = int(center.x + half_size.x)
+		cam.limit_bottom = int(center.y + half_size.y)
+	else:
+		# Reserva (fallback) caso o fundo nao seja encontrado.
 		cam.limit_left   = 0
 		cam.limit_top    = 0
 		cam.limit_right  = 1152
 		cam.limit_bottom = 550
-		cam.position_smoothing_enabled = true
+
+	cam.position_smoothing_enabled = true
 
 func _on_morro_interact() -> void:
 	_registrar("morro")
@@ -62,14 +88,27 @@ func _registrar(item_id: String) -> void:
 	itens_coletados.append(item_id)
 	registros_feitos += 1
 
+	_mostrar_polaroid(item_id)
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct(ANOTACOES[item_id])
 	await dialog_box.dialog_finished
+	_esconder_polaroid()
 	player.set_state(player.State.EXPLORING)
 
 	if registros_feitos >= 3:
 		await get_tree().create_timer(0.5).timeout
 		_completar()
+
+func _mostrar_polaroid(item_id: String) -> void:
+	if not POLAROIDS.has(item_id):
+		return
+	polaroid_rect.texture = POLAROIDS[item_id]
+	polaroid_dim.visible = true
+	polaroid_rect.visible = true
+
+func _esconder_polaroid() -> void:
+	polaroid_dim.visible = false
+	polaroid_rect.visible = false
 
 func _completar() -> void:
 	player.set_state(player.State.IN_DIALOG)

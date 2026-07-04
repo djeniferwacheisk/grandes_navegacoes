@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
 [ext_resource type="Texture2D" uid="uid://dxhif1ebhg0r1" path="res://assets/personagem/Imitação_indio.png" id="5_ec7bi"]
 [ext_resource type="Texture2D" uid="uid://bbevovck23qmb" path="res://assets/personagem/Imitacao_portugues.png" id="6_q2y0k"]
+[ext_resource type="Texture2D" uid="uid://dw8gjlklsgf6k" path="res://assets/fase5/fundo_primeiro_contato.png" id="7_fundo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
@@ -107,43 +108,10 @@ script = ExtResource("1_script")
 
 [node name="Fundo" type="Node2D" parent="." unique_id=1789782777]
 
-[node name="Ceu" type="ColorRect" parent="Fundo" unique_id=1860361583]
-offset_right = 1152.0
-offset_bottom = 280.0
-color = Color(0.55, 0.8, 0.98, 1)
-
-[node name="Mar" type="ColorRect" parent="Fundo" unique_id=1606952208]
-offset_top = 280.0
-offset_right = 1152.0
-offset_bottom = 400.0
-color = Color(0.12, 0.42, 0.82, 1)
-
-[node name="Areia" type="ColorRect" parent="Fundo" unique_id=884937022]
-offset_top = 400.0
-offset_right = 1152.0
-offset_bottom = 510.0
-color = Color(0.87, 0.78, 0.54, 1)
-
-[node name="Indigena1" type="ColorRect" parent="Fundo" unique_id=945481328]
-offset_left = 650.0
-offset_top = 380.0
-offset_right = 675.0
-offset_bottom = 460.0
-color = Color(0.72, 0.5, 0.3, 1)
-
-[node name="Indigena2" type="ColorRect" parent="Fundo" unique_id=672815873]
-offset_left = 700.0
-offset_top = 385.0
-offset_right = 722.0
-offset_bottom = 460.0
-color = Color(0.75, 0.53, 0.32, 1)
-
-[node name="Indigena3" type="ColorRect" parent="Fundo" unique_id=1291028668]
-offset_left = 748.0
-offset_top = 382.0
-offset_right = 770.0
-offset_bottom = 460.0
-color = Color(0.7, 0.48, 0.28, 1)
+[node name="Background" type="Sprite2D" parent="Fundo" unique_id=150375755]
+position = Vector2(573.00006, 323)
+scale = Vector2(0.6005839, 0.4628297)
+texture = ExtResource("7_fundo")
 
 [node name="Chao" type="StaticBody2D" parent="." unique_id=532045868]
 position = Vector2(576, 510)
@@ -151,22 +119,24 @@ position = Vector2(576, 510)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=1655935676]
 shape = SubResource("RectangleShape2D_chao")
 
-[node name="ParedeEsquerda" type="StaticBody2D" parent="."]
+[node name="ParedeEsquerda" type="StaticBody2D" parent="." unique_id=1180101150]
 position = Vector2(-10, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsquerda"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsquerda" unique_id=527052030]
+position = Vector2(19, 1)
 shape = SubResource("RectangleShape2D_parede_lateral")
 
-[node name="ParedeDireita" type="StaticBody2D" parent="."]
+[node name="ParedeDireita" type="StaticBody2D" parent="." unique_id=137912246]
 position = Vector2(1162, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDireita"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDireita" unique_id=276039938]
+position = Vector2(-27, 0)
 shape = SubResource("RectangleShape2D_parede_lateral")
 
 [node name="Triggers" type="Node2D" parent="." unique_id=447909077]
 
 [node name="PresenteTrigger" type="Area2D" parent="Triggers" unique_id=3670806]
-position = Vector2(300, 460)
+position = Vector2(303, 420)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -182,9 +152,10 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "[E] Oferecer Presente"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ContatoTrigger" type="Area2D" parent="Triggers" unique_id=35304546]
-position = Vector2(600, 460)
+position = Vector2(810, 413)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -200,9 +171,11 @@ offset_bottom = -8.0
 theme_override_font_sizes/font_size = 10
 text = "[E] Aproximar dos Tupiniquins"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." unique_id=972039130 instance=ExtResource("2_player")]
-position = Vector2(100, 460)
+position = Vector2(62, 444)
+scale = Vector2(1.2, 1.2)
 
 [node name="DialogBox" parent="." unique_id=1025875093 instance=ExtResource("3_dialog")]
 
