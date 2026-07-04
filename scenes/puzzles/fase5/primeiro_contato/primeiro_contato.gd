@@ -13,10 +13,10 @@ var _sprite_scale_original: Vector2 = Vector2.ONE
 # aparecer do mesmo tamanho que o personagem normal, sem precisar
 # recortar/redimensionar os arquivos de imagem.
 const PRESENTES_ESCALA := {
-	"idle": 0.05801,
-	"walk_down": 0.11797,
-	"walk_side": 0.12812,
-	"walk_up": 0.12509,
+	"idle": 0.13982,
+	"walk_down": 0.11860,
+	"walk_side": 0.12057,
+	"walk_up": 0.13251,
 }
 
 const TOTAL_GESTOS := 5
@@ -74,7 +74,7 @@ func _ajustar_escala_presentes() -> void:
 	var sprite: AnimatedSprite2D = player.get_node_or_null("AnimatedSprite2D")
 	if not sprite:
 		return
-	var fator: float = PRESENTES_ESCALA.get(sprite.animation, 0.2)
+	var fator: float = PRESENTES_ESCALA.get(sprite.animation, 0.12)
 	sprite.scale = Vector2(fator, fator)
 
 func _remover_presentes() -> void:

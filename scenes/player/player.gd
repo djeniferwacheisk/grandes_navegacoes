@@ -10,6 +10,15 @@ var state: State = State.EXPLORING
 var facing_right := true
 var nearby_interactable: Node2D = null
 
+# Escala base do personagem (calibrada para as imagens de caminhar).
+# O "idle" (parado) foi desenhado numa proporcao diferente das imagens
+# de caminhar, entao precisa de uma escala propria pra nao ficar maior
+# que o personagem andando.
+const ESCALA_ANDANDO := 0.11624
+const ESCALA_PARADO := 0.04822
+
+var _default_sprite_frames: SpriteFrames = null
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var interaction_label: Label = $InteractionLabel
@@ -17,6 +26,7 @@ var nearby_interactable: Node2D = null
 
 
 func _ready() -> void:
+	_default_sprite_frames = sprite.sprite_frames
 	interaction_label.visible = false
 	interaction_area.body_entered.connect(_on_interaction_area_entered)
 	interaction_area.body_exited.connect(_on_interaction_area_exited)
@@ -58,6 +68,7 @@ func _physics_process(_delta: float) -> void:
 func _update_animation(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
 		sprite.play("idle")
+		_ajustar_escala("idle")
 		return
 
 	if abs(dir.x) >= abs(dir.y):
@@ -68,6 +79,18 @@ func _update_animation(dir: Vector2) -> void:
 		sprite.play("walk_down")
 	else:
 		sprite.play("walk_up")
+	_ajustar_escala("walk")
+
+
+func _ajustar_escala(tipo: String) -> void:
+	# So mexe na escala se o sprite_frames atual for o padrao do jogo -
+	# se outro sistema (ex: carregar presentes na fase Primeiro Contato)
+	# trocou o sprite_frames por um proprio, aquele sistema e quem
+	# controla a escala, e a gente nao interfere aqui.
+	if sprite.sprite_frames != _default_sprite_frames:
+		return
+	var escala: float = ESCALA_PARADO if tipo == "idle" else ESCALA_ANDANDO
+	sprite.scale = Vector2(escala, escala)
 
 
 func _unhandled_input(event: InputEvent) -> void:

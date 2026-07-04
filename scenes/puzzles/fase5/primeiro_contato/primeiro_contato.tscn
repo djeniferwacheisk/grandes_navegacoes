@@ -34,9 +34,9 @@ size = Vector2(20, 620)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vohg8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8e3t"]
 atlas = ExtResource("8_idle_pres")
-region = Rect2(0, 0, 1024, 1536)
+region = Rect2(1251, 0, 417, 943)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cj6id"]
 atlas = ExtResource("9_down_pres")
@@ -90,7 +90,7 @@ region = Rect2(1251, 0, 417, 943)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vohg8")
+"texture": SubResource("AtlasTexture_x8e3t")
 }],
 "loop": true,
 "name": &"idle",

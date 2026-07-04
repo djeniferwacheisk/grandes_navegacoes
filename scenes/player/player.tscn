@@ -9,6 +9,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(4, 6)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
+atlas = ExtResource("2_p47bc")
+region = Rect2(1251, 0, 417, 943)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("3_75vfm")
 region = Rect2(0, 0, 417, 943)
@@ -61,7 +65,7 @@ region = Rect2(1251, 0, 417, 943)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_p47bc")
+"texture": SubResource("AtlasTexture_kvlxm")
 }],
 "loop": true,
 "name": &"idle",
@@ -132,9 +136,9 @@ shape = SubResource("RectangleShape2D_body")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=530811635]
 position = Vector2(-0.99999994, -10.874999)
-scale = Vector2(0.3, 0.34733334)
+scale = Vector2(0.11624, 0.11624)
 sprite_frames = SubResource("SpriteFrames_yj68g")
-animation = &"walk_side"
+animation = &"walk_up"
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1884528449]
 collision_layer = 0
