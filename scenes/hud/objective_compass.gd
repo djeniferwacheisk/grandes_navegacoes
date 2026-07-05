@@ -23,9 +23,9 @@ const OBJECTIVES_BY_PHASE := {
 	1: {
 		"order": ["bussola_ventos", "caravela", "astrolabio"],
 		"positions": {
-			"bussola_ventos": Vector2(262, 438),
-			"caravela": Vector2(955, 85),
-			"astrolabio": Vector2(214, -47),
+			"bussola_ventos": Vector2(455, 353),
+			"caravela": Vector2(756, 181),
+			"astrolabio": Vector2(99, 105),
 		},
 		"names": {
 			"bussola_ventos": "Bússola",

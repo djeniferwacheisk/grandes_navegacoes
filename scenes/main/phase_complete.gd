@@ -45,7 +45,7 @@ func _ready() -> void:
 
 	# Etapa 2: mensagem de conclusao da fase (efeito de maquina de escrever)
 	await get_tree().create_timer(0.2).timeout
-	var full_text: String = "" % [phase, info["title"], info["message"]]
+	var full_text: String = "%s concluída!\n\n%s" % [info["title"], info["message"]]
 	for i in full_text.length():
 		text_label.text = full_text.substr(0, i + 1)
 		await get_tree().create_timer(0.03).timeout
