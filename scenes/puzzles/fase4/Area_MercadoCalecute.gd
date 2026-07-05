@@ -120,7 +120,15 @@ func _finalizar() -> void:
 	# carregado enquanto o jogador esta dentro do mercado, entao
 	# ninguem reagia. Precisa voltar explicitamente pra cena do mapa.
 	await get_tree().create_timer(0.5).timeout
-	SceneManager.change_scene("res://scenes/levels/fase4/Level4_RumoAsIndias.tscn")
+
+	# Se a tripulacao viva ja estava pronta, o mercado era o ultimo
+	# objetivo da fase 4 - vai direto pro pergaminho de conclusao em
+	# vez de voltar pro mapa (que teria que "adivinhar" isso depois).
+	if GameManager.is_objective_complete(4, "tripulacao_viva"):
+		GameManager.finish_phase(4)
+		SceneManager.change_scene("res://scenes/main/phase_complete.tscn")
+	else:
+		SceneManager.change_scene("res://scenes/levels/fase4/Level4_RumoAsIndias.tscn")
 
 
 func _falar(personagem: String, texto: String) -> void:
