@@ -41,7 +41,7 @@ var motor_speed: float = 0.0
 var current_speed: float = 0.0
 
 @export var health_bar_path: NodePath
-@onready var health_bar = get_node(health_bar_path)
+@onready var health_bar = get_node_or_null(health_bar_path)
 
 
 func _ready():
