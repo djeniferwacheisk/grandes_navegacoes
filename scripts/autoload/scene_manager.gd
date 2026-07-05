@@ -10,9 +10,17 @@ var _is_transitioning := false
 
 func _ready() -> void:
 	layer = 100
+	# Importante: as transicoes de tela (fade) precisam continuar
+	# rodando mesmo se alguma cena pausar o jogo (get_tree().paused)
+	# logo ao carregar - senao a transicao congela no meio, deixando
+	# a tela preta travada (foi o que causava o bug de "nao avanca
+	# pra proxima fase" apos a Fase 3 pausar pra mostrar as
+	# instrucoes).
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_color_rect = ColorRect.new()
 	_color_rect.color = Color.BLACK
 	_color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_color_rect.process_mode = Node.PROCESS_MODE_ALWAYS
 	_color_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_color_rect.modulate.a = 0.0
 	add_child(_color_rect)
@@ -27,6 +35,7 @@ func change_scene(scene_path: String, fade_duration: float = 0.5) -> void:
 	_color_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 
 	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(_color_rect, "modulate:a", 1.0, fade_duration)
 	await tween.finished
 
@@ -36,6 +45,7 @@ func change_scene(scene_path: String, fade_duration: float = 0.5) -> void:
 	await get_tree().process_frame
 
 	var tween2 := create_tween()
+	tween2.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween2.tween_property(_color_rect, "modulate:a", 0.0, fade_duration)
 	await tween2.finished
 
@@ -53,6 +63,7 @@ func change_scene_packed(scene: PackedScene, fade_duration: float = 0.5) -> void
 	_color_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 
 	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(_color_rect, "modulate:a", 1.0, fade_duration)
 	await tween.finished
 
@@ -62,6 +73,7 @@ func change_scene_packed(scene: PackedScene, fade_duration: float = 0.5) -> void
 	await get_tree().process_frame
 
 	var tween2 := create_tween()
+	tween2.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween2.tween_property(_color_rect, "modulate:a", 0.0, fade_duration)
 	await tween2.finished
 
