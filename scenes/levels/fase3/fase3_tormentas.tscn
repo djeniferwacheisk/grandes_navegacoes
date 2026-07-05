@@ -69,8 +69,67 @@ texture = ExtResource("12_wok1e")
 
 [node name="swapnTimer" type="Timer" parent="." unique_id=662669773]
 wait_time = 2.5
-autostart = true
 
 [node name="GameOver" parent="." unique_id=1565602492 instance=ExtResource("12_mxg1h")]
 
 [node name="Vitoria" parent="." unique_id=385634118 instance=ExtResource("14_62rcq")]
+
+[node name="Instrucoes" type="CanvasLayer" parent="." unique_id=1291667367]
+layer = 20
+
+[node name="Control" type="Control" parent="Instrucoes" unique_id=833169782]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fundo" type="ColorRect" parent="Instrucoes/Control" unique_id=1190337272]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 660.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.20392157, 0.35686275, 0.9)
+
+[node name="Titulo" type="Label" parent="Instrucoes/Control" unique_id=68069063]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 12.0
+offset_right = 516.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 12
+text = "Prepare-se, jovem cartógrafo!"
+horizontal_alignment = 1
+
+[node name="Explicacao" type="Label" parent="Instrucoes/Control" unique_id=1173695698]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 40.0
+offset_right = 620.0
+offset_bottom = 295.0
+theme_override_font_sizes/font_size = 10
+text = "
+Você está prestes a passar pelo temido Cabo das Tormentas, uma das rotas mais perigosas das Grandes Navegações.
+
+Para desviar das grandes ondas, use as teclas ↑ e ↓ para mover a caravela para cima ou para baixo.
+
+Durante o percurso, você encontrará recursos no mar. Colete-os para recuperar a estrutura do navio, caso ele seja danificado.
+
+Cuidado! Ao bater nas ondas, a caravela sofre danos e pode não resistir até o fim da travessia.
+
+Boa sorte, jovem cartógrafo!"
+autowrap_mode = 2
+
+[node name="BtnComecar" type="Button" parent="Instrucoes/Control" unique_id=2100630444]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 305.0
+offset_right = 347.0
+offset_bottom = 336.0
+theme_override_font_sizes/font_size = 9
+text = "Começar!"

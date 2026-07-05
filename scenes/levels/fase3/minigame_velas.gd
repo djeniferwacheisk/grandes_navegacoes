@@ -1,5 +1,7 @@
 extends Node2D
 
+var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
+
 # ── Sinais ────────────────────────────────────────────────────────────────────
 signal minigame_completo(sucesso: bool)
 var tex_mastro_solto   = preload("res://assets/miniGame/Mastro_com_Vela_Solta.png")
@@ -368,3 +370,10 @@ func _criar_sprite(textura: Texture2D, pos: Vector2) -> Sprite2D:
 	s.position = pos
 	area_jogo.add_child(s)
 	return s
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		var pause := _pause_menu_scene.instantiate()
+		add_child(pause)
+		get_viewport().set_input_as_handled()

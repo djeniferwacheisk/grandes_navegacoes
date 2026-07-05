@@ -1,5 +1,7 @@
 extends Control
 
+var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
+
 signal puzzle_completed
 
 const NORTH_ANGLE := 0.0
@@ -227,3 +229,10 @@ func _check_complete() -> void:
 
 func _on_back() -> void:
 	SceneManager.change_scene("res://scenes/levels/fase1/fase1_sagres.tscn")
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		var pause := _pause_menu_scene.instantiate()
+		add_child(pause)
+		get_viewport().set_input_as_handled()

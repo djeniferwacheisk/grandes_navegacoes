@@ -1,5 +1,7 @@
 extends Node2D
 
+var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
+
 # ── Sinais ────────────────────────────────────────────────────────────────────
 signal puzzle_completo(sucesso: bool)
 
@@ -49,6 +51,7 @@ func _escolher_rota(numero: int) -> void:
 		_desativar_rotas()
 		await get_tree().create_timer(2.0).timeout
 		emit_signal("puzzle_completo", true)
+		_concluir_fase3()
 	else:
 		feedback.modulate = Color(1, 0, 0)
 		# Mostra dica após erro
@@ -63,6 +66,20 @@ func _desativar_rotas() -> void:
 	rota3.disabled = true
 	rota4.disabled = true
 	rota5.disabled = true
+
+
+func _concluir_fase3() -> void:
+	# O sinal "puzzle_completo" era emitido mas nada no jogo escutava
+	# ele - a fase 3 nunca avancava de verdade.
+	GameManager.finish_phase(3)
+	SceneManager.change_scene("res://scenes/main/phase_complete.tscn")
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		var pause := _pause_menu_scene.instantiate()
+		add_child(pause)
+		get_viewport().set_input_as_handled()
 
 
 func _destacar_rota_errada(numero: int) -> void:

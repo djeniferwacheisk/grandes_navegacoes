@@ -3,6 +3,8 @@
 
 extends Control
 
+var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
+
 # ── Configuração da troca ────────────────────────────────────────────────────
 @export var nome_mercador:      String     = "Mercador"
 @export var item_mercador:      String     = "Mercadoria"
@@ -89,6 +91,11 @@ func _adicionar_item_mercador() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		var pause := _pause_menu_scene.instantiate()
+		add_child(pause)
+		get_viewport().set_input_as_handled()
+		return
 	if event.is_action_pressed("ui_cancel") and not _concluido:
 		_voltar_mercado()
 

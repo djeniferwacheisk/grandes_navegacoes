@@ -9,6 +9,8 @@ var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
 @onready var vitoria = $Vitoria
 @onready var barra_progresso: TextureProgressBar = $HUD/BarraProgresso
 @onready var mini_navio = $HUD/MiniNavio
+@onready var instrucoes: CanvasLayer = $Instrucoes
+@onready var btn_comecar: Button = $Instrucoes/Control/BtnComecar
 
 var onda_cena = preload("res://scenes/levels/fase3/onda.tscn")
 var caixote_cena = preload("res://scenes/levels/fase3/caixote.tscn")
@@ -18,6 +20,7 @@ var intervalo_caixote: float = 8.0
 var tempo_fase: float = 0.0
 var duracao_fase: float = 60.0
 var fase_completa: bool = false
+var jogo_iniciado: bool = false
 
 
 func _ready() -> void:
@@ -28,6 +31,19 @@ func _ready() -> void:
 	barra_vida.value = carvela.health
 	barra_progresso.max_value = duracao_fase
 	barra_progresso.value = 0
+
+	get_tree().paused = true
+	instrucoes.process_mode = Node.PROCESS_MODE_ALWAYS
+	btn_comecar.process_mode = Node.PROCESS_MODE_ALWAYS
+	btn_comecar.pressed.connect(_on_comecar)
+	btn_comecar.grab_focus()
+
+
+func _on_comecar() -> void:
+	get_tree().paused = false
+	instrucoes.visible = false
+	jogo_iniciado = true
+	spawn_timer.start()
 
 
 func _unhandled_input(event: InputEvent) -> void:

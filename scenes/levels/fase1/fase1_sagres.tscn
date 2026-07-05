@@ -1,30 +1,11 @@
 [gd_scene format=3 uid="uid://deft76a7ghjjj"]
 
 [ext_resource type="Script" uid="uid://bda2k4kfutwcf" path="res://scenes/levels/fase1/fase1_sagres.gd" id="1_fase1"]
-[ext_resource type="Texture2D" uid="uid://cf0d43ums1ro6" path="res://assets/fundo.png" id="2_6w6ne"]
+[ext_resource type="Texture2D" uid="uid://bkpl3xu8l55i8" path="res://assets/fundo1.png" id="2_l7y47"]
 [ext_resource type="PackedScene" uid="uid://bj0ie1re8yn0w" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
 [ext_resource type="PackedScene" uid="uid://chud001" path="res://scenes/hud/hud.tscn" id="4_hud"]
-[ext_resource type="PackedScene" uid="uid://cnpc001" path="res://scenes/npcs/npc.tscn" id="5_npc"]
 [ext_resource type="Script" uid="uid://bh7plrrclwmrq" path="res://scenes/levels/fase1/puzzle_trigger.gd" id="6_trigger"]
-[ext_resource type="Texture2D" uid="uid://5kqu8823dkje" path="res://assets/mapa/Castelo.png" id="8_87sai"]
-[ext_resource type="Texture2D" uid="uid://8cost6pmkubq" path="res://assets/mapa/casa1.png" id="11_bevot"]
-[ext_resource type="Texture2D" uid="uid://xdh8fdev1tqd" path="res://assets/mapa/casa2.png" id="12_rf61k"]
-[ext_resource type="Texture2D" uid="uid://d21piqi0yp82f" path="res://assets/mapa/casa3.png" id="13_boowf"]
-[ext_resource type="Texture2D" uid="uid://btm806g1k521o" path="res://assets/mapa/casa4.png" id="14_kq58k"]
-[ext_resource type="Texture2D" uid="uid://cg1wiwb27ejdg" path="res://assets/mapa/barco1.png" id="16_ws07y"]
-[ext_resource type="Texture2D" uid="uid://d3v3x2vrip2ft" path="res://assets/mapa/barco2.png" id="17_atcvg"]
-[ext_resource type="Texture2D" uid="uid://dnbtoc64k85m" path="res://assets/mapa/astrolabio.png" id="18_8dh4v"]
-[ext_resource type="Texture2D" uid="uid://d327um4atywku" path="res://assets/mapa/mercadinho.png" id="23_xdc4u"]
-[ext_resource type="Texture2D" uid="uid://bbgv3axins44v" path="res://assets/mapa/deck.png" id="24_v55j4"]
-[ext_resource type="Texture2D" uid="uid://codoioi25dlef" path="res://assets/mapa/caravela.png" id="25_axm0j"]
-[ext_resource type="Texture2D" uid="uid://c0lk1b782nvqs" path="res://assets/mapa/floresta.png" id="26_7pgu0"]
-[ext_resource type="Texture2D" uid="uid://cgvyx06s2dwit" path="res://assets/mapa/escadaria1.png" id="27_xtd1c"]
-[ext_resource type="Texture2D" uid="uid://dvurbo0cq6dti" path="res://assets/mapa/templo1.png" id="28_87sai"]
-[ext_resource type="Texture2D" uid="uid://dch0af64oxjts" path="res://assets/mapa/templo2.png" id="29_22tw4"]
-[ext_resource type="Texture2D" uid="uid://cdg6w67vcjx4x" path="res://assets/mapa/barril.png" id="29_343ej"]
-[ext_resource type="Texture2D" uid="uid://cg7ihx08lyxu6" path="res://assets/mapa/fonte.png" id="30_l00u2"]
-[ext_resource type="Texture2D" uid="uid://bajebjjrdq43" path="res://assets/mapa/poco.png" id="32_22tw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
 size = Vector2(1318.5, 10)
@@ -35,14 +16,42 @@ size = Vector2(12, 779)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
 size = Vector2(24, 24)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7y47"]
+radius = 31.0
+height = 72.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ga7tb"]
+radius = 21.023796
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tftoc"]
+size = Vector2(449.44098, 8.8164215)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epr1c"]
+size = Vector2(225.35394, 8.972183)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rskv"]
+size = Vector2(232.79654, 7.4169655)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvswv"]
+size = Vector2(455.1494, 34.836205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pux6"]
+size = Vector2(7.083725, 210.72461)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucd82"]
+size = Vector2(244.73654, 6.7786255)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw424"]
+size = Vector2(566.6112, 6.763483)
+
 [node name="Fase1Sagres" type="Node2D" unique_id=101626217]
 y_sort_enabled = true
 script = ExtResource("1_fase1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=740977907]
-position = Vector2(-130, -127)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6w6ne")
+position = Vector2(-129, -157)
+scale = Vector2(0.79926336, 0.8)
+texture = ExtResource("2_l7y47")
 centered = false
 
 [node name="WallTop" type="StaticBody2D" parent="." unique_id=1862448441]
@@ -70,34 +79,19 @@ position = Vector2(1166, 266)
 shape = SubResource("RectangleShape2D_wall_v")
 
 [node name="Player" parent="." unique_id=1756894264 instance=ExtResource("2_player")]
-position = Vector2(554, 459.99997)
+position = Vector2(426, 486)
 scale = Vector2(0.7, 0.7)
-
-[node name="MestreNavegador" parent="." unique_id=1464441908 instance=ExtResource("5_npc")]
-position = Vector2(452, 218)
-npc_name = "Mestre Navegador"
-dialog_id = "mestre_intro"
-
-[node name="Marinheiro1" parent="." unique_id=698373890 instance=ExtResource("5_npc")]
-position = Vector2(377, 201)
-npc_name = "Marinheiro"
-dialog_id = "marinheiro_1"
-
-[node name="Marinheiro2" parent="." unique_id=1370439378 instance=ExtResource("5_npc")]
-position = Vector2(430, 80)
-npc_name = "Marinheiro"
-dialog_id = "marinheiro_2"
 
 [node name="PuzzleTriggers" type="Node2D" parent="." unique_id=456736165]
 
 [node name="CompassTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=449266162]
-position = Vector2(252, 99)
+position = Vector2(455, 353)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("6_trigger")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/CompassTrigger" unique_id=403037451]
-position = Vector2(10, 339)
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_trigger")
 
 [node name="Label" type="Label" parent="PuzzleTriggers/CompassTrigger" unique_id=198566253]
@@ -108,9 +102,10 @@ offset_bottom = 658.0
 theme_override_font_sizes/font_size = 10
 text = "Bussola"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ShipTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=150992057]
-position = Vector2(955, 85)
+position = Vector2(756, 181)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("6_trigger")
@@ -119,13 +114,13 @@ script = ExtResource("6_trigger")
 shape = SubResource("RectangleShape2D_trigger")
 
 [node name="AstrolabeTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=1891931629]
-position = Vector2(430, 40)
+position = Vector2(99, 105)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("6_trigger")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleTriggers/AstrolabeTrigger" unique_id=1104523929]
-position = Vector2(-216, -87)
+position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_trigger")
 
 [node name="Label" type="Label" parent="PuzzleTriggers/AstrolabeTrigger" unique_id=543178318]
@@ -136,117 +131,94 @@ offset_bottom = -190.0
 theme_override_font_sizes/font_size = 10
 text = "Astrolabio"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="DialogBox" parent="." unique_id=102116853 instance=ExtResource("3_dialog")]
 
 [node name="HUD" parent="." unique_id=1371277843 instance=ExtResource("4_hud")]
 
-[node name="Objetos" type="Node2D" parent="." unique_id=1521737728]
-y_sort_enabled = true
+[node name="Fonte" type="StaticBody2D" parent="." unique_id=1012355644]
+position = Vector2(478, 460)
 
-[node name="Castelo" type="Sprite2D" parent="Objetos" unique_id=1619885200]
-position = Vector2(425.00003, -91)
-scale = Vector2(0.16399994, 0.17177913)
-texture = ExtResource("8_87sai")
-centered = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fonte" unique_id=592084993]
+position = Vector2(1, 1.0000305)
+rotation = -1.7139133
+shape = SubResource("CapsuleShape2D_l7y47")
 
-[node name="casa1" type="Sprite2D" parent="Objetos" unique_id=1828337519]
-position = Vector2(687, 449)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_bevot")
-centered = false
+[node name="Poco" type="StaticBody2D" parent="." unique_id=500320809]
+position = Vector2(857, 525)
 
-[node name="casa2" type="Sprite2D" parent="Objetos" unique_id=1426136883]
-position = Vector2(746, 293)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("12_rf61k")
-centered = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Poco" unique_id=630222103]
+position = Vector2(4, -2)
+shape = SubResource("CircleShape2D_ga7tb")
 
-[node name="casa3" type="Sprite2D" parent="Objetos" unique_id=159423299]
-position = Vector2(825, 443)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("13_boowf")
-centered = false
+[node name="ParedeCasas" type="StaticBody2D" parent="." unique_id=1492329494]
+position = Vector2(975, 518)
+rotation = 0.22863813
 
-[node name="casa4" type="Sprite2D" parent="Objetos" unique_id=456782848]
-position = Vector2(946, 511.00003)
-scale = Vector2(0.48471618, 0.45300356)
-texture = ExtResource("14_kq58k")
-centered = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeCasas" unique_id=249550544]
+position = Vector2(-2.1931152, -42.382797)
+rotation = 0.22863813
+shape = SubResource("RectangleShape2D_tftoc")
 
-[node name="barco1" type="Sprite2D" parent="Objetos" unique_id=1142360783]
-position = Vector2(695, 48)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("16_ws07y")
-centered = false
+[node name="ParedeCasas1" type="StaticBody2D" parent="." unique_id=2029158248]
+position = Vector2(824.99994, 300.00003)
+rotation = -0.57072264
 
-[node name="barco2" type="Sprite2D" parent="Objetos" unique_id=1409954580]
-position = Vector2(789.00006, 143)
-scale = Vector2(0.36123347, 0.4)
-texture = ExtResource("17_atcvg")
-centered = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeCasas1" unique_id=1321958684]
+position = Vector2(18.843506, -16.237)
+rotation = -0.5707227
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_epr1c")
 
-[node name="astrolabio" type="Sprite2D" parent="Objetos" unique_id=2093707980]
-position = Vector2(103, -105)
-scale = Vector2(0.46786633, 0.46979868)
-texture = ExtResource("18_8dh4v")
-centered = false
+[node name="ParedeNavio" type="StaticBody2D" parent="." unique_id=136045759]
+position = Vector2(808, 194)
+rotation = -1.3700835
 
-[node name="barril" type="Sprite2D" parent="Objetos" unique_id=2130648990]
-position = Vector2(507, 150.99998)
-scale = Vector2(0.38, 0.38)
-texture = ExtResource("29_343ej")
-centered = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeNavio" unique_id=529258042]
+position = Vector2(53.923767, -46.2735)
+rotation = -1.3700835
+scale = Vector2(0.99999946, 0.99999946)
+shape = SubResource("RectangleShape2D_7rskv")
 
-[node name="poco" type="Sprite2D" parent="Objetos" unique_id=538030747]
-position = Vector2(894, 528)
-scale = Vector2(0.38, 0.38)
-texture = ExtResource("32_22tw4")
-centered = false
+[node name="ParedeCastelo" type="StaticBody2D" parent="." unique_id=415124978]
+position = Vector2(517, 206)
+rotation = -0.11519173
 
-[node name="escadaria" type="Sprite2D" parent="Objetos" unique_id=1413500181]
-position = Vector2(410, 133)
-scale = Vector2(0.49392706, 0.43617022)
-texture = ExtResource("27_xtd1c")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeCastelo" unique_id=646499104]
+position = Vector2(22.664246, -96.16664)
+rotation = -0.115191646
+scale = Vector2(1.0000007, 1.0000001)
+skew = -0.3141595
+shape = SubResource("RectangleShape2D_pvswv")
 
-[node name="templo" type="Sprite2D" parent="Objetos" unique_id=1853005670]
-position = Vector2(73.000015, 441.99997)
-scale = Vector2(0.40198237, 0.3850671)
-texture = ExtResource("28_87sai")
-centered = false
-offset = Vector2(0, -200)
+[node name="ParedeCastelo1" type="StaticBody2D" parent="." unique_id=1582059101]
+position = Vector2(347, 196.99997)
+rotation = -0.4712389
 
-[node name="templo1" type="Sprite2D" parent="Objetos" unique_id=442219353]
-position = Vector2(449.00003, 426)
-scale = Vector2(0.43936566, 0.43933225)
-texture = ExtResource("29_22tw4")
-offset = Vector2(0, -200)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeCastelo1" unique_id=2005145058]
+position = Vector2(-57.627533, -128.98065)
+rotation = -0.47123888
+scale = Vector2(1.0000004, 1.0000004)
+shape = SubResource("RectangleShape2D_2pux6")
 
-[node name="fonte" type="Sprite2D" parent="Objetos" unique_id=1107411097]
-position = Vector2(577.00006, 439.99997)
-scale = Vector2(0.4398907, 0.49358973)
-texture = ExtResource("30_l00u2")
+[node name="ParedeAstrolabio" type="StaticBody2D" parent="." unique_id=1738171888]
+position = Vector2(33, 95)
+rotation = -0.1134464
 
-[node name="mercadinho" type="Sprite2D" parent="Objetos" unique_id=820178932]
-position = Vector2(1027.4196, 435.30756)
-rotation = 0.44156832
-scale = Vector2(0.40135288, 0.4035816)
-texture = ExtResource("23_xdc4u")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeAstrolabio" unique_id=214659200]
+position = Vector2(12.966947, -16.63906)
+rotation = -0.1134464
+shape = SubResource("RectangleShape2D_ucd82")
 
-[node name="deck1" type="Sprite2D" parent="Objetos" unique_id=1766651086]
-position = Vector2(733.00006, 133)
-scale = Vector2(0.4229122, 0.48770493)
-texture = ExtResource("24_v55j4")
+[node name="ParedeLateral" type="StaticBody2D" parent="." unique_id=1523083744]
+position = Vector2(12, 381)
+rotation = -0.80110615
 
-[node name="caravela2" type="Sprite2D" parent="Objetos" unique_id=1597394255]
-position = Vector2(944.99994, 77)
-scale = Vector2(0.44039142, 0.4332579)
-texture = ExtResource("25_axm0j")
-
-[node name="floresta" type="Sprite2D" parent="Objetos" unique_id=290803083]
-position = Vector2(79, 131)
-scale = Vector2(0.49858966, 0.4906928)
-texture = ExtResource("26_7pgu0")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeLateral" unique_id=140002033]
+position = Vector2(-13.71834, -27.088873)
+rotation = -0.7522369
+shape = SubResource("RectangleShape2D_jw424")
 
 [connection signal="triggered" from="PuzzleTriggers/CompassTrigger" to="." method="_on_compass_interact"]
 [connection signal="triggered" from="PuzzleTriggers/ShipTrigger" to="." method="_on_ship_interact"]

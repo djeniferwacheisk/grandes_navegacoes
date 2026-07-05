@@ -440,7 +440,7 @@ layout_mode = 0
 offset_top = 20.0
 offset_right = 500.0
 offset_bottom = 60.0
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 10
 text = "Cortando madeira..."
 horizontal_alignment = 1
 
@@ -459,7 +459,7 @@ offset_left = -18.0
 offset_top = 107.0
 offset_right = 482.0
 offset_bottom = 137.0
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 7
 text = "Aperte E repetidamente!"
 horizontal_alignment = 1
 

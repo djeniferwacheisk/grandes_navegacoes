@@ -13,6 +13,18 @@ func _ready() -> void:
 	_setup_camera()
 
 	await get_tree().create_timer(0.5).timeout
+
+	# Cobre o caso de quem ja completou os 3 objetivos antes (por
+	# exemplo, numa ordem que nao disparou a tela de conclusao devido
+	# ao bug antigo) e volta a carregar esta cena - mostra a tela de
+	# conclusao direto, sem travar o jogo.
+	if GameManager.is_objective_complete(5, "explorar_costa") \
+	and GameManager.is_objective_complete(5, "primeiro_contato") \
+	and GameManager.is_objective_complete(5, "puzzle_cruz") \
+	and GameManager.current_phase <= 5:
+		_show_phase_complete()
+		return
+
 	if not _intro_shown and not GameManager.is_objective_complete(5, "explorar_costa"):
 		_intro_shown = true
 		player.set_state(player.State.IN_DIALOG)
@@ -81,6 +93,8 @@ func _on_cruz_interact() -> void:
 		return
 	SceneManager.change_scene("res://scenes/puzzles/fase5/puzzle_cruz/puzzle_cruz.tscn")
 
+const ORDEM_OBJETIVOS := ["explorar_costa", "primeiro_contato", "puzzle_cruz"]
+
 func _on_objective_completed(phase: int, objective: String) -> void:
 	if phase != 5:
 		return
@@ -105,8 +119,19 @@ func _on_objective_completed(phase: int, objective: String) -> void:
 				{"speaker": "Narrador", "text": "A cruz foi erguida voltada ao sol nascente, como descrito por Pero Vaz de Caminha.", "portrait": ""}
 			])
 			await dialog_box.dialog_finished
-			await get_tree().create_timer(0.5).timeout
-			_show_phase_complete()
+			player.set_state(player.State.EXPLORING)
+
+	# Verifica se TODOS os objetivos da fase ja foram concluidos,
+	# independente da ordem em que o jogador os completou - antes, so
+	# o puzzle_cruz (por ser sempre o "ultimo" assumido) disparava a
+	# tela de conclusao, entao terminar em outra ordem deixava o jogo
+	# travado sem avancar.
+	for obj in ORDEM_OBJETIVOS:
+		if not GameManager.is_objective_complete(5, obj):
+			return
+
+	await get_tree().create_timer(0.5).timeout
+	_show_phase_complete()
 
 func _show_phase_complete() -> void:
 	player.set_state(player.State.IN_DIALOG)

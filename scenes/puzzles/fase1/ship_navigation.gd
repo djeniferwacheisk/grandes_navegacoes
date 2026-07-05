@@ -1,5 +1,7 @@
 extends Node2D
 
+var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
+
 const SHIP_SPEED := 80.0
 const WIND_FORCE := 30.0
 const MAP_COUNT := 3
@@ -118,4 +120,6 @@ func _on_back() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		_on_back()
+		var pause := _pause_menu_scene.instantiate()
+		add_child(pause)
+		get_viewport().set_input_as_handled()
