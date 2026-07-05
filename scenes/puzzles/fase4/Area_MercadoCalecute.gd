@@ -113,6 +113,15 @@ func _finalizar() -> void:
 	GameManager.save_game()
 	objetivo_concluido.emit()
 
+	# Isso e o que faltava: a cena nunca voltava para o mapa principal
+	# depois de completar as 3 trocas - o GameManager.complete_objective()
+	# so avisa quem estiver ESCUTANDO o sinal global naquele momento, e
+	# o script do mapa principal (Level4_RumoAsIndias.gd) nao esta
+	# carregado enquanto o jogador esta dentro do mercado, entao
+	# ninguem reagia. Precisa voltar explicitamente pra cena do mapa.
+	await get_tree().create_timer(0.5).timeout
+	SceneManager.change_scene("res://scenes/levels/fase4/Level4_RumoAsIndias.tscn")
+
 
 func _falar(personagem: String, texto: String) -> void:
 	player.set_state(player.State.IN_DIALOG)

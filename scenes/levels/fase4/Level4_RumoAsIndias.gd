@@ -27,6 +27,19 @@ func _ready() -> void:
 	_montar_lista_objetivos()
 
 	await get_tree().create_timer(0.5).timeout
+
+	# Cobre o caso de voltar do Mercado de Calecute (ou da Tripulacao
+	# Viva) ja com os 2 objetivos completos - o sinal de conclusao e
+	# emitido pela cena do puzzle, que roda ANTES desta cena estar
+	# carregada e escutando, entao ninguem reagia e a fase ficava presa
+	# aqui, sem terminar.
+	if GameManager.is_objective_complete(4, "tripulacao_viva") \
+	and GameManager.is_objective_complete(4, "mercado_calecute") \
+	and GameManager.current_phase <= 4:
+		GameManager.finish_phase(4)
+		SceneManager.change_scene("res://scenes/main/phase_complete.tscn")
+		return
+
 	if not GameManager.is_objective_complete(4, "tripulacao_viva"):
 		player.set_state(player.State.IN_DIALOG)
 		var dialog = _get_dialog()
@@ -130,7 +143,7 @@ func _on_objective_completed(phase: int, objective: String) -> void:
 		"tripulacao_viva":
 			_falar("Tripulação", "Sobrevivemos! O mercado de Calecute nos aguarda.")
 		"mercado_calecute":
-			_falar("Vasco da Gama", "Em 1498, chegamos às Índias! O caminho das especiarias está aberto.")
+			await _falar("Vasco da Gama", "Em 1498, chegamos às Índias! O caminho das especiarias está aberto.")
 			await get_tree().create_timer(0.5).timeout
 			GameManager.finish_phase(4)
 			SceneManager.change_scene("res://scenes/main/phase_complete.tscn")
