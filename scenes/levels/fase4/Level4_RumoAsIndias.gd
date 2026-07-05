@@ -34,8 +34,7 @@ func _ready() -> void:
 	# carregada e escutando, entao ninguem reagia e a fase ficava presa
 	# aqui, sem terminar.
 	if GameManager.is_objective_complete(4, "tripulacao_viva") \
-	and GameManager.is_objective_complete(4, "mercado_calecute") \
-	and GameManager.current_phase <= 4:
+	and GameManager.is_objective_complete(4, "mercado_calecute"):
 		GameManager.finish_phase(4)
 		SceneManager.change_scene("res://scenes/main/phase_complete.tscn")
 		return
