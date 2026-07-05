@@ -1,92 +1,90 @@
 extends Control
 
-## Tela de transicao entre fases. Generica para as 5 fases: mostra a
-## mensagem de conclusao da fase que acabou de terminar
-## (GameManager.last_completed_phase) e avisa qual e a proxima fase antes
-## de o jogador continuar.
 
 const PHASE_INFO := {
 	1: {
 		"title": "Escola de Sagres",
-		"map_label": "Costa de Portugal",
-		"message": "Você completou seu treinamento na Escola de Sagres!",
-	},
-	2: {
-		"title": "Periplo Africano",
-		"map_label": "Costa da África",
-		"message": "A costa africana foi explorada e as primeiras trocas com os povos locais foram feitas!",
+		"message": "Parabéns, jovem cartógrafo! Você concluiu a fase Escola de Sagres.
+
+Aqui aprendemos a usar a bússola, observar os astros com o astrolábio, entender os ventos e preparar a caravela para enfrentar o mar aberto. Esses conhecimentos foram essenciais para que os navegadores portugueses se aventurassem por oceanos desconhecidos.
+
+Guarde bem essas informações: elas serão importantes nas próximas jornadas.",
 	},
 	3: {
 		"title": "Cabo das Tormentas",
-		"map_label": "Cabo da Boa Esperança",
-		"message": "A frota resistiu às tormentas e contornou o Cabo da Boa Esperança!",
+		"message": "Parabéns, jovem cartógrafo! Você concluiu a fase Cabo das Tormentas.
+
+Aqui enfrentamos tempestades, ondas perigosas e uma das rotas mais temidas pelos navegadores. Ao contornar esse cabo, mais tarde chamado de Cabo da Boa Esperança, Bartolomeu Dias abriu um novo caminho marítimo entre o Oceano Atlântico e o Oceano Índico.
+
+Guarde bem essa conquista: ela mudou o futuro das navegações portuguesas.",
 	},
 	4: {
 		"title": "Rumo às Índias",
-		"map_label": "Calecute, Índia",
-		"message": "Em 1498, a frota chegou às Índias! O caminho das especiarias está aberto.",
+		"message": "Parabéns, jovem cartógrafo! Você concluiu a fase Rumo às Índias.
+
+Aqui aprendemos a cuidar da tripulação durante uma longa viagem e a negociar mercadorias em Calecute. Ferramentas, tecidos e vinhos eram trocados por especiarias valiosas, mostrando a importância do comércio entre diferentes povos.
+
+Em 1498, Vasco da Gama completou essa rota, ligando Portugal diretamente às riquezas do Oriente pelo mar.
+
+Guarde bem essas informações: o comércio foi um dos grandes motores das Grandes Navegações.",
 	},
 	5: {
 		"title": "Chegada ao Brasil",
-		"map_label": "Terra de Santa Cruz",
-		"message": "Em 22 de abril de 1500, a esquadra de Cabral avistou e tomou posse de uma nova terra.",
+		"message": "Parabéns, jovem cartógrafo! Você concluiu a fase Chegada ao Brasil.
+
+Aqui exploramos uma nova costa, observamos suas florestas, sua fauna colorida e o valioso pau-brasil. Também aprendemos sobre o primeiro contato entre portugueses e povos Tupiniquins, marcado por gestos, presentes e tentativas de comunicação entre culturas diferentes.
+
+Por fim, vimos o significado de erguer uma cruz em nome de Portugal, um gesto simbólico usado para marcar a posse da terra.
+
+Em 1500, a chegada da expedição de Pedro Álvares Cabral marcou o início de um novo capítulo da história do Brasil.
+
+Sua jornada pelas Grandes Navegações chegou ao fim. Você navegou por mares desconhecidos, enfrentou desafios, conheceu novos caminhos e acompanhou acontecimentos que transformaram a história. Parabéns pela aventura, jovem cartógrafo!",
 	},
 }
 
 const TOTAL_FASES := 5
 
-@onready var text_label: Label = $TextLabel
-@onready var next_phase_label: Label = $NextPhaseLabel
-@onready var map_reveal: ColorRect = $MapReveal
-@onready var continue_button: Button = $ContinueButton
+@onready var dim: ColorRect = $Dim
+@onready var pergaminho: TextureRect = $Pergaminho
+@onready var text_label: Label = $Pergaminho/TextLabel
 
 
 func _ready() -> void:
-	continue_button.visible = false
-	continue_button.pressed.connect(_on_continue)
-	map_reveal.modulate.a = 0.0
-	next_phase_label.modulate.a = 0.0
+	dim.modulate.a = 0.0
+	pergaminho.modulate.a = 0.0
+	text_label.text = ""
 
 	var phase: int = GameManager.last_completed_phase
 	if phase <= 0:
 		phase = 1
 	var info: Dictionary = PHASE_INFO.get(phase, PHASE_INFO[1])
 
-	# Etapa 1: mensagem de conclusao da fase (efeito de maquina de escrever)
-	text_label.text = ""
-	var full_text: String = "Fase %d concluída: %s!\n\n%s" % [phase, info["title"], info["message"]]
+	# Etapa 1: o pergaminho aparece (fade-in)
+	var tween_in := create_tween()
+	tween_in.tween_property(dim, "modulate:a", 1.0, 0.6)
+	tween_in.parallel().tween_property(pergaminho, "modulate:a", 1.0, 0.6)
+	await tween_in.finished
+
+	# Etapa 2: mensagem de conclusao da fase (efeito de maquina de escrever)
+	await get_tree().create_timer(0.2).timeout
+	var full_text: String = "Fase %d concluída:\n%s\n\n%s" % [phase, info["title"], info["message"]]
 	for i in full_text.length():
 		text_label.text = full_text.substr(0, i + 1)
 		await get_tree().create_timer(0.03).timeout
 
-	# Etapa 2: revela o pedaco do mapa referente a fase concluida
-	await get_tree().create_timer(0.5).timeout
-	var tween := create_tween()
-	tween.tween_property(map_reveal, "modulate:a", 1.0, 1.5)
-	await tween.finished
+	# Etapa 3: uma pausa pro jogador ler, depois troca de fase sozinho
+	await get_tree().create_timer(2.5).timeout
 
-	# Etapa 3: avisa qual sera a proxima fase (ou que o jogo terminou)
-	await get_tree().create_timer(0.3).timeout
-	if phase < TOTAL_FASES:
-		var next_info: Dictionary = PHASE_INFO.get(phase + 1, {})
-		var next_title: String = next_info.get("title", "")
-		next_phase_label.text = "A próxima fase vai começar: Fase %d — %s" % [phase + 1, next_title]
-	else:
-		next_phase_label.text = "Parabéns! Você completou As Grandes Navegações!"
-	var tween2 := create_tween()
-	tween2.tween_property(next_phase_label, "modulate:a", 1.0, 0.8)
-	await tween2.finished
+	var tween_out := create_tween()
+	tween_out.tween_property(dim, "modulate:a", 0.0, 0.6)
+	tween_out.parallel().tween_property(pergaminho, "modulate:a", 0.0, 0.6)
+	await tween_out.finished
 
-	continue_button.visible = true
-	continue_button.grab_focus()
-
-
-func _on_continue() -> void:
-	var phase: int = GameManager.last_completed_phase
 	if phase >= TOTAL_FASES:
 		# Fim de jogo: nao ha proxima fase, volta ao menu principal.
 		SceneManager.change_scene("res://scenes/menus/title_screen.tscn")
 	else:
 		# GameManager.current_phase ja foi avancado em finish_phase(),
-		# entao main.tscn vai carregar automaticamente a proxima fase.
+		# entao main.tscn vai carregar automaticamente a proxima fase
+		# (pulando a fase 2, que foi removida do jogo).
 		SceneManager.change_scene("res://scenes/main/main.tscn")

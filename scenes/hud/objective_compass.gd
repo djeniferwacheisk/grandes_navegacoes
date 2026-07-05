@@ -46,6 +46,17 @@ const OBJECTIVES_BY_PHASE := {
 			"puzzle_cruz": "A Cruz e a Posse",
 		},
 	},
+	4: {
+		"order": ["tripulacao_viva", "mercado_calecute"],
+		"positions": {
+			"tripulacao_viva": Vector2(-250, 500),
+			"mercado_calecute": Vector2(874, 220),
+		},
+		"names": {
+			"tripulacao_viva": "Tripulação Viva",
+			"mercado_calecute": "Mercado de Calecute",
+		},
+	},
 }
 
 
@@ -103,6 +114,14 @@ func _update_current_objective() -> void:
 
 	current_objective = ""
 	_all_complete = false
+
+	if order.is_empty():
+		if is_inside_tree() and objective_label:
+			objective_label.text = "Em andamento..."
+			if needle_pivot:
+				needle_pivot.visible = false
+		return
+
 	for obj in order:
 		if not GameManager.is_objective_complete(phase, obj):
 			current_objective = obj

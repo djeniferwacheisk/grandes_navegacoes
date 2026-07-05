@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ddre8w53b42fu" path="res://assets/objects/Arvore_cortada.png" id="6_arvore"]
 [ext_resource type="Texture2D" uid="uid://cfesp0l1fvru8" path="res://assets/objects/Cruz.png" id="7_qoqm4"]
 [ext_resource type="Texture2D" uid="uid://doavg635lwaee" path="res://assets/fase5/fundo_puzzle_cruz.png" id="8_fundo"]
+[ext_resource type="PackedScene" uid="uid://chud001" path="res://scenes/hud/hud.tscn" id="99_hud"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qoqm4"]
 atlas = ExtResource("6_arvore")
@@ -346,7 +347,7 @@ shape = SubResource("RectangleShape2D_chao")
 position = Vector2(576, 510)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chao2" unique_id=1488915148]
-position = Vector2(7, -126)
+position = Vector2(7, -92)
 shape = SubResource("RectangleShape2D_chao")
 
 [node name="ParedeEsquerda" type="StaticBody2D" parent="." unique_id=1538626972]
@@ -463,6 +464,9 @@ text = "Aperte E repetidamente!"
 horizontal_alignment = 1
 
 [node name="barco" type="Sprite2D" parent="HUD/PainelMash" unique_id=1033902001]
+
+[node name="SharedHUD" parent="." unique_id=1786804043 instance=ExtResource("99_hud")]
+phase = 5
 
 [connection signal="triggered" from="Triggers/TroncoTrigger" to="." method="_on_tronco_interact"]
 [connection signal="triggered" from="Triggers/CordaTrigger" to="." method="_on_corda_interact"]

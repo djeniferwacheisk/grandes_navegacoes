@@ -20,9 +20,18 @@ const PROGRESSO_MAX: float = 20.0
 @onready var sprite_buraco: AnimatedSprite2D = $SpriteBuraco
 @onready var sprite_cruz: AnimatedSprite2D = $SpriteCruz
 @onready var sprite_cruz_final: AnimatedSprite2D = $SpriteCruzFinal
+@onready var hud = $SharedHUD
+
+const NOMES_OBJETIVOS := {
+	"tronco": "Cortar Madeira",
+	"corda": "Cavar Buraco",
+	"alinhar": "Erguer a Cruz",
+}
 
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
+	if hud and hud.has_method("set_custom_objectives"):
+		hud.set_custom_objectives(NOMES_OBJETIVOS)
 	painel_mash.visible = false
 	sprite_buraco.visible = false
 	sprite_cruz.visible = false
@@ -181,6 +190,8 @@ func _concluir_etapa() -> void:
 	painel_mash.visible = false
 	player.visible = true
 	etapas_completas.append(etapa_atual)
+	if hud and hud.has_method("update_custom_objective"):
+		hud.update_custom_objective(etapa_atual)
 
 	if etapa_atual == "tronco":
 		sprite_cortar.visible = false

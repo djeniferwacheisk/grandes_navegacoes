@@ -34,6 +34,12 @@ var minigame_ativo: bool = false
 @onready var sprite_troca_presente: AnimatedSprite2D = $SpriteTrocaPresente
 @onready var sprite_indio_presente: Sprite2D = $SpriteIndioPresente
 @onready var sprite_grupo_tupiniquim: Sprite2D = $SpriteGrupoTupiniquim
+@onready var hud = $SharedHUD
+
+const NOMES_OBJETIVOS := {
+	"presente": "Oferecer Presente",
+	"contato": "Imitar Gestos",
+}
 
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
@@ -42,6 +48,8 @@ func _ready() -> void:
 	sprite_portugues.visible = false
 	_setup_camera()
 	_equipar_presentes()
+	if hud and hud.has_method("set_custom_objectives"):
+		hud.set_custom_objectives(NOMES_OBJETIVOS)
 
 	await get_tree().create_timer(0.5).timeout
 	player.set_state(player.State.IN_DIALOG)
@@ -128,6 +136,8 @@ func _on_presente_interact() -> void:
 		return
 
 	presente_dado = true
+	if hud and hud.has_method("update_custom_objective"):
+		hud.update_custom_objective("presente")
 	player.set_state(player.State.IN_DIALOG)
 	dialog_box.start_dialog_direct([
 		{"speaker": "Cartógrafo", "text": "Oferecemos espelhos e miçangas coloridas. Os Tupiniquins olham curiosos!", "portrait": ""},
@@ -232,6 +242,8 @@ func _minigame_sucesso() -> void:
 	sprite_portugues.visible = false
 	sprite_grupo_tupiniquim.texture = preload("res://assets/personagem/grupo_tupiniquim_felizes.png")
 	contato_feito = true
+	if hud and hud.has_method("update_custom_objective"):
+		hud.update_custom_objective("contato")
 	player.visible = true
 
 	player.set_state(player.State.IN_DIALOG)

@@ -81,14 +81,10 @@ func is_phase_complete(phase: int) -> bool:
 	return true
 
 
-## Chamado por cada fase ao ser concluida, logo antes de ir para a tela
-## de transicao (phase_complete.tscn). Guarda qual fase terminou (para a
-## tela de transicao montar a mensagem certa) e avanca current_phase, para
-## que o proximo "Continuar" carregue a fase seguinte automaticamente.
 func finish_phase(phase: int) -> void:
 	last_completed_phase = phase
 	if current_phase <= phase:
-		current_phase = phase + 1
+		current_phase = 3 if phase == 1 else phase + 1
 	save_game()
 
 

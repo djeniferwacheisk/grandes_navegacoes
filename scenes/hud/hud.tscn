@@ -10,37 +10,7 @@ script = ExtResource("1_hud")
 [node name="Compass" parent="." unique_id=956247750 instance=ExtResource("2_compass")]
 offset_bottom = 73.0
 
-[node name="Minimap" type="Control" parent="." unique_id=1306721233]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -87.0
-offset_top = 5.0
-offset_right = -5.0
-offset_bottom = 70.0
-grow_horizontal = 0
-
-[node name="Background" type="ColorRect" parent="Minimap" unique_id=1029780677]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.3, 0.25, 0.15, 0.7)
-
-[node name="Title" type="Label" parent="Minimap" unique_id=1829067861]
-layout_mode = 1
-offset_left = 4.0
-offset_top = 2.0
-offset_right = 92.0
-offset_bottom = 18.0
-theme_override_font_sizes/font_size = 8
-text = "MAPA"
-horizontal_alignment = 1
-
-[node name="Objectives" type="Control" parent="." unique_id=953318443]
+[node name="Objectives" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0

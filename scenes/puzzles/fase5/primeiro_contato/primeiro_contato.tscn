@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cqvktq71sjpfu" path="res://assets/personagem/gesto4.png" id="22_gku61"]
 [ext_resource type="Texture2D" uid="uid://vcscammdxwau" path="res://assets/personagem/gesto5.png" id="23_j4q21"]
 [ext_resource type="Texture2D" uid="uid://wysggb42corw" path="res://assets/personagem/gesto6.png" id="24_0fvd5"]
+[ext_resource type="PackedScene" uid="uid://chud001" path="res://scenes/hud/hud.tscn" id="99_hud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
@@ -443,3 +444,6 @@ animation = &"gesto"
 
 [connection signal="triggered" from="Triggers/PresenteTrigger" to="." method="_on_presente_interact"]
 [connection signal="triggered" from="Triggers/ContatoTrigger" to="." method="_on_contato_interact"]
+
+[node name="SharedHUD" parent="." instance=ExtResource("99_hud")]
+phase = 5

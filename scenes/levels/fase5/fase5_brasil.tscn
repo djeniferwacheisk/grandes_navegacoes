@@ -30,7 +30,7 @@ scale = Vector2(0.58227175, 0.54796165)
 texture = ExtResource("6_fundo")
 
 [node name="Limitação" type="CollisionShape2D" parent="." unique_id=1644918884]
-position = Vector2(501, 360)
+position = Vector2(501, 396)
 shape = SubResource("RectangleShape2D_5kyh6")
 
 [node name="Chao" type="StaticBody2D" parent="." unique_id=708977534]
@@ -57,7 +57,7 @@ shape = SubResource("RectangleShape2D_parede_lateral")
 [node name="PuzzleTriggers" type="Node2D" parent="." unique_id=727950460]
 
 [node name="ExplorarTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=609840955]
-position = Vector2(152, 407)
+position = Vector2(104, 416)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("5_trigger")
@@ -76,7 +76,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ContatoTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=1545739356]
-position = Vector2(399, 401)
+position = Vector2(463, 421)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("5_trigger")
@@ -95,7 +95,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CruzTrigger" type="Area2D" parent="PuzzleTriggers" unique_id=1791266647]
-position = Vector2(886, 405)
+position = Vector2(878, 424)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("5_trigger")

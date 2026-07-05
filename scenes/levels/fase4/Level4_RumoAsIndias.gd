@@ -7,15 +7,13 @@ var _pause_menu_scene := preload("res://scenes/menus/pause_menu.tscn")
 
 const TRIGGER_POSITIONS := {
 	"tripulacao_viva":  Vector2(-250, 500),
-	"ventos_indico":    Vector2(1, -100),
 	"mercado_calecute": Vector2(874, 220),
 }
 const TRIGGER_NOMES := {
 	"tripulacao_viva":  "Tripulação Viva",
-	"ventos_indico":    "Ventos do Índico",
 	"mercado_calecute": "Mercado de Calecute",
 }
-const ORDEM := ["tripulacao_viva", "ventos_indico", "mercado_calecute"]
+const ORDEM := ["tripulacao_viva", "mercado_calecute"]
 
 @onready var player:          CharacterBody2D = $Player
 @onready var compass_pivot:   Control         = $HUD_Fase4/ShipCompass/NeedlePivot
@@ -38,7 +36,7 @@ func _ready() -> void:
 				 "text": "O Cabo da Boa Esperança ficou para trás. Buscamos uma rota segura para as Índias.",
 				 "portrait": ""},
 				{"speaker": "Navegador",
-				 "text": "Três desafios nos aguardam: tripulação, ventos do Índico e o mercado de Calecute.",
+				 "text": "Dois desafios nos aguardam: a tripulação e o mercado de Calecute.",
 				 "portrait": ""},
 			])
 			await dialog.dialog_finished
@@ -114,19 +112,9 @@ func _on_tripulacao_interact() -> void:
 	SceneManager.change_scene("res://scenes/puzzles/fase4/Area_TripulacaoViva.tscn")
 
 
-func _on_ventos_interact() -> void:
+func _on_mercado_interact() -> void:
 	if not GameManager.is_objective_complete(4, "tripulacao_viva"):
 		_falar("Navegador", "Primeiro precisamos garantir os suprimentos da tripulação!")
-		return
-	if GameManager.is_objective_complete(4, "ventos_indico"):
-		_falar("Navegador", "Já dominamos os ventos do Índico!")
-		return
-	SceneManager.change_scene("res://scenes/puzzles/fase4/Area_VentosDoIndico.tscn")
-
-
-func _on_mercado_interact() -> void:
-	if not GameManager.is_objective_complete(4, "ventos_indico"):
-		_falar("Navegador", "Precisamos cruzar os ventos do Índico antes de chegar a Calecute!")
 		return
 	if GameManager.is_objective_complete(4, "mercado_calecute"):
 		_falar("Comerciante", "As especiarias já foram negociadas. Boa viagem!")
@@ -140,9 +128,7 @@ func _on_objective_completed(phase: int, objective: String) -> void:
 	_montar_lista_objetivos()
 	match objective:
 		"tripulacao_viva":
-			_falar("Tripulação", "Sobrevivemos! Os ventos do Índico nos aguardam.")
-		"ventos_indico":
-			_falar("Navegador", "Dominamos os ventos! O porto de Calecute está próximo.")
+			_falar("Tripulação", "Sobrevivemos! O mercado de Calecute nos aguarda.")
 		"mercado_calecute":
 			_falar("Vasco da Gama", "Em 1498, chegamos às Índias! O caminho das especiarias está aberto.")
 			await get_tree().create_timer(0.5).timeout

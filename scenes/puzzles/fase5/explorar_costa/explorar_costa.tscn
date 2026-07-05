@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cdialog001" path="res://scenes/ui/dialog_box.tscn" id="3_dialog"]
 [ext_resource type="Script" uid="uid://dsref2hv6av4c" path="res://scenes/levels/fase5/puzzle_trigger.gd" id="4_trigger"]
 [ext_resource type="Texture2D" uid="uid://bo2jrq3hyhky5" path="res://assets/fase5/fundo_explorar_costa.png" id="5_fundo"]
+[ext_resource type="PackedScene" uid="uid://chud001" path="res://scenes/hud/hud.tscn" id="99_hud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chao"]
 size = Vector2(1280, 20)
@@ -25,10 +26,17 @@ position = Vector2(556, 254.875)
 scale = Vector2(0.40492022, 0.3776633)
 texture = ExtResource("5_fundo")
 
+[node name="Chao2" type="StaticBody2D" parent="." unique_id=158498960]
+position = Vector2(576, 510)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao2" unique_id=902405088]
+shape = SubResource("RectangleShape2D_chao")
+
 [node name="Chao" type="StaticBody2D" parent="." unique_id=503388716]
 position = Vector2(576, 510)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=1919201137]
+position = Vector2(-10, -80)
 shape = SubResource("RectangleShape2D_chao")
 
 [node name="ParedeEsquerda" type="StaticBody2D" parent="." unique_id=237345086]
@@ -46,7 +54,7 @@ shape = SubResource("RectangleShape2D_parede_lateral")
 [node name="Triggers" type="Node2D" parent="." unique_id=1769104107]
 
 [node name="MorroTrigger" type="Area2D" parent="Triggers" unique_id=1688574937]
-position = Vector2(986, 445)
+position = Vector2(1006, 454)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -66,7 +74,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="FlorestaTrigger" type="Area2D" parent="Triggers" unique_id=1659857745]
-position = Vector2(206, 433)
+position = Vector2(167, 462)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -87,7 +95,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="FaunaTrigger" type="Area2D" parent="Triggers" unique_id=1990129648]
-position = Vector2(547, 429)
+position = Vector2(562, 458)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("4_trigger")
@@ -107,7 +115,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." unique_id=123037907 instance=ExtResource("2_player")]
-position = Vector2(63, 440)
+position = Vector2(63, 463)
 
 [node name="DialogBox" parent="." unique_id=386839138 instance=ExtResource("3_dialog")]
 
@@ -138,6 +146,9 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="HUD" parent="." unique_id=972805006 instance=ExtResource("99_hud")]
+phase = 5
 
 [connection signal="triggered" from="Triggers/MorroTrigger" to="." method="_on_morro_interact"]
 [connection signal="triggered" from="Triggers/FlorestaTrigger" to="." method="_on_floresta_interact"]

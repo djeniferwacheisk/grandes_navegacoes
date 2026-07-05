@@ -9,6 +9,13 @@ var itens_coletados: Array[String] = []
 @onready var dialog_box = $DialogBox
 @onready var polaroid_dim: ColorRect = $PolaroidLayer/Dim
 @onready var polaroid_rect: TextureRect = $PolaroidLayer/PolaroidImage
+@onready var hud = $HUD
+
+const NOMES_OBJETIVOS := {
+	"floresta": "Floresta Tropical",
+	"fauna": "Fauna Colorida",
+	"morro": "Serra e Morro",
+}
 
 const POLAROIDS := {
 	"morro": preload("res://assets/fase5/polaroid_morro.png"),
@@ -37,6 +44,8 @@ const ANOTACOES := {
 func _ready() -> void:
 	dialog_box.add_to_group("dialog_box")
 	_setup_camera()
+	if hud and hud.has_method("set_custom_objectives"):
+		hud.set_custom_objectives(NOMES_OBJETIVOS)
 
 func _setup_camera() -> void:
 	await get_tree().process_frame
@@ -87,6 +96,8 @@ func _registrar(item_id: String) -> void:
 
 	itens_coletados.append(item_id)
 	registros_feitos += 1
+	if hud and hud.has_method("update_custom_objective"):
+		hud.update_custom_objective(item_id)
 
 	_mostrar_polaroid(item_id)
 	player.set_state(player.State.IN_DIALOG)
